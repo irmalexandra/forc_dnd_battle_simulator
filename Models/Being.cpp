@@ -1,5 +1,5 @@
 #include "Being.h"
-#include "../Helpers/HelperFunctions.h"
+#include "../Helpers/HelperFunctions.h.old"
 #include "iostream"
 
 Being::Being(BaseTemplate* base_template){

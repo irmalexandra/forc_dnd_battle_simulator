@@ -1,6 +1,28 @@
-#include "HelperFunctions.h"
 #include <iostream>
+#include "HelpersFunctions.h"
 
+int get_int_input(){
+    int choice;
+    cin >> choice;
+    while(true){
+        if(cin.fail()){
+            cout << "Invalid input" << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<int>::max(),'\n');
+            continue;
+        }
+        else{
+            break;
+        }
+    }
+    return choice;
+}
+bool create_another_character(){
+    cout << "Create another?\n1. Yes\n2. No" << endl;
+    int choice = 2;
+    cin >> choice;
+    return choice == 1;
+}
 vector<string> split_string(string str, string token){
     vector<string> result;
     while(str.size()){
@@ -67,5 +89,26 @@ std::string* gender_picker() {
                 break;
 
         }
+    }
+}
+
+
+void view_shortened_individuals(Payload* payload){
+    cout << "Individuals:" << endl << endl << "Persons(NPCs)" << endl;
+
+    for(const auto individual: *payload->DHPersons->get_data()){
+        cout << '\t' << individual->get_name() << endl;
+    }
+    cout << "Investigators:" << endl;
+    for(const auto individual: *payload->DHInvestigators->get_data()){
+        cout << '\t' << individual->get_name() << endl;
+    }
+    cout << "Creatures " << endl;
+    for(const auto individual: *payload->DHCreatures->get_data()){
+        cout << '\t' << individual->get_name() << endl;
+    }
+    cout << "Eldritch Horrors" << endl;
+    for(const auto individual: *payload->DHEldritchHorrors->get_data()){
+        cout << '\t' << individual->get_name() << endl;
     }
 }

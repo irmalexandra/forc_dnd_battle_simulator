@@ -1,5 +1,5 @@
-#ifndef FORC_PA_4_INPUTHANDLER_H
-#define FORC_PA_4_INPUTHANDLER_H
+#ifndef FORC_PA_5_INPUTHANDLER_H
+#define FORC_PA_5_INPUTHANDLER_H
 #include <vector>
 #include <algorithm>
 #include <iostream>
@@ -12,7 +12,7 @@
 #include "../Classes/IndividualCreator.h"
 #include "../Classes/TemplateCreator.h"
 #include "DataHandler.h"
-
+#include "HelperFunctions.h"
 #include "../Templates/Role.h"
 #include "../Templates/Species.h"
 
@@ -67,4 +67,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_INPUTHANDLER_H
+#endif //FORC_PA_5_INPUTHANDLER_H

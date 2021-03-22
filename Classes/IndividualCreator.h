@@ -1,5 +1,5 @@
-#ifndef FORC_PA_4_INDIVIDUALCREATOR_H
-#define FORC_PA_4_INDIVIDUALCREATOR_H
+#ifndef FORC_PA_5_INDIVIDUALCREATOR_H
+#define FORC_PA_5_INDIVIDUALCREATOR_H
 
 #include <random>
 #include <string>
@@ -9,7 +9,6 @@
 #include "../Models/Creature.h"
 #include "../Models/Person.h"
 #include "../Models/Being.h"
-#include "../Helpers/HelperFunctions.h"
 #include "../Templates/Species.h"
 #include "../Templates/Role.h"
 
@@ -34,4 +33,4 @@ private:
 
 };
 
-#endif //FORC_PA_4_INDIVIDUALCREATOR_H
+#endif //FORC_PA_5_INDIVIDUALCREATOR_H

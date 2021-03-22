@@ -1,5 +1,5 @@
-#ifndef FORC_PA_4_INVESTIGATOR_H
-#define FORC_PA_4_INVESTIGATOR_H
+#ifndef FORC_PA_5_INVESTIGATOR_H
+#define FORC_PA_5_INVESTIGATOR_H
 
 
 #include "Person.h"
@@ -23,4 +23,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_INVESTIGATOR_H
+#endif //FORC_PA_5_INVESTIGATOR_H

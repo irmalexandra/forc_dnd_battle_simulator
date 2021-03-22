@@ -1,13 +1,6 @@
-#ifndef FORC_PA_4_DATAHANDLER_H
-#define FORC_PA_4_DATAHANDLER_H
+#ifndef FORC_PA_5_DATAHANDLER_H
+#define FORC_PA_5_DATAHANDLER_H
 #include "vector"
-#include "../Models/Investigator.h"
-#include "../Models/Person.h"
-#include "../Models/Creature.h"
-#include "../Models/EldritchHorror.h"
-
-#include "../Templates/Role.h"
-#include "../Templates/Species.h"
 
 
 template<typename T>
@@ -43,4 +36,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_DATAHANDLER_H
+#endif //FORC_PA_5_DATAHANDLER_H

@@ -1,5 +1,5 @@
-#ifndef FORC_PA_4_TEMPLATECREATOR_H
-#define FORC_PA_4_TEMPLATECREATOR_H
+#ifndef FORC_PA_5_TEMPLATECREATOR_H
+#define FORC_PA_5_TEMPLATECREATOR_H
 
 #include <sstream>
 #include "iostream"
@@ -25,4 +25,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_TEMPLATECREATOR_H
+#endif //FORC_PA_5_TEMPLATECREATOR_H

@@ -1,19 +1,11 @@
-#ifndef FORC_PA_4_SPECIES_H
-#define FORC_PA_4_SPECIES_H
+#ifndef FORC_PA_5_SPECIES_H
+#define FORC_PA_5_SPECIES_H
 
 #include "BaseTemplate.h"
 #include "iostream"
 
 
-struct speciesStats : public baseStats {
-    bool is_eldritch = false;
 
-    bool unnatural = 0;
-    int dis_min = 0;
-    int dis_max = 0;
-    int trauma_min = 0 ;
-    int trauma_max = 0;
-};
 
 class Species: public BaseTemplate {
 public:
@@ -41,4 +33,4 @@ private:
     int traumatism_max;
 };
 
-#endif //FORC_PA_4_SPECIES_H
+#endif //FORC_PA_5_SPECIES_H

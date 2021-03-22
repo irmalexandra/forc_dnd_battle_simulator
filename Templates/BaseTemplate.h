@@ -1,5 +1,5 @@
-#ifndef FORC_PA_4_BaseTemplate_H
-#define FORC_PA_4_BaseTemplate_H
+#ifndef FORC_PA_5_BaseTemplate_H
+#define FORC_PA_5_BaseTemplate_H
 
 #include "iostream"
 #include "../Helpers/HelperFunctions.h"
@@ -39,4 +39,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_BaseTemplate_H
+#endif //FORC_PA_5_BaseTemplate_H

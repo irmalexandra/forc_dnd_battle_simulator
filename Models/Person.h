@@ -1,11 +1,11 @@
-#ifndef FORC_PA_4_PERSON_H
-#define FORC_PA_4_PERSON_H
+#ifndef FORC_PA_5_PERSON_H
+#define FORC_PA_5_PERSON_H
 
 
 #include "Being.h"
 #include "string"
 #include "iostream"
-#include "../Helpers/HelperFunctions.h"
+#include "../Helpers/HelperFunctions.h.old"
 #include "../Templates/Role.h"
 
 class Person: public Being {
@@ -35,4 +35,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_PERSON_H
+#endif //FORC_PA_5_PERSON_H

@@ -1,7 +1,6 @@
 
-#ifndef FORC_PA_4_ROLE_H
-#define FORC_PA_4_ROLE_H
-
+#ifndef FORC_PA_5_ROLE_H
+#define FORC_PA_5_ROLE_H
 
 #include "BaseTemplate.h"
 #include "string"
@@ -24,4 +23,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_ROLE_H
+#endif //FORC_PA_5_ROLE_H

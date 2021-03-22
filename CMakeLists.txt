@@ -23,8 +23,8 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         ../FORC-PA-5/Helpers/InputHandler.h
         ../FORC-PA-5/Helpers/FileHandler.cpp
         ../FORC-PA-5/Helpers/FileHandler.h
-        ../FORC-PA-5/Helpers/HelperFunctions.cpp
-        ../FORC-PA-5/Helpers/HelperFunctions.h
+        Helpers/HelperFunctions.cpp.old
+        Helpers/HelperFunctions.h.old
         ../FORC-PA-5/Helpers/DataHandler.h
         ../FORC-PA-5/Classes/TemplateCreator.cpp
         ../FORC-PA-5/Classes/TemplateCreator.h
@@ -34,4 +34,4 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         ../FORC-PA-5/Templates/Species.h
         ../FORC-PA-5/Templates/Role.cpp
         ../FORC-PA-5/Templates/Role.h
-        )
+        Helpers/SubMenus/Actions.cpp Helpers/SubMenus/Actions.h Helpers/SubMenus/Roster.cpp Helpers/SubMenus/Roster.h Helpers/SubMenus/Templates.cpp Helpers/SubMenus/Templates.h Helpers/Structs.h)

@@ -1,10 +1,10 @@
-#ifndef FORC_PA_4_CREATURE_H
-#define FORC_PA_4_CREATURE_H
+#ifndef FORC_PA_5_CREATURE_H
+#define FORC_PA_5_CREATURE_H
 
 #include "Being.h"
 #include "iostream"
 #include "../Templates/Species.h"
-#include "../Helpers/HelperFunctions.h"
+#include "../Helpers/HelperFunctions.h.old"
 
 using namespace std;
 
@@ -32,4 +32,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_CREATURE_H
+#endif //FORC_PA_5_CREATURE_H

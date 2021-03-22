@@ -1,5 +1,4 @@
 #include "BaseTemplate.h"
-#include "iostream"
 
 int LOWER_LIMIT = 0;
 int UPPER_LIMIT = 10;
@@ -20,15 +19,15 @@ std::string BaseTemplate::get_name() {
 }
 
 Range BaseTemplate::get_life_range() {
-    return Range(life_min, life_max);
+    return {life_min, life_max};
 }
 
 Range BaseTemplate::get_intelligence_range() {
-    return Range(intelligence_min, intelligence_max);
+    return {intelligence_min, intelligence_max};
 }
 
 Range BaseTemplate::get_strength_range() {
-    return Range(strength_min, strength_max);
+    return {strength_min, strength_max};
 }
 
 void BaseTemplate::set_life_range(int* life_min, int* life_max) {

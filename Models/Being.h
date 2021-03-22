@@ -1,8 +1,8 @@
-#ifndef FORC_PA_4_BEING_H
-#define FORC_PA_4_BEING_H
+#ifndef FORC_PA_5_BEING_H
+#define FORC_PA_5_BEING_H
 
 #include "iostream"
-#include "../Helpers/HelperFunctions.h"
+#include "../Helpers/HelperFunctions.h.old"
 #include "../Templates/BaseTemplate.h"
 
 class Being {
@@ -43,4 +43,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_BEING_H
+#endif //FORC_PA_5_BEING_H

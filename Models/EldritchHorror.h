@@ -1,11 +1,10 @@
-#ifndef FORC_PA_4_ELDRITCHHORROR_H
-#define FORC_PA_4_ELDRITCHHORROR_H
+#ifndef FORC_PA_5_ELDRITCHHORROR_H
+#define FORC_PA_5_ELDRITCHHORROR_H
 
 
 #include "Creature.h"
 #include "iostream"
 #include "../Templates/Species.h"
-#include "../Helpers/HelperFunctions.h"
 
 class EldritchHorror: public Creature{
 
@@ -24,4 +23,4 @@ private:
 };
 
 
-#endif //FORC_PA_4_ELDRITCHHORROR_H
+#endif //FORC_PA_5_ELDRITCHHORROR_H
