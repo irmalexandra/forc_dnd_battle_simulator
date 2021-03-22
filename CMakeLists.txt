@@ -4,6 +4,7 @@ project(FORC_PA_4)
 set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../FORC-PA-5)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         ../FORC-PA-5/Models/Being.cpp
