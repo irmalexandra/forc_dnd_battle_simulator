@@ -22,6 +22,10 @@ bool re_prompt();
 std::vector<std::string> split_string(string str, string token = " ");
 
 
+int get_index_roles(const string& name, Payload* payload);
+int get_index_species(const string& name, Payload* payload);
+
+
 
 
 #endif //FORC_PA_5_HELPERFUNCTIONS_H

@@ -16,7 +16,6 @@
 #include "../Helpers/HelperFunctions.h"
 #include "../Templates/Species.h"
 #include "../Templates/Role.h"
-#include "../Models/Person.h"
 
 using namespace std;
 
