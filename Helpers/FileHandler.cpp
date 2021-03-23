@@ -268,9 +268,11 @@ void FileHandler::load_actions(Payload *payload) {
 
     string name;
     string type;
-    int* damage;
-    int* hit_modifier;
-
+    int* damage = new int();
+    int* hit_modifier = new int();
+    int* defense_modifier = new int();
+    int* recovery = new int();
+    int* duration = new int();
 
     auto temp_string_array = new std::vector<std::string>;
     int amount;
@@ -318,11 +320,26 @@ void FileHandler::load_actions(Payload *payload) {
             *temp_string_array = split_string(line_str,":" );
             *damage = stoi(temp_string_array->at(1));
 
+        } else {
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            *temp_string_array = split_string(line_str,":" );
+            *defense_modifier = stoi(temp_string_array->at(1));
+
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            *temp_string_array = split_string(line_str,":" );
+            *recovery = stoi(temp_string_array->at(1));
+
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            *temp_string_array = split_string(line_str,":" );
+            *duration = stoi(temp_string_array->at(1));
         }
         if (stats->type == "Offensive"){
             payload->DHOffensives->get_data()->push_back(new Offensive(stats, hit_modifier, damage));
-        } else{
-            //payload->DHDefensives->get_data()->push_back(new Defensive());
+        } else {
+            payload->DHDefensives->get_data()->push_back(new Defensive(stats, defense_modifier, recovery, duration));
         }
         fileIn.getline(single_line, 32); // To skip empty lines
         delete stats;

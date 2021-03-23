@@ -33,14 +33,14 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Templates/ActionTemplates/ActionBaseTemplate.cpp
         Classes/ActionCreator.cpp
         Classes/ActionCreator.h
-        Templates/ActionTemplates/Defensive.cpp
-        Templates/ActionTemplates/Defensive.h
         Templates/ActionTemplates/Offensive.cpp
         Templates/ActionTemplates/Offensive.h
         Templates/IndividualTemplates/Species.cpp
         Templates/IndividualTemplates/Species.h
         Templates/IndividualTemplates/Role.cpp
         Templates/IndividualTemplates/Role.h
+        Templates/ActionTemplates/Defensive.cpp
+        Templates/ActionTemplates/Defensive.h
         Helpers/SubMenus/Actions.cpp
         Helpers/SubMenus/Actions.h
         Helpers/SubMenus/Roster.cpp
@@ -48,5 +48,6 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Helpers/SubMenus/Templates.cpp
         Helpers/SubMenus/Templates.h
         Helpers/Structs/Payload.h
-        Helpers/Structs/Stats.h Helpers/Structs/Payload.cpp Helpers/Structs/Stats.cpp
-        )
+        Helpers/Structs/Stats.h
+        Helpers/Structs/Payload.cpp
+        Helpers/Structs/Stats.cpp)

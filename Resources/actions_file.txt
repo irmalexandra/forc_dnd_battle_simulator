@@ -1,4 +1,4 @@
-3
+6
 Name: fgh
 Type: Offensive
 Physical
@@ -16,4 +16,24 @@ Type: Offensive
 Mental
 Hit Modifier: 2
 Damage: 5
+
+Name: Attack!
+Type: Offensive
+Physical
+Hit Modifier: 4
+Damage: 3
+
+Name: DefTest1
+Type: 
+Physical
+Defense Modifier: 3
+Health Recovery: 0
+Duration: 1
+
+Name: DefTest2
+Type: 
+Physical
+Defense Modifier: 0
+Health Recovery: 10
+Duration: 5
 
