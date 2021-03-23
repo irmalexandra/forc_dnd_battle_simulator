@@ -18,10 +18,10 @@ struct Payload {
             DataHandler<Creature>* dh_creatures,
             DataHandler<EldritchHorror>* dh_eldritch_horrors,
             DataHandler<Species>* dh_species,
-            DataHandler<Role>* dh_roles,
+            DataHandler<Role>* dh_roles, /*DataHandler<Action>* dh_actions,*/
             map<string, int>* species_map);
 
-// ROSTER
+    // ROSTER
     DataHandler<Investigator>* DHInvestigators;
     DataHandler<Person>* DHPersons;
     DataHandler<Creature>* DHCreatures;
@@ -30,7 +30,7 @@ struct Payload {
     // Templates
     DataHandler<Species>* DHSpecies;
     DataHandler<Role>* DHRoles;
-
+//    DataHandler<Action>* DHActions;
     // Species Map
     std::map<string, int>* species_map;
 };
