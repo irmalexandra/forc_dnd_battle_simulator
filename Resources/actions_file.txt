@@ -1,0 +1,19 @@
+3
+Name: fgh
+Type: Offensive
+Physical
+Hit Modifier: 5
+Damage: 5
+
+Name: o
+Type: Offensive
+Physical
+Hit Modifier: 5
+Damage: 5
+
+Name: op
+Type: Offensive
+Mental
+Hit Modifier: 2
+Damage: 5
+
