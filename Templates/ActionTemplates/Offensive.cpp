@@ -5,12 +5,9 @@
 Offensive::Offensive(baseActionTemplateStats* stats, int* hit_modifier, int* damage): ActionBaseTemplate(stats) {
     this->damage = *damage;
     this->hit_modifier = *hit_modifier;
+    this->type = "Offensive";
+    this->physical = stats->physical;
 
-    delete damage;
-    delete hit_modifier;
-
-    damage = nullptr;
-    hit_modifier = nullptr;
 }
 
 int Offensive::get_damage() {
@@ -23,8 +20,15 @@ int Offensive::get_hit_modifier() {
 
 std::ostream& operator<< (std::ostream& out, Offensive* offensive) {
     out << (ActionBaseTemplate*)(offensive);
+    if (offensive->physical){
+        out << "Physical" << endl;
+    }
+    else{
+        out << "Mental" << endl;
+    }
     out << "Hit Modifier: " << offensive->get_hit_modifier() << endl;
     out << "Damage: " << offensive->get_damage() << endl;
+
     return out;
 }
 
