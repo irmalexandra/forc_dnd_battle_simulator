@@ -13,11 +13,11 @@ void template_menu(FileHandler* file_handler, TemplateCreator* template_creator,
             continue;
         }
         switch (choice) {
-            case(1):
+            case 1:
                 view_templates(payload);
                 break;
-            case(2):
-                edit_templates(file_handler, template_creator, payload);
+            case 2:
+                create_template(file_handler, template_creator, payload);
                 break;
             case 3:
                 delete_template(file_handler, payload);
