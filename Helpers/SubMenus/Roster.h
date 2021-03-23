@@ -3,7 +3,6 @@
 
 #include "../FileHandler.h"
 #include "../../Classes/IndividualCreator.h"
-#include "../HelperFunctions.h"
 #include "Templates.h"
 
 using namespace std;
@@ -17,7 +16,8 @@ void create_individual_role(Role* role);
 void view_individuals(Payload* payload);
 void view_all_individuals(Payload* payload);
 void auto_save(FileHandler* file_handler, Payload* payload);
-void view_single_template(int species_index, int role_index, Payload* payload);
+
+
 
 
 #endif //FORC_PA_5_ROSTER_H

@@ -1,6 +1,8 @@
 #ifndef FORC_PA_5_STATS_H
 #define FORC_PA_5_STATS_H
 
+#include <iostream>
+
 struct baseStats {
     std::string name = "";
     std::string type= "unchanged from base_Stats";
@@ -31,17 +33,12 @@ struct Range {
     Range(){
     }
 
-    Range(int min, int max){
-        this->min = min;
-        this->max = max;
-    };
+    Range(int min, int max);
 
-    friend std::ostream& operator<< (std::ostream& out, Range range){
-        out << range.min << "-" << range.max;
-        return out;
-    };
+    friend std::ostream& operator<< (std::ostream& out, Range range);
 
     int min = 0;
     int max = 0;
 };
+
 #endif //FORC_PA_5_STATS_H

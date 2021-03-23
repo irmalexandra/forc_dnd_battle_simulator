@@ -11,7 +11,6 @@
 #include "../../Templates/Species.h"
 #include "../FileHandler.h"
 #include "../Structs/Payload.h"
-#include "../HelperFunctions.h"
 
 using namespace std;
 
@@ -23,6 +22,8 @@ void view_shortened_templates(Payload* payload);
 void edit_templates(FileHandler* file_handler, TemplateCreator* template_creator, Payload* payload);
 void delete_template(FileHandler* file_handler, Payload* payload);
 
+int get_index_roles(const string& name, Payload* payload);
+int get_index_species(const string& name, Payload* payload);
 
 
 #endif //FORC_PA_5_TEMPLATES_H

@@ -29,7 +29,6 @@ public:
     void save_templates(Payload* payload);
     void load_roster(Payload* payload, string* roster_name);
     void save_roster(Payload* payload, string* roster_name);
-
 };
 
 

@@ -121,7 +121,7 @@ void FileHandler::save_roster(Payload* payload, string* roster_name){
     amount += payload->DHInvestigators->get_data()->size();
     amount += payload->DHPersons->get_data()->size();
     amount += payload->DHCreatures->get_data()->size();
-    amount += payload->DHEldritch_Horrors->get_data()->size();
+    amount += payload->DHEldritchHorrors->get_data()->size();
     ofstream fileout(*roster_name, ios::trunc);
     fileout << amount << endl;
 //    fileout << payload->DHInvestigators->get_data()->size() << endl;
@@ -131,7 +131,7 @@ void FileHandler::save_roster(Payload* payload, string* roster_name){
 //    fileout << payload->DHCreatures->get_data()->size() << endl;
     fileout << payload->DHCreatures;
 //    fileout << payload->DHEldritch_Horrors->get_data()->size() << endl;
-    fileout << payload->DHEldritch_Horrors;
+    fileout << payload->DHEldritchHorrors;
     fileout.close();
     cout << "Done!" << endl;
 }
@@ -221,7 +221,7 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
                 fileIn.getline(single_line, 32);
                 line_string = string(single_line);
                 stats->traumatism = stoi(split_string(line_string).at(1));
-                payload->DHEldritch_Horrors->get_data()->push_back(new EldritchHorror(stats, species));
+                payload->DHEldritchHorrors->get_data()->push_back(new EldritchHorror(stats, species));
 
             }
             else{
