@@ -2,16 +2,16 @@
 // Created by emmik on 22/03/2021.
 //
 
-#ifndef FORC_PA_5_BASETEMPLATE_H
-#define FORC_PA_5_BASETEMPLATE_H
+#ifndef FORC_PA_5_ACTIONBASETEMPLATE_H
+#define FORC_PA_5_ACTIONBASETEMPLATE_H
 
 
 #include "iostream"
 #include "../../Helpers/Structs/Stats.h"
 
-class BaseTemplate {
+class ActionBaseTemplate {
 public:
-    BaseTemplate(baseStats* baseStats);
+    ActionBaseTemplate(baseIndividualTemplateStats* baseStats);
 //    ~BaseTemplate();
 
     std::string get_name();
@@ -27,7 +27,7 @@ public:
     void set_name(std::string* name);
     void set_type(std::string* type);
 
-    friend std::ostream& operator<< (std::ostream& out, BaseTemplate* BaseTemplate);
+    friend std::ostream& operator<< (std::ostream& out, ActionBaseTemplate* BaseTemplate);
 private:
     std::string name;
     std::string type = "unchanged from Base_template";
@@ -38,4 +38,4 @@ private:
     int strength_max;
     int intelligence_max;
 };
-#endif //FORC_PA_5_BASETEMPLATE_H
+#endif //FORC_PA_5_ACTIONBASETEMPLATE_H

@@ -1,6 +1,6 @@
 #include "Species.h"
 
-Species::Species(speciesStats* species_stats):BaseTemplate(species_stats){
+Species::Species(speciesStats* species_stats): ActionBaseTemplate(species_stats){
     this->unnatural = species_stats->unnatural;
     this->disquiet_min = species_stats->dis_min;
     this->disquiet_max = species_stats->dis_max;
@@ -41,7 +41,7 @@ void Species::set_traumatism_range(int* traumatism_min, int* traumatism_max){
 }
 
 std::ostream& operator<< (std::ostream& out, Species* Species){
-    out << (BaseTemplate*)(Species);
+    out << (ActionBaseTemplate*)(Species);
 
     if(Species->get_unnatural()){
         out << "Unnatural" << std::endl;

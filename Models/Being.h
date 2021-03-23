@@ -7,13 +7,13 @@
 
 
 #include "iostream"
-#include "../Templates/IndividualTemplates/BaseTemplate.h"
+#include "../Templates/IndividualTemplates/IndividualBaseTemplate.h"
 
 class Being {
 public:
-    Being(BaseTemplate* base_template);
+    Being(ActionBaseTemplate* base_template);
     Being(baseIndividualStats* stats);
-    Being(baseIndividualStats *stats, BaseTemplate* base_template);
+    Being(baseIndividualStats *stats, ActionBaseTemplate* base_template);
 //    ~Being();
 
     void edit();
@@ -30,7 +30,7 @@ public:
     void set_intelligence(int* intelligence);
     void set_is_investigator(bool* is_investigator);
 
-    BaseTemplate* get_template();
+    ActionBaseTemplate* get_template();
 
     friend std::ostream& operator<< (std::ostream& out, Being* being);
 
@@ -43,7 +43,7 @@ private:
     int intelligence;
     bool is_investigator;
 
-    BaseTemplate* base_template;
+    ActionBaseTemplate* base_template;
 };
 
 

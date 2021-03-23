@@ -5,11 +5,11 @@
 #ifndef FORC_PA_5_SPECIES_H
 #define FORC_PA_5_SPECIES_H
 
-#include "BaseTemplate.h"
+#include "IndividualBaseTemplate.h"
 #include "iostream"
 
 
-struct speciesStats : public baseStats {
+struct speciesStats : public baseIndividualTemplateStats {
     bool is_eldritch = false;
 
     bool unnatural = 0;
@@ -19,7 +19,7 @@ struct speciesStats : public baseStats {
     int trauma_max = 0;
 };
 
-class Species: public BaseTemplate {
+class Species: public ActionBaseTemplate {
 public:
     explicit Species() = default;
     explicit Species(speciesStats* species_stats);

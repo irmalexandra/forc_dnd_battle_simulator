@@ -7,7 +7,7 @@
 #include "istream"
 #include "../Templates/IndividualTemplates/Role.h"
 #include "../Templates/IndividualTemplates/Species.h"
-#include "../Templates/IndividualTemplates/BaseTemplate.h"
+#include "../Templates/IndividualTemplates/IndividualBaseTemplate.h"
 #include "../Helpers/HelperFunctions.h"
 
 using namespace std;
@@ -21,7 +21,7 @@ public:
     Species* create_species();
 
 private:
-    void get_base_stats(baseStats* base_stats = nullptr);
+    void get_base_stats(baseIndividualTemplateStats* base_stats = nullptr);
     speciesStats* get_species_stats();
 };
 

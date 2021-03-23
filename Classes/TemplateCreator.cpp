@@ -58,7 +58,7 @@ Species *TemplateCreator::create_species() {
 }
 
 Role *TemplateCreator::create_role() {
-    auto role_stats = new baseStats();
+    auto role_stats = new baseIndividualTemplateStats();
     role_stats->type = "Person";
     get_base_stats(role_stats);
 
@@ -66,9 +66,9 @@ Role *TemplateCreator::create_role() {
 }
 
 
-void TemplateCreator::get_base_stats(baseStats* base_stats) {
+void TemplateCreator::get_base_stats(baseIndividualTemplateStats* base_stats) {
     if (base_stats == nullptr){
-        auto base_stats = new baseStats();
+        auto base_stats = new baseIndividualTemplateStats();
     }
 
     cout << "Enter name (no spaces): ";

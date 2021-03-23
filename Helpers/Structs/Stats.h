@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-struct baseStats {
+struct baseIndividualTemplateStats {
     std::string name = "";
     std::string type= "unchanged from base_Stats";
     int life_min = 0;
@@ -12,6 +12,13 @@ struct baseStats {
     int str_max = 0;
     int int_min = 0;
     int int_max = 0;
+};
+
+struct baseActionTemplateStats{
+    std::string name = "";
+    std::string description = "";
+
+
 };
 
 struct baseIndividualStats{
@@ -26,7 +33,6 @@ struct baseIndividualStats{
     int fear = 0;
     int traumatism = 0;
     int terror = 0;
-
 };
 
 struct Range {

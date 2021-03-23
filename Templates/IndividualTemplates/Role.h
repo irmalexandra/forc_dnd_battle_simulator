@@ -7,12 +7,12 @@
 
 #include "string"
 #include "iostream"
-#include "BaseTemplate.h"
+#include "IndividualBaseTemplate.h"
 
 
-class Role: public BaseTemplate {
+class Role: public ActionBaseTemplate {
 public:
-    Role(baseStats* base_stats);
+    Role(baseIndividualTemplateStats* base_stats);
 
     Range get_fear_range();
     Range get_terror_range();

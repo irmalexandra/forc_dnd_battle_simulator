@@ -13,7 +13,7 @@
 #include <map>
 #include <algorithm>
 
-#include "../Templates/IndividualTemplates/BaseTemplate.h"
+#include "../Templates/IndividualTemplates/IndividualBaseTemplate.h"
 #include "../Templates/IndividualTemplates/Role.h"
 #include "../Templates/IndividualTemplates/Species.h"
 #include "../Helpers/HelperFunctions.h"

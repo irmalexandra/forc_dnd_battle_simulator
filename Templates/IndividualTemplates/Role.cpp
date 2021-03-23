@@ -1,6 +1,6 @@
 #include "Role.h"
 
-Role::Role(baseStats* base_stats):BaseTemplate(base_stats){
+Role::Role(baseIndividualTemplateStats* base_stats): ActionBaseTemplate(base_stats){
     this->fear_min = 0;
     this->fear_max = 10;
     this->terror_min = 0;
@@ -8,7 +8,7 @@ Role::Role(baseStats* base_stats):BaseTemplate(base_stats){
 }
 
 std::ostream& operator<< (std::ostream& out, Role* Role) {
-    out << (BaseTemplate*)(Role);
+    out << (ActionBaseTemplate*)(Role);
     return out;
 }
 
