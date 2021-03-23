@@ -27,12 +27,12 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Helpers/HelperFunctions.cpp
         Classes/TemplateCreator.cpp
         Classes/TemplateCreator.h
-        IndividualTemplates/BaseTemplate.cpp
-        IndividualTemplates/BaseTemplate.h
-        IndividualTemplates/Species.cpp
-        IndividualTemplates/Species.h
-        IndividualTemplates/Role.cpp
-        IndividualTemplates/Role.h
+        Templates/IndividualTemplates/BaseTemplate.cpp
+        Templates/IndividualTemplates/BaseTemplate.h
+        Templates/IndividualTemplates/Species.cpp
+        Templates/IndividualTemplates/Species.h
+        Templates/IndividualTemplates/Role.cpp
+        Templates/IndividualTemplates/Role.h
         Helpers/SubMenus/Actions.cpp
         Helpers/SubMenus/Actions.h
         Helpers/SubMenus/Roster.cpp

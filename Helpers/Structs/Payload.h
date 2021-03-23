@@ -7,8 +7,8 @@
 #include "../../Models/Person.h"
 #include "../../Models/Creature.h"
 #include "../../Models/EldritchHorror.h"
-#include "../../IndividualTemplates/Species.h"
-#include "../../IndividualTemplates/Role.h"
+#include "../../Templates/IndividualTemplates/Species.h"
+#include "../../Templates/IndividualTemplates/Role.h"
 #include "../DataHandler.h"
 
 struct Payload {

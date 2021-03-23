@@ -5,9 +5,9 @@
 #include "limits"
 #include "iostream"
 #include "istream"
-#include "../IndividualTemplates/Role.h"
-#include "../IndividualTemplates/Species.h"
-#include "../IndividualTemplates/BaseTemplate.h"
+#include "../Templates/IndividualTemplates/Role.h"
+#include "../Templates/IndividualTemplates/Species.h"
+#include "../Templates/IndividualTemplates/BaseTemplate.h"
 #include "../Helpers/HelperFunctions.h"
 
 using namespace std;
