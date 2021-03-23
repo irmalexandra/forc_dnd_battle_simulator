@@ -7,7 +7,7 @@
 
 
 #include "iostream"
-#include "../Helpers/HelperFunctions.h"
+#include "../Helpers/Structs/Stats.h"
 
 class BaseTemplate {
 public:

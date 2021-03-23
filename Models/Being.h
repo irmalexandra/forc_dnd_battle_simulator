@@ -7,7 +7,7 @@
 
 
 #include "iostream"
-#include "../Helpers/HelperFunctions.h"
+//#include "../Helpers/HelperFunctions.h"
 #include "../Templates/BaseTemplate.h"
 
 class Being {

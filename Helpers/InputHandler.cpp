@@ -572,7 +572,7 @@ int InputHandler::get_index_species(const string& name) const {
     return index;
 }
 
-void InputHandler::auto_save(){
-    cout << "Auto Saving..." << endl;
-    this->file_handler->save_roster(this->payload, new string("Saves/backups/roster_backup.txt"));
-}
+//void InputHandler::auto_save(){
+//    cout << "Auto Saving..." << endl;
+//    this->file_handler->save_roster(this->payload, new string("Saves/backups/roster_backup.txt"));
+//}

@@ -1,7 +1,3 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #ifndef FORC_PA_5_INPUTHANDLER_H
 #define FORC_PA_5_INPUTHANDLER_H
 
@@ -22,7 +18,11 @@
 #include "../Templates/Role.h"
 #include "../Templates/Species.h"
 
+#include "Structs/Payload.h"
+#include "SubMenus/Roster.h"
+
 #include "FileHandler.h"
+#include "SubMenus/Templates.h"
 
 
 using namespace std;
