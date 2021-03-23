@@ -8,7 +8,7 @@
 
 #include "Being.h"
 #include "iostream"
-#include "../IndividualTemplates/Species.h"
+#include "../Templates/IndividualTemplates/Species.h"
 #include "../Helpers/HelperFunctions.h"
 
 using namespace std;

@@ -10,7 +10,7 @@
 #include "string"
 #include "iostream"
 #include "../Helpers/HelperFunctions.h"
-#include "../IndividualTemplates/Role.h"
+#include "../Templates/IndividualTemplates/Role.h"
 
 class Person: public Being {
 public:

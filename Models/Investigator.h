@@ -9,7 +9,7 @@
 
 #include "Person.h"
 #include "iostream"
-#include "../IndividualTemplates/Role.h"
+#include "../Templates/IndividualTemplates/Role.h"
 #include "../Helpers/HelperFunctions.h"
 
 class Investigator: public Person {
