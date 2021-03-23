@@ -15,9 +15,12 @@ public:
     explicit ActionBaseTemplate(baseActionTemplateStats* stats);
 
 
+    friend std::ostream& operator<< (std::ostream& out, ActionBaseTemplate* actionBaseTemplate);
+    std::string get_action_name();
+
 private:
     std::string action_name;
-    std::string description;
+
 };
 
 

@@ -31,6 +31,8 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Templates/IndividualTemplates/IndividualBaseTemplate.h
         Templates/ActionTemplates/ActionBaseTemplate.h
         Templates/ActionTemplates/ActionBaseTemplate.cpp
+        Classes/ActionCreator.cpp
+        Classes/ActionCreator.h
         Templates/ActionTemplates/Defensive.cpp
         Templates/ActionTemplates/Defensive.h
         Templates/ActionTemplates/Offensive.cpp

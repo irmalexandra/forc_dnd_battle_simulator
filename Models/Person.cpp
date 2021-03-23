@@ -19,7 +19,9 @@ Person::Person(std::string* name, std::string* gender, Role* role_template): Bei
     delete gender;
     gender = nullptr;
 }
-Person::Person(baseIndividualStats *stats, Role* base_template): Being(stats, (ActionBaseTemplate*) base_template) {
+
+Person::Person(baseIndividualStats *stats, Role* base_template): Being(stats, (IndividualBaseTemplate*) base_template) {
+
     this->name = stats->name;
     this->gender = stats->gender;
     this->role = base_template->get_name();

@@ -19,7 +19,9 @@ struct speciesStats : public baseIndividualTemplateStats {
     int trauma_max = 0;
 };
 
-class Species: public ActionBaseTemplate {
+
+class Species: public IndividualBaseTemplate {
+
 public:
     explicit Species() = default;
     explicit Species(speciesStats* species_stats);

@@ -11,9 +11,11 @@
 
 class Being {
 public:
-    Being(ActionBaseTemplate* base_template);
+
+    Being(IndividualBaseTemplate* base_template);
     Being(baseIndividualStats* stats);
-    Being(baseIndividualStats *stats, ActionBaseTemplate* base_template);
+    Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template);
+
 //    ~Being();
 
     void edit();
@@ -30,7 +32,9 @@ public:
     void set_intelligence(int* intelligence);
     void set_is_investigator(bool* is_investigator);
 
-    ActionBaseTemplate* get_template();
+
+    IndividualBaseTemplate* get_template();
+
 
     friend std::ostream& operator<< (std::ostream& out, Being* being);
 
@@ -43,7 +47,9 @@ private:
     int intelligence;
     bool is_investigator;
 
-    ActionBaseTemplate* base_template;
+
+    IndividualBaseTemplate* base_template;
+
 };
 
 

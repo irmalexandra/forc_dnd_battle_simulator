@@ -4,7 +4,7 @@
 int LOWER_LIMIT = 0;
 int UPPER_LIMIT = 10;
 
-ActionBaseTemplate::ActionBaseTemplate(baseIndividualTemplateStats* base_stats){
+IndividualBaseTemplate::IndividualBaseTemplate(baseIndividualTemplateStats* base_stats){
     this->name = base_stats->name;
     this->type = base_stats->type;
     this->life_min = base_stats->life_min;
@@ -15,44 +15,44 @@ ActionBaseTemplate::ActionBaseTemplate(baseIndividualTemplateStats* base_stats){
     this->strength_max = base_stats->str_max;
 }
 
-std::string ActionBaseTemplate::get_name() {
+std::string IndividualBaseTemplate::get_name() {
     return this->name;
 }
 
-Range ActionBaseTemplate::get_life_range() {
+Range IndividualBaseTemplate::get_life_range() {
     return Range(life_min, life_max);
 }
 
-Range ActionBaseTemplate::get_intelligence_range() {
+Range IndividualBaseTemplate::get_intelligence_range() {
     return Range(intelligence_min, intelligence_max);
 }
 
-Range ActionBaseTemplate::get_strength_range() {
+Range IndividualBaseTemplate::get_strength_range() {
     return Range(strength_min, strength_max);
 }
 
-void ActionBaseTemplate::set_life_range(int* life_min, int* life_max) {
+void IndividualBaseTemplate::set_life_range(int* life_min, int* life_max) {
     this->life_min = *life_min;
     this->life_max = *life_max;
 }
 
-void ActionBaseTemplate::set_intelligence_range(int* intelligence_min, int* intelligence_max) {
+void IndividualBaseTemplate::set_intelligence_range(int* intelligence_min, int* intelligence_max) {
     this->intelligence_min = *intelligence_min;
     this->intelligence_max = *intelligence_max;
 }
 
-void ActionBaseTemplate::set_strength_range(int* strength_min, int* strength_max) {
+void IndividualBaseTemplate::set_strength_range(int* strength_min, int* strength_max) {
     this->strength_min = *strength_min;
     this->strength_max = *strength_max;
 }
 
-void ActionBaseTemplate::set_name(std::string* name) {
+void IndividualBaseTemplate::set_name(std::string* name) {
     this->name = *name;
 }
 
 
 
-std::ostream& operator<< (std::ostream& out, ActionBaseTemplate* BaseTemplate) {
+std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplate) {
     out << "Name: " << BaseTemplate->get_name() << std::endl;
     out << BaseTemplate->get_type() << std::endl;
     out << "Life: " << BaseTemplate->get_life_range() << std::endl;
@@ -61,11 +61,11 @@ std::ostream& operator<< (std::ostream& out, ActionBaseTemplate* BaseTemplate) {
     return out;
 }
 
-void ActionBaseTemplate::set_type(std::string* type) {
+void IndividualBaseTemplate::set_type(std::string* type) {
     this->type = *type;
 }
 
-std::string ActionBaseTemplate::get_type() {
+std::string IndividualBaseTemplate::get_type() {
     return this->type;
 }
 

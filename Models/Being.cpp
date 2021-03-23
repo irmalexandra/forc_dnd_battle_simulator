@@ -7,7 +7,7 @@
 #include "../Helpers/HelperFunctions.h"
 #include "iostream"
 
-Being::Being(ActionBaseTemplate* base_template){
+Being::Being(IndividualBaseTemplate* base_template){
     this->life = get_random_integer(base_template->get_life_range());
     this->strength = get_random_integer(base_template->get_strength_range());
     this->intelligence = get_random_integer(base_template->get_intelligence_range());
@@ -23,7 +23,7 @@ Being::Being(baseIndividualStats *stats) {
 
 }
 
-Being::Being(baseIndividualStats *stats, ActionBaseTemplate* base_template) {
+Being::Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template) {
     this->life = stats->life;
     this->strength = stats->strength;
     this->intelligence = stats->intelligence;
@@ -39,7 +39,7 @@ void Being::set_name(std::string* name){
     name = nullptr;
 }
 
-ActionBaseTemplate* Being::get_template() {
+IndividualBaseTemplate* Being::get_template() {
     return this->base_template;
 }
 

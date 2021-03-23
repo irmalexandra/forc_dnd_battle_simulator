@@ -9,6 +9,8 @@
 #include "../../Models/EldritchHorror.h"
 #include "../../Templates/IndividualTemplates/Species.h"
 #include "../../Templates/IndividualTemplates/Role.h"
+#include "../../Templates/ActionTemplates/Offensive.h"
+#include "../../Templates/ActionTemplates/Defensive.h"
 #include "../DataHandler.h"
 
 struct Payload {
@@ -19,6 +21,8 @@ struct Payload {
             DataHandler<EldritchHorror>* dh_eldritch_horrors,
             DataHandler<Species>* dh_species,
             DataHandler<Role>* dh_roles, /*DataHandler<Action>* dh_actions,*/
+            DataHandler<Offensive>* dh_offensive,
+            DataHandler<Defensive>* dh_defensive,
             map<string, int>* species_map);
 
     // ROSTER
@@ -26,6 +30,11 @@ struct Payload {
     DataHandler<Person>* DHPersons;
     DataHandler<Creature>* DHCreatures;
     DataHandler<EldritchHorror>* DHEldritchHorrors;
+
+
+    DataHandler<Offensive>* DHOffensives;
+    DataHandler<Defensive>* DHDefensives;
+
 
     // Templates
     DataHandler<Species>* DHSpecies;

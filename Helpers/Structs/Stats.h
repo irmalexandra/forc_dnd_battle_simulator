@@ -14,12 +14,7 @@ struct baseIndividualTemplateStats {
     int int_max = 0;
 };
 
-struct baseActionTemplateStats{
-    std::string name = "";
-    std::string description = "";
 
-
-};
 
 struct baseIndividualStats{
     std::string name = "";
@@ -33,6 +28,9 @@ struct baseIndividualStats{
     int fear = 0;
     int traumatism = 0;
     int terror = 0;
+};
+struct baseActionTemplateStats{
+    std::string name = "";
 };
 
 struct Range {

@@ -8,14 +8,16 @@
 
 #include "../../Classes/ActionCreator.h"
 #include "iostream"
+#include "../Structs/Payload.h"
+#include "../FileHandler.h"
 
 using namespace std;
 
 
-void action_menu();
-void create_action();
-void view_actions();
-void delete_action();
+void action_menu(FileHandler* file_handler, ActionCreator* action_creator, Payload* payload);
+void create_action(FileHandler* file_handler, ActionCreator* action_creator, Payload* payload);
+void view_actions(Payload* payload);
+void delete_action(FileHandler* file_handler, Payload* payload);
 
 
 

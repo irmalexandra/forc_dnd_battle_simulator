@@ -10,6 +10,8 @@
 InputHandler::InputHandler() {
     this->individual_creator = new IndividualCreator();
     this->template_creator = new TemplateCreator();
+    this->action_creator = new ActionCreator();
+
     this->file_handler = new FileHandler();
 
 
@@ -22,7 +24,8 @@ InputHandler::InputHandler() {
     // Templates
     this->DHSpecies = new DataHandler<Species>;
     this->DHRoles = new DataHandler<Role>;
-
+    this->DHOffensives = new DataHandler<Offensive>;
+    this->DHDefensives = new DataHandler<Defensive>;
     // Species Map
     this->species_map = new map<string, int>;
 
@@ -35,6 +38,8 @@ InputHandler::InputHandler() {
             this->DHEldritchHorrors,
             this->DHSpecies,
             this->DHRoles,
+            this->DHOffensives,
+            this->DHDefensives,
             this->species_map
     );
 
@@ -43,6 +48,7 @@ InputHandler::InputHandler() {
 
 InputHandler::~InputHandler() {
     delete this->individual_creator;
+    delete this->action_creator;
     delete this->DHInvestigators;
     delete this->DHCreatures;
     delete this->DHEldritchHorrors;
@@ -54,6 +60,7 @@ InputHandler::~InputHandler() {
     delete this->payload;
 
     this->individual_creator = nullptr;
+    this->action_creator = nullptr;
     this->DHInvestigators = nullptr;
     this->DHPersons = nullptr;
     this->DHCreatures = nullptr;
@@ -70,7 +77,7 @@ void InputHandler::main_menu() {
     string filename;
     string folder = "Saves/";
     while(true){
-        cout << "1. Templates\n2. Individuals\n3. Quit" << endl;
+        cout << "1. Templates\n2. Individuals\n3. Actions\n5. Quit" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -86,6 +93,10 @@ void InputHandler::main_menu() {
             case 2:
                 individual_menu(this->file_handler, this->payload, this->individual_creator);
                 break;
+            case 3:
+                action_menu(this->file_handler, this->action_creator, this->payload);
+                break;
+
 //            case 3:
 //                cout << "Enter the filename of the new roster: Save/";
 //                cin >> filename;
@@ -96,7 +107,7 @@ void InputHandler::main_menu() {
 //                cin >> filename;
 //                this->file_handler->load_roster(this->payload, new string(folder + filename));
 //                break;
-            case 3:
+            case 5:
                 return;
             default:
                 cout << choice << " is not an option" << endl;
@@ -106,7 +117,6 @@ void InputHandler::main_menu() {
         }
     }
 }
-
 //void InputHandler::template_menu() {
 //    int choice;
 //    while(true){

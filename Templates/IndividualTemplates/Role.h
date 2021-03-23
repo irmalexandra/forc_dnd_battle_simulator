@@ -10,7 +10,9 @@
 #include "IndividualBaseTemplate.h"
 
 
-class Role: public ActionBaseTemplate {
+
+class Role: public IndividualBaseTemplate {
+
 public:
     Role(baseIndividualTemplateStats* base_stats);
 

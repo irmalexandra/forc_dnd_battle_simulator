@@ -1,10 +1,7 @@
-//
-// Created by emmik on 23/03/2021.
-//
 
 #include "Offensive.h"
-
-Offensive::Offensive(baseActionTemplateStats *stats, int *hit_modifier, int *damage): ActionBaseTemplate(stats) {
+// Role::Role(baseIndividualTemplateStats* base_stats): IndividualBaseTemplate(base_stats){
+Offensive::Offensive(baseActionTemplateStats* stats, int* hit_modifier, int* damage): ActionBaseTemplate(stats) {
     this->damage = *damage;
     this->hit_modifier = *hit_modifier;
 

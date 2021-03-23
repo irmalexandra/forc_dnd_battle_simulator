@@ -14,16 +14,22 @@
 #include "../Models/EldritchHorror.h"
 #include "../Classes/IndividualCreator.h"
 #include "../Classes/TemplateCreator.h"
+#include "../Classes/ActionCreator.h"
 #include "DataHandler.h"
 
 #include "../Templates/IndividualTemplates/Role.h"
 #include "../Templates/IndividualTemplates/Species.h"
+#include "../Templates/ActionTemplates/Offensive.h"
+#include "../Templates/ActionTemplates/Defensive.h"
+
 
 #include "Structs/Payload.h"
 #include "SubMenus/Roster.h"
 
 #include "FileHandler.h"
 #include "SubMenus/Templates.h"
+#include "SubMenus/Actions.h"
+
 
 using namespace std;
 
@@ -35,6 +41,8 @@ public:
 
     IndividualCreator* individual_creator;
     TemplateCreator* template_creator;
+    ActionCreator* action_creator;
+
 
     DataHandler<Investigator>* DHInvestigators;
     DataHandler<Person>* DHPersons;
@@ -42,6 +50,8 @@ public:
     DataHandler<EldritchHorror>* DHEldritchHorrors;
     DataHandler<Species>* DHSpecies;
     DataHandler<Role>* DHRoles;
+    DataHandler<Offensive>* DHOffensives;
+    DataHandler<Defensive>* DHDefensives;
 
     void main_menu();
 
