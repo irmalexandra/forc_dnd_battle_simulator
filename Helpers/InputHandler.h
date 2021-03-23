@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
+#include <map>
 
 #include "../Models/Investigator.h"
 #include "../Models/Person.h"
@@ -24,8 +25,8 @@
 #include "FileHandler.h"
 #include "SubMenus/Templates.h"
 
-
 using namespace std;
+
 class InputHandler {
 
 public:
@@ -42,30 +43,9 @@ public:
     DataHandler<Species>* DHSpecies;
     DataHandler<Role>* DHRoles;
 
-    void view_individuals_by_category();
     void main_menu();
 
 private:
-
-    void individual_menu();
-    void select_template_for_individual();
-    void create_individual_species(Species* species);
-    void create_individual_role(Role* role);
-    void view_individuals();
-    void view_all_individuals() const;
-    void view_single_template(int species_index, int role_index);
-    void auto_save();
-    void template_menu();
-    void create_template();
-    void view_templates();
-    void view_shortened_templates();
-    void edit_templates();
-    void delete_template();
-    int get_index_roles(const string& name) const;
-    int get_index_species(const string& name) const;
-
-
-    void view_shortened_individuals();
 
     Payload* payload;
     map<string, int>* species_map;

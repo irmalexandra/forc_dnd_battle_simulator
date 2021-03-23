@@ -72,3 +72,33 @@ std::string* gender_picker() {
         }
     }
 }
+
+bool re_prompt(){
+    cout << "Again?\n1. Yes\n2. No" << endl;
+    int choice = 2;
+    cin >> choice;
+    return choice == 1;
+}
+
+
+int get_index_roles(const string& name, Payload* payload) {
+    int index = -1;
+    for (int i = 0; i < payload->DHRoles->get_data()->size(); i++){
+        if(payload->DHRoles->get_data()->at(i)->get_name() == name){
+            index = i;
+            return index;
+        }
+    }
+    return index;
+}
+
+int get_index_species(const string& name, Payload* payload) {
+    int index = -1;
+    for (int i = 0; i < payload->DHSpecies->get_data()->size(); i++){
+        if(payload->DHSpecies->get_data()->at(i)->get_name() == name){
+            index = i;
+            return index;
+        }
+    }
+    return index;
+}

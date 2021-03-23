@@ -1,7 +1,3 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #ifndef FORC_PA_5_TEMPLATECREATOR_H
 #define FORC_PA_5_TEMPLATECREATOR_H
 
