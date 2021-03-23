@@ -258,3 +258,91 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
     }
     cout << "Done!" << endl;
 }
+
+void FileHandler::load_actions(Payload *payload) {
+
+    char single_line[32] = {};
+    string filename = "Resources/actions_file.txt";
+    cout << "Loading actions from " << filename << "..." << endl;
+    baseActionTemplateStats* stats;
+
+    string name;
+    string type;
+    int* damage;
+    int* hit_modifier;
+
+
+    auto temp_string_array = new std::vector<std::string>;
+    int amount;
+
+    string line_str;
+    ifstream fileIn (filename, ios::binary);
+
+    fileIn.getline(single_line, 32);
+    line_str = string(single_line);
+
+    amount = stoi(line_str);
+    for(int i = 0; i < amount; i++){
+
+        stats = new baseActionTemplateStats();
+
+        while(line_str == ""){
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+        }
+
+        fileIn.getline(single_line, 32);
+        line_str = string(single_line);
+        name = split_string(line_str).at(1);
+        stats->name = name.substr(0, name.length()-1);
+
+        fileIn.getline(single_line, 32);
+        line_str = string(single_line);
+        type = split_string(line_str).at(1);
+        stats->type = type.substr(0, type.length()-1);
+
+        fileIn.getline(single_line, 32);
+        line_str = string(single_line);
+        stats->physical =  "Physical" == line_str.substr(0, line_str.length()-1);
+
+
+
+        if(stats->type != "Defensive"){
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            *temp_string_array = split_string(line_str,":" );
+            *hit_modifier = stoi(temp_string_array->at(1));
+
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            *temp_string_array = split_string(line_str,":" );
+            *damage = stoi(temp_string_array->at(1));
+
+        }
+        if (stats->type == "Offensive"){
+            payload->DHOffensives->get_data()->push_back(new Offensive(stats, hit_modifier, damage));
+        } else{
+            //payload->DHDefensives->get_data()->push_back(new Defensive());
+        }
+        fileIn.getline(single_line, 32); // To skip empty lines
+        delete stats;
+    }
+    delete damage;
+    delete hit_modifier;
+    cout << "Done!" << endl;
+}
+
+void FileHandler::save_actions(Payload *payload) {
+    string filename = "Resources/actions_file.txt";
+    cout << "Saving actions to " << filename << "..." << endl;
+    ofstream fileout(filename, ios::trunc);
+    int amount = 0;
+    amount += payload->DHOffensives->get_data()->size();
+    amount += payload->DHDefensives->get_data()->size();
+
+    fileout << amount << endl;
+    fileout << payload->DHOffensives;
+    fileout << payload->DHDefensives;
+    fileout.close();
+    cout << "Done!" << endl;
+}

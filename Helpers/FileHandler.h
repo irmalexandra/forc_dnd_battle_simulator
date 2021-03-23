@@ -27,6 +27,8 @@ class FileHandler {
 public:
     void load_templates(Payload* payload);
     void save_templates(Payload* payload);
+    void load_actions(Payload* payload);
+    void save_actions(Payload* payload);
     void load_roster(Payload* payload, string* roster_name);
     void save_roster(Payload* payload, string* roster_name);
 };

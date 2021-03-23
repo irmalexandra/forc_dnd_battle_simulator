@@ -66,12 +66,12 @@ void create_action(FileHandler* file_handler, ActionCreator* action_creator, Pay
             case 1:
                 offensive = action_creator->create_offensive();
                 payload->DHOffensives->get_data()->push_back(offensive);
-                file_handler->save_templates(payload);
+                file_handler->save_actions(payload);
                 break;
 //            case 2:
 //                defensive = action_creator->create_defensive();
 //                payload->DHDefensives->get_data()->push_back(defensive);
-//                file_handler->save_templates(payload);
+//                file_handler->save_actions(payload);
 //                break;
             default:
                 cout << "Invalid selection: " << choice << endl;

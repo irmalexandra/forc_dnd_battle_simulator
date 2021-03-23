@@ -31,6 +31,8 @@ struct baseIndividualStats{
 };
 struct baseActionTemplateStats{
     std::string name = "";
+    std::string type = "";
+    bool physical = true;
 };
 
 struct Range {
