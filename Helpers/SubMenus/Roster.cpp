@@ -291,15 +291,3 @@ void auto_save(FileHandler* file_handler, Payload* payload){
     cout << "Auto Saving..." << endl;
     file_handler->save_roster(payload, new string("Saves/backups/roster_backup.txt"));
 }
-
-
-void view_single_template(int species_index, int role_index, Payload* payload){
-
-    if(species_index != -1){
-        cout << payload->DHSpecies->get_data()->at(species_index) << endl;
-    }
-
-    else if(role_index != -1){
-        cout << payload->DHRoles->get_data()->at(role_index) << endl;
-    }
-}

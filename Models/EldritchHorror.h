@@ -9,7 +9,6 @@
 #include "Creature.h"
 #include "iostream"
 #include "../Templates/Species.h"
-#include "../Helpers/HelperFunctions.h"
 
 class EldritchHorror: public Creature{
 

@@ -2,11 +2,13 @@
 #define FORC_PA_5_TEMPLATECREATOR_H
 
 #include <sstream>
+#include "limits"
 #include "iostream"
 #include "istream"
 #include "../Templates/Role.h"
 #include "../Templates/Species.h"
 #include "../Templates/BaseTemplate.h"
+#include "../Helpers/HelperFunctions.h"
 
 using namespace std;
 

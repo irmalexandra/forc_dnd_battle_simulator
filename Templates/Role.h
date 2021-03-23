@@ -5,10 +5,10 @@
 #ifndef FORC_PA_5_ROLE_H
 #define FORC_PA_5_ROLE_H
 
-
-#include "BaseTemplate.h"
 #include "string"
 #include "iostream"
+#include "BaseTemplate.h"
+
 
 class Role: public BaseTemplate {
 public:

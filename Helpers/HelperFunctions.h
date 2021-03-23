@@ -5,8 +5,6 @@
 #include "vector"
 #include "iostream"
 #include "Structs/Stats.h"
-#include "Structs/Payload.h"
-
 using namespace std;
 
 
@@ -22,9 +20,9 @@ bool re_prompt();
 std::vector<std::string> split_string(string str, string token = " ");
 
 
-int get_index_roles(const string& name, Payload* payload);
-int get_index_species(const string& name, Payload* payload);
-
+//int get_index_roles(const string& name, Payload* payload);
+//int get_index_species(const string& name, Payload* payload);
+//
 
 
 
