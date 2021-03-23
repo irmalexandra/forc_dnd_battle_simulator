@@ -8,7 +8,7 @@
 
 #include "Creature.h"
 #include "iostream"
-#include "../Templates/Species.h"
+#include "../IndividualTemplates/Species.h"
 
 class EldritchHorror: public Creature{
 

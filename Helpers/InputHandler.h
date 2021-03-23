@@ -16,8 +16,8 @@
 #include "../Classes/TemplateCreator.h"
 #include "DataHandler.h"
 
-#include "../Templates/Role.h"
-#include "../Templates/Species.h"
+#include "../IndividualTemplates/Role.h"
+#include "../IndividualTemplates/Species.h"
 
 #include "Structs/Payload.h"
 #include "SubMenus/Roster.h"

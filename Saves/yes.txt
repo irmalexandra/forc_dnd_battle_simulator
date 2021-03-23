@@ -1,0 +1,37 @@
+4
+Name: 2
+Person
+Nurse
+Life: 5
+Strength: 4
+Intelligence: 7
+Gender: Female
+Fear: 6
+
+Name: yesman
+Person
+Reporter
+Life: 5
+Strength: 2
+Intelligence: 7
+Gender: Female
+Fear: 9
+
+Name: Wolf1
+Creature
+Wolf
+Life: 4
+Strength: 6
+Intelligence: 5
+Unnatural
+Disquiet: 2
+
+Name: Ghoul1
+Creature
+Ghoul
+Life: 4
+Strength: 4
+Intelligence: 2
+Unnatural
+Disquiet: 6
+

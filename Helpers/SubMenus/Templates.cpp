@@ -4,7 +4,7 @@
 void template_menu(FileHandler* file_handler, TemplateCreator* template_creator, Payload* payload) {
     int choice;
     while(true){
-        cout << "1. View templates\n2. Edit templates\n3. Back" << endl;
+        cout << "1. View templates\n2. Create template\n3. Delete template\n4. Back" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -19,7 +19,10 @@ void template_menu(FileHandler* file_handler, TemplateCreator* template_creator,
             case(2):
                 edit_templates(file_handler, template_creator, payload);
                 break;
-            case(3):
+            case 3:
+                delete_template(file_handler, payload);
+                break;
+            case 4:
                 return;
             default:
                 cout << choice << " is not an option" << endl;
@@ -74,7 +77,6 @@ void view_templates(Payload* payload) {
     cout << payload->DHRoles << endl;
     cout << "\nAvailable Species" << endl;
     cout << payload->DHSpecies << endl;
-
 }
 
 void view_single_template(int species_index, int role_index, Payload* payload){

@@ -14,8 +14,8 @@
 #include "../Models/Person.h"
 #include "../Models/Being.h"
 #include "../Helpers/HelperFunctions.h"
-#include "../Templates/Species.h"
-#include "../Templates/Role.h"
+#include "../IndividualTemplates/Species.h"
+#include "../IndividualTemplates/Role.h"
 
 using namespace std;
 

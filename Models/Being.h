@@ -8,7 +8,7 @@
 
 #include "iostream"
 //#include "../Helpers/HelperFunctions.h"
-#include "../Templates/BaseTemplate.h"
+#include "../IndividualTemplates/BaseTemplate.h"
 
 class Being {
 public:

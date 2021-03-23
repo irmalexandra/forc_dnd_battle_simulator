@@ -6,6 +6,16 @@
 #define FORC_PA_5_ACTIONS_H
 
 
+#include "../../Classes/ActionCreator.h"
+#include "iostream"
+
+using namespace std;
+
+
+void action_menu();
+void create_action();
+void view_actions();
+void delete_action();
 
 
 

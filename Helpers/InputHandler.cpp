@@ -70,7 +70,7 @@ void InputHandler::main_menu() {
     string filename;
     string folder = "Saves/";
     while(true){
-        cout << "1. Templates\n2. Individuals\n3. Save current roster\n4. Load new roster\n5. Quit" << endl;
+        cout << "1. Templates\n2. Individuals\n3. Quit" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -86,17 +86,17 @@ void InputHandler::main_menu() {
             case 2:
                 individual_menu(this->file_handler, this->payload, this->individual_creator);
                 break;
+//            case 3:
+//                cout << "Enter the filename of the new roster: Save/";
+//                cin >> filename;
+//                this->file_handler->save_roster(this->payload, new string(folder + filename));
+//                break;
+//            case 4:
+//                cout << "Enter the filename of the roster you want to load: ";
+//                cin >> filename;
+//                this->file_handler->load_roster(this->payload, new string(folder + filename));
+//                break;
             case 3:
-                cout << "Enter the filename of the new roster: Save/";
-                cin >> filename;
-                this->file_handler->save_roster(this->payload, new string(folder + filename));
-                break;
-            case 4:
-                cout << "Enter the filename of the roster you want to load: ";
-                cin >> filename;
-                this->file_handler->load_roster(this->payload, new string(folder + filename));
-                break;
-            case 5:
                 return;
             default:
                 cout << choice << " is not an option" << endl;

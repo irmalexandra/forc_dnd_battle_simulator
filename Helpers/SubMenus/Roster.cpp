@@ -1,5 +1,46 @@
 #include "Roster.h"
 
+
+void individual_menu(FileHandler* file_handler, Payload* payload, IndividualCreator* individual_creator) {
+    int choice;
+    string filename;
+    string folder = "Saves/";
+    while(true){
+        cout << "1. View individuals\n2. Create individual\n3. Save current roster\n4. Load roster\n5. Back" << endl;
+        cin >> choice;
+        if(cin.fail()){
+            cout << "Invalid input" << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<int>::max(),'\n');
+            continue;
+        }
+        switch (choice) {
+            case(1):
+                view_individuals(payload);
+                break;
+            case(2):
+                select_template_for_individual(file_handler, payload, individual_creator);
+                break;
+            case(3):
+                cout << "Enter the filename of the new roster: Save/";
+                cin >> filename;
+                file_handler->save_roster(payload, new string(folder + filename));
+                break;
+            case(4):
+                cout << "Enter the filename of the roster you want to load: ";
+                cin >> filename;
+                file_handler->load_roster(payload, new string(folder + filename));
+                break;
+            case(5):
+                return;
+            default:
+                cout << choice << " is not an option" << endl;
+                break;
+        }
+    }
+}
+
+
 void select_template_for_individual(FileHandler* file_handler, Payload* payload, IndividualCreator* individual_creator) {
     view_shortened_templates(payload);
     string name;
@@ -200,32 +241,7 @@ void view_individuals_by_category(Payload* payload) {
     }
 }
 
-void individual_menu(FileHandler* file_handler, Payload* payload, IndividualCreator* individual_creator) {
-    int choice;
-    while(true){
-        cout << "1. View individuals\n2. Create individual\n3. Back" << endl;
-        cin >> choice;
-        if(cin.fail()){
-            cout << "Invalid input" << endl;
-            cin.clear();
-            cin.ignore(std::numeric_limits<int>::max(),'\n');
-            continue;
-        }
-        switch (choice) {
-            case(1):
-                view_individuals(payload);
-                break;
-            case(2):
-                select_template_for_individual(file_handler, payload, individual_creator);
-                break;
-            case(3):
-                return;
-            default:
-                cout << choice << " is not an option" << endl;
-                break;
-        }
-    }
-}
+
 
 void view_shortened_individuals(Payload* payload){
     cout << "Individuals:" << endl << endl << "Persons(NPCs)" << endl;

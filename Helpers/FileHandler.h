@@ -13,9 +13,9 @@
 #include <map>
 #include <algorithm>
 
-#include "../Templates/BaseTemplate.h"
-#include "../Templates/Role.h"
-#include "../Templates/Species.h"
+#include "../IndividualTemplates/BaseTemplate.h"
+#include "../IndividualTemplates/Role.h"
+#include "../IndividualTemplates/Species.h"
 #include "../Helpers/HelperFunctions.h"
 #include "DataHandler.h"
 #include "Structs/Payload.h"

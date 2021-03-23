@@ -11,8 +11,8 @@
 #include "../Models/Creature.h"
 #include "../Models/EldritchHorror.h"
 
-#include "../Templates/Role.h"
-#include "../Templates/Species.h"
+#include "../IndividualTemplates/Role.h"
+#include "../IndividualTemplates/Species.h"
 
 
 template<typename T>

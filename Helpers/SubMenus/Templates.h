@@ -7,8 +7,8 @@
 #include <fstream>
 
 #include "../../Classes/TemplateCreator.h"
-#include "../../Templates/Role.h"
-#include "../../Templates/Species.h"
+#include "../../IndividualTemplates/Role.h"
+#include "../../IndividualTemplates/Species.h"
 #include "../FileHandler.h"
 #include "../Structs/Payload.h"
 
