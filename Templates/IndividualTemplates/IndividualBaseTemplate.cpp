@@ -96,4 +96,26 @@ std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplat
 }
 
 
+//string IndividualBaseTemplate::get_raw_info() {
+////    std::stringstream string_stream;
+//    string return_string;
+//    return_string += "Name: " + get_name() +  '\n';
+//    return_string += get_type() +  '\n';
+//    return_string += "Life: " + to_string(get_life_range().min) + "-" + to_string(get_life_range().max) +  '\n';
+//    return_string +=  "Strength: " + to_string(get_strength_range().min) + "-" + to_string(get_strength_range().max) +  '\n';
+//    return_string +=  "Intelligence: " + to_string(get_intelligence_range().min) + "-" + to_string(get_intelligence_range().max) +  '\n';
+//    return_string +=  "Offensive actions count: " + to_string(offensive_actions->size()) +  '\n';
+//    for (int i = 0; i < offensive_actions->size()-1; i++){
+//        return_string +=  offensive_actions->at(i)->get_name() +  '\n';
+//    }
+//    return_string +=  offensive_actions->back()->get_name() +  '\n';
+//    return_string +=  "Defensive actions count: " + to_string(defensive_actions->size()) +  '\n';
+//    for (int i = 0; i < defensive_actions->size()-1; i++){
+//        return_string +=  defensive_actions->at(i)->get_name() +  '\n';
+//    }
+//    return_string +=  defensive_actions->back()->get_name() +  '\n';
+//    return return_string;
+//}
+
+
 

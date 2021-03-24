@@ -35,7 +35,8 @@ public:
 
 
     friend std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplate);
-private:
+
+protected:
     std::string name;
     std::string type = "unchanged from Base_template";
     int life_min;
