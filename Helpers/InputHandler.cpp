@@ -97,6 +97,10 @@ void InputHandler::main_menu() {
             case 3:
                 action_menu(this->file_handler, this->action_creator, this->payload);
                 break;
+
+            case 4:
+                battle_menu(this->payload, this->file_handler);
+                break;
             case 0:
                 return;
             default:

@@ -16,9 +16,5 @@ void delete_individual(FileHandler* file_handler, Payload* payload);
 void view_individuals(Payload* payload);
 void view_all_individuals(Payload* payload);
 void auto_save(FileHandler* file_handler, Payload* payload);
-//int get_index_creature(const string& name, Payload* payload);
-//int get_index_eldritch_horror(const string& name, Payload* payload);
-//int get_index_person(const string& name, Payload* payload);
-//int get_index_investigator(const string& name, Payload* payload);
 
 #endif //FORC_PA_5_ROSTER_H

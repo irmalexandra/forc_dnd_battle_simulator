@@ -53,4 +53,4 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Helpers/FileHandler.h
         Helpers/DataHandler.h
         Helpers/HelperFunctions.h
-        Helpers/HelperFunctions.cpp)
+        Helpers/HelperFunctions.cpp Helpers/SubMenus/Battle.cpp Helpers/SubMenus/Battle.h)

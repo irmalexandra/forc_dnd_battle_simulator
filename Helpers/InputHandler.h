@@ -25,10 +25,12 @@
 
 #include "Structs/Payload.h"
 #include "SubMenus/Roster.h"
-
-#include "FileHandler.h"
 #include "SubMenus/Templates.h"
 #include "SubMenus/Actions.h"
+#include "SubMenus/Battle.h"
+
+#include "FileHandler.h"
+
 
 
 using namespace std;
