@@ -11,8 +11,7 @@ void FileHandler::load_templates(Payload* payload){
     string name;
     string type;
 
-    vector<Offensive*> offensives;
-    vector<Defensive*> defensives;
+
 
 
     auto temp_string_array = new std::vector<std::string>;

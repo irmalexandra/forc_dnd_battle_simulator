@@ -1,27 +1,34 @@
-4
-Name: woops
+5
+Name: Bite
 Type: Offensive
 Physical
-Hit Modifier: 1
-Damage: 1
+Hit Modifier: 5
+Damage: 2
 
-Name: AreYOuMental
+Name: Handgun
 Type: Offensive
-Mental
-Hit Modifier: 10
-Damage: 5
+Physical
+Hit Modifier: 5
+Damage: 3
 
-Name: Test
+Name: Mend
 Type: Defensive
 Physical
-Defense Modifier: 1
-Health Recovery: 1
+Defense Modifier: 0
+Health Recovery: 2
 Duration: 1
 
-Name: PleaseBeDefensive
+Name: Bolster
 Type: Defensive
 Mental
-Defense Modifier: 1
-Health Recovery: 1
+Defense Modifier: 0
+Health Recovery: 3
+Duration: 2
+
+Name: Evade
+Type: Defensive
+Physical
+Defense Modifier: 3
+Health Recovery: 0
 Duration: 1
 

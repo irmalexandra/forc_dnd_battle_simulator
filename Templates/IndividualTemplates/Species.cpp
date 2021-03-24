@@ -1,8 +1,18 @@
 #include "Species.h"
 
 
-Species::Species(speciesStats* species_stats): IndividualBaseTemplate(species_stats){
+Species::Species(speciesStats* species_stats, vector<Offensive*>* offensive_actions, vector<Defensive*>* defensive_actions):
+IndividualBaseTemplate(species_stats, offensive_actions, defensive_actions){
 
+    this->unnatural = species_stats->unnatural;
+    this->disquiet_min = species_stats->dis_min;
+    this->disquiet_max = species_stats->dis_max;
+    this->is_eldritch_horror = species_stats->is_eldritch;
+    this->traumatism_min = species_stats->trauma_min;
+    this->traumatism_max = species_stats->trauma_max;
+}
+
+Species::Species(speciesStats *species_stats): IndividualBaseTemplate(species_stats) {
     this->unnatural = species_stats->unnatural;
     this->disquiet_min = species_stats->dis_min;
     this->disquiet_max = species_stats->dis_max;
@@ -75,15 +85,13 @@ string Species::get_raw_info() {
     return_string +=  "Strength: " + to_string(get_strength_range().min) + "-" + to_string(get_strength_range().max) +  '\n';
     return_string +=  "Intelligence: " + to_string(get_intelligence_range().min) + "-" + to_string(get_intelligence_range().max) +  '\n';
     return_string +=  "Offensive actions count: " + to_string(offensive_actions->size()) +  '\n';
-    for (int i = 0; i < offensive_actions->size()-1; i++){
+    for (int i = 0; i < offensive_actions->size(); i++){
         return_string +=  offensive_actions->at(i)->get_name() +  '\n';
     }
-    return_string +=  offensive_actions->back()->get_name() +  '\n';
     return_string +=  "Defensive actions count: " + to_string(defensive_actions->size()) +  '\n';
-    for (int i = 0; i < defensive_actions->size()-1; i++){
+    for (int i = 0; i < defensive_actions->size(); i++){
         return_string +=  defensive_actions->at(i)->get_name() +  '\n';
     }
-    return_string +=  defensive_actions->back()->get_name() +  '\n';
     if(this->get_unnatural()){
         return_string += "Unnatural\n";
     }else{
@@ -98,3 +106,5 @@ string Species::get_raw_info() {
     }
     return return_string;
 }
+
+

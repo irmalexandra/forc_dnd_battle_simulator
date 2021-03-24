@@ -47,7 +47,6 @@ void add_actions(T individual_template, Payload* payload){
             cout << "Must add at least one offensive action." << endl;
         }
         else{
-            view_shortened_offensives(payload);
             switch (choice) {
                 case 1:
                     view_shortened_offensives(payload);
@@ -83,7 +82,6 @@ void add_actions(T individual_template, Payload* payload){
         if(!defensive_added && choice == 0){
             cout << "Must add at least one defensive action." << endl;
         }
-        view_shortened_defensives(payload);
         switch (choice) {
             case 1:
                 view_shortened_defensives(payload);

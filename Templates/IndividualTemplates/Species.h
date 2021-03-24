@@ -23,7 +23,8 @@ struct speciesStats : public baseIndividualTemplateStats {
 class Species: public IndividualBaseTemplate {
 
 public:
-    explicit Species() = default;
+//    explicit Species() = default;
+    explicit Species(speciesStats* species_stats, vector<Offensive*>* offensive_actions, vector<Defensive*>* defensive_actions);
     explicit Species(speciesStats* species_stats);
 
 

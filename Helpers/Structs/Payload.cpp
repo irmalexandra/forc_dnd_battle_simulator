@@ -20,7 +20,6 @@ this->DHSpecies = dh_species;
 this->DHRoles = dh_roles;
 this->DHOffensives = dh_offensive;
 this->DHDefensives = dh_defensive;
-//this->DHActions = dh_actions
 this->species_map = species_map;
 
 }

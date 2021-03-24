@@ -1,10 +1,12 @@
 1
-Name: wolfieboi
+Name: Wolf
 Creature
-Life: 2-2
-Strength: 2-2
-Intelligence: 2-2
+Life: 2-4
+Strength: 1-4
+Intelligence: 0-2
 Offensive actions count: 1
-woops
+Bite
 Defensive actions count: 1
-Test
+Evade
+Natural
+Disquiet: 1-0

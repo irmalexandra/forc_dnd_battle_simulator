@@ -14,6 +14,7 @@
 class Role: public IndividualBaseTemplate {
 
 public:
+    Role(baseIndividualTemplateStats* base_stats, vector<Offensive*>* offensive_actions, vector<Defensive*>* defensive_actions);
     Role(baseIndividualTemplateStats* base_stats);
 
     Range get_fear_range();

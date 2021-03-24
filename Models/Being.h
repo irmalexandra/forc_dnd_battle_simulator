@@ -47,9 +47,7 @@ private:
     int intelligence;
     bool is_investigator;
 
-
     IndividualBaseTemplate* base_template;
-
 };
 
 

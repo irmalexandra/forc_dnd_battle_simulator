@@ -1,8 +1,16 @@
 #include "Role.h"
 
 
-Role::Role(baseIndividualTemplateStats* base_stats): IndividualBaseTemplate(base_stats){
+Role::Role(baseIndividualTemplateStats* base_stats, vector<Offensive*>* offensive_actions, vector<Defensive*>* defensive_actions):
+IndividualBaseTemplate(base_stats, offensive_actions, defensive_actions){
 
+    this->fear_min = 0;
+    this->fear_max = 10;
+    this->terror_min = 0;
+    this->terror_max = 3;
+}
+
+Role::Role(baseIndividualTemplateStats *base_stats): IndividualBaseTemplate(base_stats) {
     this->fear_min = 0;
     this->fear_max = 10;
     this->terror_min = 0;
@@ -45,5 +53,6 @@ string Role::get_raw_info() {
 
     return return_string;
 }
+
 
 

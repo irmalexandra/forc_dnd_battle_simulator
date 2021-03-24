@@ -1,7 +1,3 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #ifndef FORC_PA_5_INDIVIDUALBASETEMPLATE_H
 #define FORC_PA_5_INDIVIDUALBASETEMPLATE_H
 
@@ -13,7 +9,8 @@
 
 class IndividualBaseTemplate {
 public:
-    IndividualBaseTemplate(baseIndividualTemplateStats* baseStats);
+    IndividualBaseTemplate(baseIndividualTemplateStats* base_stats, vector<Offensive*>* offensive_actions, vector<Defensive*>* defensive_actions);
+    IndividualBaseTemplate(baseIndividualTemplateStats* base_stats);
 //    ~BaseTemplate();
 
     std::string get_name();
@@ -33,7 +30,6 @@ public:
     vector<Offensive*>* get_offensive_actions();
     vector<Defensive*>* get_defensive_actions();
 
-
     friend std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplate);
 
 protected:
@@ -47,6 +43,5 @@ protected:
     int intelligence_max;
     vector<Offensive*>* offensive_actions;
     vector<Defensive*>* defensive_actions;
-
 };
 #endif //FORC_PA_5_INDIVIDUALBASETEMPLATE_H

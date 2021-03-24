@@ -4,7 +4,7 @@
 int LOWER_LIMIT = 0;
 int UPPER_LIMIT = 10;
 
-IndividualBaseTemplate::IndividualBaseTemplate(baseIndividualTemplateStats* base_stats){
+IndividualBaseTemplate::IndividualBaseTemplate(baseIndividualTemplateStats* base_stats, vector<Offensive*>* offensive_actions, vector<Defensive*>* defensive_actions){
     this->name = base_stats->name;
     this->type = base_stats->type;
     this->life_min = base_stats->life_min;
@@ -13,8 +13,8 @@ IndividualBaseTemplate::IndividualBaseTemplate(baseIndividualTemplateStats* base
     this->intelligence_max = base_stats->int_max;
     this->strength_min = base_stats->str_min;
     this->strength_max = base_stats->str_max;
-    this->offensive_actions = new vector<Offensive*>;
-    this->defensive_actions = new vector<Defensive*>;
+    this->offensive_actions = offensive_actions;
+    this->defensive_actions = defensive_actions;
 }
 
 std::string IndividualBaseTemplate::get_name() {
@@ -83,39 +83,15 @@ std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplat
     out << "Strength: " << BaseTemplate->get_strength_range() << std::endl;
     out << "Intelligence: " << BaseTemplate->get_intelligence_range() << std::endl;
     out << "Offensive actions:" << endl;
-    for (int i = 0; i < BaseTemplate->offensive_actions->size()-1; i++){
+    for (int i = 0; i < BaseTemplate->offensive_actions->size(); i++){
         out << "\t" << BaseTemplate->offensive_actions->at(i)->get_name() << std::endl;
     }
-    out << BaseTemplate->offensive_actions->back()->get_name() << endl;
     out << "Defensive actions:" << std::endl;
-    for (int i = 0; i < BaseTemplate->defensive_actions->size()-1; i++){
+    for (int i = 0; i < BaseTemplate->defensive_actions->size(); i++){
         out << "\t" << BaseTemplate->defensive_actions->at(i)->get_name() << std::endl;
     }
-    out << BaseTemplate->defensive_actions->back()->get_name() << endl;
     return out;
 }
-
-
-//string IndividualBaseTemplate::get_raw_info() {
-////    std::stringstream string_stream;
-//    string return_string;
-//    return_string += "Name: " + get_name() +  '\n';
-//    return_string += get_type() +  '\n';
-//    return_string += "Life: " + to_string(get_life_range().min) + "-" + to_string(get_life_range().max) +  '\n';
-//    return_string +=  "Strength: " + to_string(get_strength_range().min) + "-" + to_string(get_strength_range().max) +  '\n';
-//    return_string +=  "Intelligence: " + to_string(get_intelligence_range().min) + "-" + to_string(get_intelligence_range().max) +  '\n';
-//    return_string +=  "Offensive actions count: " + to_string(offensive_actions->size()) +  '\n';
-//    for (int i = 0; i < offensive_actions->size()-1; i++){
-//        return_string +=  offensive_actions->at(i)->get_name() +  '\n';
-//    }
-//    return_string +=  offensive_actions->back()->get_name() +  '\n';
-//    return_string +=  "Defensive actions count: " + to_string(defensive_actions->size()) +  '\n';
-//    for (int i = 0; i < defensive_actions->size()-1; i++){
-//        return_string +=  defensive_actions->at(i)->get_name() +  '\n';
-//    }
-//    return_string +=  defensive_actions->back()->get_name() +  '\n';
-//    return return_string;
-//}
 
 
 
