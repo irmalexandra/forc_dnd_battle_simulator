@@ -57,6 +57,21 @@ void FileHandler::load_templates(Payload* payload){
         stats->int_min = stoi(temp_string_array->at(0));
         stats->int_max = stoi(temp_string_array->at(1));
 
+        fileIn.getline(single_line, 32);
+        line_str = string(single_line);
+        *temp_string_array = split_string(split_string(line_str, ":").at(1), ",");
+        for(int i = 0; i < temp_string_array->size(); i++){
+            offensives.push_back(payload->DHOffensives->get_data()->at(get_index(payload->DHOffensives->get_data(), temp_string_array->at(i).substr(0, temp_string_array->at(i).length() - 1))));
+        }
+        fileIn.getline(single_line, 32);
+        line_str = string(single_line);
+        *temp_string_array = split_string(split_string(line_str, ":").at(1), ",");
+        for(int i = 0; i < temp_string_array->size(); i++){
+            defensives.push_back(payload->DHDefensives->get_data()->at(get_index(payload->DHDefensives->get_data(),
+                                                                                 temp_string_array->at(i).substr(0, temp_string_array->at(i).length() -1))));
+        }
+
+
         if(type != "Person"){
             fileIn.getline(single_line, 32);
             line_str = string(single_line);

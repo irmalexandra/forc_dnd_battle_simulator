@@ -19,6 +19,7 @@
 #include "../Helpers/HelperFunctions.h"
 #include "DataHandler.h"
 #include "Structs/Payload.h"
+#include "IndexFinder.h"
 
 using namespace std;
 

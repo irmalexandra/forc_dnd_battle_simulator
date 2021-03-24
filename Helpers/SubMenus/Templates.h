@@ -35,7 +35,7 @@ void add_actions(T individual_template, Payload* payload){
     // ADDING OFFENSIVE ACTIONS
     while(running){
 
-        cout << "Adding offensive actions to " << individual_template->get_name() << endl << "1. Add action\n0. Done";
+        cout << "Adding offensive actions to " << individual_template->get_name() << endl << "1. Add action\n0. Done" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -70,7 +70,7 @@ void add_actions(T individual_template, Payload* payload){
     // ADDING DEFENSIVE ACTIONS
     while(running){
 
-        cout << "Adding defensive actions to " << individual_template->get_name() << endl << "1. Add action\n0. Done";
+        cout << "Adding defensive actions to " << individual_template->get_name() << endl << "1. Add action\n0. Done" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
