@@ -82,14 +82,14 @@ std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplat
     out << "Life: " << BaseTemplate->get_life_range() << std::endl;
     out << "Strength: " << BaseTemplate->get_strength_range() << std::endl;
     out << "Intelligence: " << BaseTemplate->get_intelligence_range() << std::endl;
-    out << "Offensive actions: ";
+    out << "Offensive actions:" << endl;
     for (int i = 0; i < BaseTemplate->offensive_actions->size()-1; i++){
-        out << BaseTemplate->offensive_actions->at(i)->get_name() << ",";
+        out << "\t" << BaseTemplate->offensive_actions->at(i)->get_name() << std::endl;
     }
     out << BaseTemplate->offensive_actions->back()->get_name() << endl;
-    out << "Defensive actions: ";
+    out << "Defensive actions:" << std::endl;
     for (int i = 0; i < BaseTemplate->defensive_actions->size()-1; i++){
-        out << BaseTemplate->defensive_actions->at(i)->get_name() << ",";
+        out << "\t" << BaseTemplate->defensive_actions->at(i)->get_name() << std::endl;
     }
     out << BaseTemplate->defensive_actions->back()->get_name() << endl;
     return out;

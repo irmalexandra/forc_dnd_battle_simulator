@@ -42,9 +42,9 @@ InputHandler::InputHandler() {
             this->DHDefensives,
             this->species_map
     );
+    this->file_handler->load_actions(this->payload);
 
     this->file_handler->load_templates(this->payload);
-    this->file_handler->load_actions(this->payload);
 }
 
 InputHandler::~InputHandler() {

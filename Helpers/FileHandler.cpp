@@ -17,6 +17,7 @@ void FileHandler::load_templates(Payload* payload){
 
     auto temp_string_array = new std::vector<std::string>;
     int amount;
+    int temp_amount;
 
     string line_str;
     ifstream fileIn (filename, ios::binary);
@@ -63,16 +64,37 @@ void FileHandler::load_templates(Payload* payload){
 
         fileIn.getline(single_line, 32);
         line_str = string(single_line);
-        *temp_string_array = split_string(split_string(line_str, ":").at(1), ",");
-        for(int i = 0; i < temp_string_array->size(); i++){
-            offensives.push_back(payload->DHOffensives->get_data()->at(get_index(payload->DHOffensives->get_data(), temp_string_array->at(i).substr(0, temp_string_array->at(i).length() - 1))));
+        temp_amount = stoi(split_string(line_str, ": ").at(1));
+        for(int x = 0; x < temp_amount; x++){
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            auto action_name = line_str.substr(0, line_str.length() -1);
+            auto index_of_name = get_index(payload->DHOffensives->get_data(),
+                                           action_name);
+            if(index_of_name != -1){
+                offensives.push_back(payload->DHOffensives->get_data()->at(index_of_name));
+            }
+            else{
+                cout << "Action: " << action_name << " not found." << endl;
+            }
         }
+
+
         fileIn.getline(single_line, 32);
         line_str = string(single_line);
-        *temp_string_array = split_string(split_string(line_str, ":").at(1), ",");
-        for(int i = 0; i < temp_string_array->size(); i++){
-            defensives.push_back(payload->DHDefensives->get_data()->at(get_index(payload->DHDefensives->get_data(),
-                                                                                 temp_string_array->at(i).substr(0, temp_string_array->at(i).length() -1))));
+        temp_amount = stoi(split_string(line_str, ": ").at(1));
+        for(int x = 0; x < temp_amount; x++){
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            auto action_name = line_str.substr(0, line_str.length() -1);
+            auto index_of_name = get_index(payload->DHDefensives->get_data(),
+                                           action_name);
+            if(index_of_name != -1){
+                defensives.push_back(payload->DHDefensives->get_data()->at(index_of_name));
+            }
+            else{
+                cout << "Action: " << action_name << " not found." << endl;
+            }
         }
 
 
@@ -122,8 +144,14 @@ void FileHandler::save_templates(Payload* payload) {
     amount += payload->DHSpecies->get_data()->size();
 
     fileout << amount << endl;
-    fileout << payload->DHSpecies;
-    fileout << payload->DHRoles;
+    for(auto species: *payload->DHSpecies->get_data()){
+        fileout << species->get_raw_info();
+    }
+//    fileout << payload->DHSpecies;
+    for(auto role: *payload->DHRoles->get_data()){
+        fileout << role->get_raw_info();
+    }
+//    fileout << payload->DHRoles;
     fileout.close();
     cout << "Done!" << endl;
 }

@@ -76,12 +76,7 @@ void create_template(FileHandler* file_handler, TemplateCreator* template_creato
     }
 }
 
-void view_templates(Payload* payload) {
-    cout << "Available Roles" << endl;
-    cout << payload->DHRoles << endl;
-    cout << "\nAvailable Species" << endl;
-    cout << payload->DHSpecies << endl;
-}
+
 
 void view_single_template(int species_index, int role_index, Payload* payload){
 

@@ -1,4 +1,7 @@
 #include "DisplayHelper.h"
+
+
+
 void view_shortened_individuals(Payload* payload){
     cout << "Individuals:" << endl << endl << "Persons(NPCs)" << endl;
 
@@ -102,10 +105,26 @@ void view_individuals_by_category(Payload* payload) {
 }
 
 void view_shortened_offensives(Payload* payload){
+    cout << "Offensive actions" << endl << endl;
+    for(auto action: *payload->DHOffensives->get_data()){
+        cout << action->get_name() << endl;
+    }
 
 };
 void view_shortened_defensives(Payload* payload){
-
+    cout << "Defensive actions" << endl << endl;
+    for(auto action: *payload->DHDefensives->get_data()){
+        cout << action->get_name() << endl;
+    }
 };
+
+void view_templates(Payload* payload) {
+
+
+    cout << "Available Roles" << endl;
+    cout << (*payload).DHRoles << endl;
+    cout << "\nAvailable Species" << endl;
+    cout << (*payload).DHSpecies << endl;
+}
 
 

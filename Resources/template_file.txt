@@ -1,10 +1,10 @@
-2
-Name: Wolf
+1
+Name: wolfieboi
 Creature
-Life: 1-1
-Strength: 1-1
-Intelligence: 1-1
-Offensive actions: woops
-Defensive actions: Test,PleaseBeDefensive
-Unnatural
-Disquiet: 1-1
+Life: 2-2
+Strength: 2-2
+Intelligence: 2-2
+Offensive actions count: 1
+woops
+Defensive actions count: 1
+Test
