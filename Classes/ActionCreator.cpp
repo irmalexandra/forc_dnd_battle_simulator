@@ -3,6 +3,7 @@
 
 Defensive* ActionCreator::create_defensive() {
     auto stats = get_base_stats();
+    stats->type = "Defensive";
     int* defense_modifier = new int();
     int* health_recovery = new int();
     int* duration = new int(1);
@@ -19,6 +20,7 @@ Defensive* ActionCreator::create_defensive() {
 
 Offensive* ActionCreator::create_offensive() {
     auto stats = get_base_stats();
+    stats->type = "Offensive";
     int* damage = new int();
     int* hit_modifier = new int();
     cout << "Enter a value for how much damage this action will cause" << endl;
