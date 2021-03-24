@@ -6,7 +6,7 @@ void individual_menu(FileHandler* file_handler, Payload* payload, IndividualCrea
     string filename;
     string folder = "Saves/";
     while(true){
-        cout << "1. View individuals\n2. Create individual\n3. Save current roster\n4. Load roster\n5. Back" << endl;
+        cout << "1. View individuals\n2. Create individual\n3. Delete individual\n4. Save current roster\n5. Load roster\n0. Back" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -61,7 +61,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
     }
     view_single_template(species_index, role_index, payload);
 
-    cout << "1. Create Individual based on this template\n2. Back" << endl;
+    cout << "1. Create Individual based on this template\n0. Back" << endl;
     int choice = 0;
     cin >> choice;
     if(cin.fail()){
@@ -185,20 +185,20 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
                     }
                     else{
                         cout << choice << " is not a valid option" << endl;
-                        cout << "1. Investigator (playable character)\n2. Person (NPC)\n3. Return" << endl;
+                        cout << "1. Investigator (playable character)\n2. Person (NPC)\n0. Return" << endl;
                         cin >> choice;
                         while(cin.fail()){
                             cout << "Invalid input" << endl;
                             cin.clear();
                             cin.ignore(std::numeric_limits<int>::max(),'\n');
-                            cout << "1. Investigator (playable character)\n2. Person (NPC)\n3. Return" << endl;
+                            cout << "1. Investigator (playable character)\n2. Person (NPC)\n0. Return" << endl;
                             cin >> choice;
                         }
                     }
                 }
 
             }
-        case 2:
+        case 0:
             return;
     }
 }

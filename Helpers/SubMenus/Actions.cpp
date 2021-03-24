@@ -4,7 +4,7 @@
 void action_menu(FileHandler* file_handler, ActionCreator* action_creator, Payload* payload){
     int choice;
     while(true){
-        cout << "1. View actions\n2. Create actions\n3. Delete actions\n4. Back" << endl;
+        cout << "1. View actions\n2. Create actions\n3. Delete actions\n0. Back" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -22,7 +22,7 @@ void action_menu(FileHandler* file_handler, ActionCreator* action_creator, Paylo
             case 3:
                 delete_action(file_handler, payload);
                 break;
-            case 4:
+            case 0:
                 return;
             default:
                 cout << choice << " is not an option" << endl;

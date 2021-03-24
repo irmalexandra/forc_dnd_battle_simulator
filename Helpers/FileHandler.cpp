@@ -3,12 +3,16 @@
 void FileHandler::load_templates(Payload* payload){
 
     char single_line[32] = {};
+
     string filename = "Resources/template_file.txt";
     cout << "Loading templates from " << filename << "..." << endl;
     speciesStats* stats;
 
     string name;
     string type;
+
+    vector<Offensive*> offensives;
+    vector<Defensive*> defensives;
 
 
     auto temp_string_array = new std::vector<std::string>;
@@ -320,7 +324,7 @@ void FileHandler::load_actions(Payload *payload) {
 
         fileIn.getline(single_line, 32);
         line_str = string(single_line);
-        stats->physical =  "Physical" == line_str.substr(0, line_str.length()-1);
+        "Physical" == line_str.substr(0, line_str.length()-1) ? stats->physical =  true : stats->physical = false;
 
 
         if(stats->type != "Defensive"){

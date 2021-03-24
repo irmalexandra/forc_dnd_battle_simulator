@@ -85,3 +85,5 @@ void TemplateCreator::get_base_stats(baseIndividualTemplateStats* base_stats) {
     base_stats->str_max = get_int_within_range(base_stats->str_min, 10, "Enter upper range for strength: ");
 
 }
+
+

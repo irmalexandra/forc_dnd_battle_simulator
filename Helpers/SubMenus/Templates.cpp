@@ -36,7 +36,8 @@ void create_template(FileHandler* file_handler, TemplateCreator* template_creato
 
     Species* species;
     Role* role;
-
+    vector<Offensive*> offensives_vector;
+    vector<Defensive*> defensive_vector;
 
     while(true){
         std::cout << "Select:" << std::endl;
@@ -111,8 +112,8 @@ void delete_template(FileHandler* file_handler, Payload* payload){
     cout << "Enter the name of the template you want deleted." << endl;
     cin >> name;
 
-    auto species_index = get_index_species(name, payload);
-    auto role_index = get_index_roles(name, payload);
+    auto species_index = get_index(payload->DHSpecies->get_data(), name);
+    auto role_index = get_index(payload->DHRoles->get_data(), name);
     if(role_index == -1 && species_index == -1){
         cout << name << " does not exist!" << endl;
     }
@@ -126,8 +127,10 @@ void delete_template(FileHandler* file_handler, Payload* payload){
             payload->DHRoles->get_data()->erase(payload->DHRoles->get_data()->begin() + role_index);
             file_handler->save_templates(payload);
         }
+        cout << name << " was successfully deleted!" << endl;
     }
 }
+
 
 
 

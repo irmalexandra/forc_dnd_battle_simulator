@@ -16,7 +16,7 @@ public:
 
 
     friend std::ostream& operator<< (std::ostream& out, ActionBaseTemplate* actionBaseTemplate);
-    std::string get_action_name();
+    std::string get_name();
     std::string get_type();
 
 protected:

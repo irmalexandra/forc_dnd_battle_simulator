@@ -10,6 +10,7 @@
 #include "../Templates/IndividualTemplates/IndividualBaseTemplate.h"
 #include "../Helpers/HelperFunctions.h"
 
+
 using namespace std;
 
 class TemplateCreator {

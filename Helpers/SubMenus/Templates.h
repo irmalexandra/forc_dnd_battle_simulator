@@ -102,8 +102,15 @@ void add_actions(T individual_template, Payload* payload){
     }
 }
 
-int get_index_roles(const string& name, Payload* payload);
-int get_index_species(const string& name, Payload* payload);
-
+template<typename T>
+void add_action(vector<T*>* actions, vector<T*>* template_actions, string name){
+    auto index = get_index(actions, name);
+    if (index != -1){
+        template_actions->push_back(actions->at(index));
+        cout << name + " successfully added." << endl;
+    } else {
+        cout << "Action by the name of " + name + " was not found." << endl;
+    }
+}
 
 #endif //FORC_PA_5_TEMPLATES_H
