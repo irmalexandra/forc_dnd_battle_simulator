@@ -10,7 +10,6 @@ ActionBaseTemplate::ActionBaseTemplate(baseActionTemplateStats *stats) {
     stats = nullptr;
 }
 
-
 std::string ActionBaseTemplate::get_action_name() {
     return this->action_name;
 }

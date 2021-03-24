@@ -11,6 +11,8 @@
 #include "../../Templates/IndividualTemplates/Species.h"
 #include "../FileHandler.h"
 #include "../Structs/Payload.h"
+#include "../IndexFinder.h"
+#include "../DisplayHelper.h"
 
 using namespace std;
 
@@ -19,8 +21,86 @@ void template_menu(FileHandler* file_handler, TemplateCreator* template_creator,
 void create_template(FileHandler* file_handler, TemplateCreator* template_creator, Payload* payload);
 void view_templates(Payload* payload);
 void view_shortened_templates(Payload* payload);
-void edit_templates(FileHandler* file_handler, TemplateCreator* template_creator, Payload* payload);
 void delete_template(FileHandler* file_handler, Payload* payload);
+
+template <typename T>
+void add_actions(T individual_template, Payload* payload){
+
+    int choice;
+    bool offensive_added = false;
+    bool defensive_added = false;
+    bool running = true;
+    string action_name;
+
+    // ADDING OFFENSIVE ACTIONS
+    while(running){
+
+        cout << "Adding offensive actions to " << individual_template->get_name() << endl << "1. Add action\n0. Done";
+        cin >> choice;
+        if(cin.fail()){
+            cout << "Invalid input" << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<int>::max(),'\n');
+            continue;
+        }
+        if(!offensive_added && choice == 0){
+            cout << "Must add at least one offensive action." << endl;
+        }
+        else{
+            switch (choice) {
+                case 1:
+                    view_shortened_offensives(payload);
+                    cout << "Name: ";
+                    cin >> action_name;
+                    add_action(payload->DHOffensives->get_data(), individual_template->get_offensive_actions(), action_name);
+                    offensive_added = true;
+                    break;
+                case 0:
+                    running = false;
+                    break;
+
+                default:
+                    cout << "Invalid input" << endl;
+                    break;
+            }
+        }
+    }
+
+    running = true;
+    // ADDING DEFENSIVE ACTIONS
+    while(running){
+
+        cout << "Adding defensive actions to " << individual_template->get_name() << endl << "1. Add action\n0. Done";
+        cin >> choice;
+        if(cin.fail()){
+            cout << "Invalid input" << endl;
+            cin.clear();
+            cin.ignore(std::numeric_limits<int>::max(),'\n');
+            continue;
+        }
+
+        if(!defensive_added && choice == 0){
+            cout << "Must add at least one defensive action." << endl;
+        }
+
+        switch (choice) {
+            case 1:
+                view_shortened_defensives(payload);
+                cout << "Name: ";
+                cin >> action_name;
+                add_action(payload->DHDefensives->get_data(), individual_template->get_defensive_actions(), action_name);
+                defensive_added = true;
+                break;
+            case 0:
+                running = false;
+                break;
+
+            default:
+                cout << "Invalid input" << endl;
+                break;
+        }
+    }
+}
 
 int get_index_roles(const string& name, Payload* payload);
 int get_index_species(const string& name, Payload* payload);

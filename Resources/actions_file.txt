@@ -1,39 +1,27 @@
-6
-Name: fgh
+4
+Name: woops
 Type: Offensive
 Physical
-Hit Modifier: 5
-Damage: 5
+Hit Modifier: 1
+Damage: 1
 
-Name: o
-Type: Offensive
-Physical
-Hit Modifier: 5
-Damage: 5
-
-Name: op
+Name: AreYOuMental
 Type: Offensive
 Mental
-Hit Modifier: 2
+Hit Modifier: 10
 Damage: 5
 
-Name: Attack!
-Type: Offensive
+Name: Test
+Type: Defensive
 Physical
-Hit Modifier: 4
-Damage: 3
-
-Name: DefTest1
-Type: 
-Physical
-Defense Modifier: 3
-Health Recovery: 0
+Defense Modifier: 1
+Health Recovery: 1
 Duration: 1
 
-Name: DefTest2
-Type: 
-Physical
-Defense Modifier: 0
-Health Recovery: 10
-Duration: 5
+Name: PleaseBeDefensive
+Type: Defensive
+Mental
+Defense Modifier: 1
+Health Recovery: 1
+Duration: 1
 

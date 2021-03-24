@@ -5,9 +5,11 @@
 #ifndef FORC_PA_5_INDIVIDUALBASETEMPLATE_H
 #define FORC_PA_5_INDIVIDUALBASETEMPLATE_H
 
-
+#include <vector>
 #include "iostream"
 #include "../../Helpers/Structs/Stats.h"
+#include "../ActionTemplates/Defensive.h"
+#include "../ActionTemplates/Offensive.h"
 
 class IndividualBaseTemplate {
 public:
@@ -26,6 +28,11 @@ public:
     void set_intelligence_range(int* intelligence_min, int* intelligence_max);
     void set_name(std::string* name);
     void set_type(std::string* type);
+    void add_offensive_action(Offensive* action);
+    void add_defensive_action(Defensive* action);
+    vector<Offensive*>* get_offensive_actions();
+    vector<Defensive*>* get_defensive_actions();
+
 
     friend std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplate);
 private:
@@ -37,5 +44,8 @@ private:
     int life_max;
     int strength_max;
     int intelligence_max;
+    vector<Offensive*>* offensive_actions;
+    vector<Defensive*>* defensive_actions;
+
 };
 #endif //FORC_PA_5_INDIVIDUALBASETEMPLATE_H

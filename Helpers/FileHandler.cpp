@@ -1,7 +1,3 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #include "FileHandler.h"
 
 void FileHandler::load_templates(Payload* payload){
@@ -23,16 +19,14 @@ void FileHandler::load_templates(Payload* payload){
 
     fileIn.getline(single_line, 32);
     line_str = string(single_line);
-
+    if (line_str == ""){
+        cout << "File is empty, nothing was loaded." << endl;
+        return;
+    }
     amount = stoi(line_str);
     for(int i = 0; i < amount; i++){
 
         stats = new speciesStats();
-
-        while(line_str == ""){
-            fileIn.getline(single_line, 32);
-            line_str = string(single_line);
-        }
 
         fileIn.getline(single_line, 32);
         line_str = string(single_line);
@@ -124,13 +118,9 @@ void FileHandler::save_roster(Payload* payload, string* roster_name){
     amount += payload->DHEldritchHorrors->get_data()->size();
     ofstream fileout(*roster_name, ios::trunc);
     fileout << amount << endl;
-//    fileout << payload->DHInvestigators->get_data()->size() << endl;
     fileout << payload->DHInvestigators;
-//    fileout << payload->DHPersons->get_data()->size() << endl;
     fileout << payload->DHPersons;
-//    fileout << payload->DHCreatures->get_data()->size() << endl;
     fileout << payload->DHCreatures;
-//    fileout << payload->DHEldritch_Horrors->get_data()->size() << endl;
     fileout << payload->DHEldritchHorrors;
     fileout.close();
     cout << "Done!" << endl;
@@ -152,16 +142,15 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
 
     fileIn.getline(single_line, 32);
     line_string = string(single_line);
-
+    if (line_string == ""){
+        cout << "File is empty, nothing was loaded." << endl;
+        return;
+    }
     int amount = stoi(line_string);
 
     for (int i = 0; i < amount; i++){
         fileIn.getline(single_line, 32);
         line_string = string(single_line);
-        if(line_string.empty()){
-            fileIn.getline(single_line, 32);
-            line_string = string(single_line);
-        }
 
         auto stats = new baseIndividualStats();
 
@@ -181,8 +170,6 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
         fileIn.getline(single_line, 32);
         line_string = string(single_line);
         template_name = line_string.substr(0, line_string.length()-1);
-
-
 
         fileIn.getline(single_line, 32);
         line_string = string(single_line);
@@ -206,12 +193,15 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
                + to_string(payload->species_map->at(template_name)) == stats->name){
                 payload->species_map->at(template_name)++;
             }
-            auto it = std::find_if(payload->DHSpecies->get_data()->begin(), payload->DHSpecies->get_data()->end(),
-                              [&template_name]( Species* obj) {return obj->get_name() == template_name;});
-            auto index = std::distance(payload->DHSpecies->get_data()->begin(), it);
-            auto species = payload->DHSpecies->get_data()->at(index);
 
-            // IMPLEMENT TEMPLATE LOOKUP
+            Species* species = nullptr;
+            auto species_list = payload->DHSpecies->get_data();
+            for (int i = 0; i < payload->DHSpecies->get_data()->size(); i++){
+                if (species_list->at(i)->get_name() == template_name){
+                    species = species_list->at(i);
+                }
+            }
+
             stats->unnatural = (type != "Natural");
             fileIn.getline(single_line, 32);
             line_string = string(single_line);
@@ -220,11 +210,12 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
             if (type == "Eldritch Horror"){
                 fileIn.getline(single_line, 32);
                 line_string = string(single_line);
+                if (species != nullptr){
                 stats->traumatism = stoi(split_string(line_string).at(1));
                 payload->DHEldritchHorrors->get_data()->push_back(new EldritchHorror(stats, species));
-
+                }
             }
-            else{
+            else if (species != nullptr){
                 payload->DHCreatures->get_data()->push_back(new Creature(stats, species));
             }
 
@@ -235,26 +226,32 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
             line_string = string(single_line);
             stats->fear = stoi(split_string(line_string).at(1));
 
-            auto it = find_if(payload->DHRoles->get_data()->begin(), payload->DHRoles->get_data()->end(),
-                              [&template_name]( Role* obj) {return obj->get_name() == template_name;});
-            auto index = std::distance(payload->DHRoles->get_data()->begin(), it);
+            Role* role = nullptr;
+            auto roles = payload->DHRoles->get_data();
+            for (int i = 0; i < payload->DHRoles->get_data()->size(); i++){
+                if (roles->at(i)->get_name() == template_name){
+                    role = roles->at(i);
+                }
+            }
 
-            auto role = payload->DHRoles->get_data()->at(index);
+            if(type == "Person" && role != nullptr){
+                if (role != nullptr){
+                    payload->DHPersons->get_data()->push_back(new Person(stats, role));
 
-            if(type == "Person"){
-                payload->DHPersons->get_data()->push_back(new Person(stats, role));
+                }
             }
             if(type == "Investigator"){
                 fileIn.getline(single_line, 32);
                 line_string = string(single_line);
-                stats->terror = stoi(split_string(line_string).at(1));
-                payload->DHInvestigators->get_data()->push_back(new Investigator(stats, role));
+                if (role != nullptr){
+                    stats->terror = stoi(split_string(line_string).at(1));
+                    payload->DHInvestigators->get_data()->push_back(new Investigator(stats, role));
+                }
             }
 
             fileIn.getline(single_line, 32);
             line_string = string(single_line);
         }
-
     }
     cout << "Done!" << endl;
 }
@@ -282,7 +279,10 @@ void FileHandler::load_actions(Payload *payload) {
 
     fileIn.getline(single_line, 32);
     line_str = string(single_line);
-
+    if (line_str == ""){
+        cout << "File is empty, nothing was loaded." << endl;
+        return;
+    }
     amount = stoi(line_str);
     for(int i = 0; i < amount; i++){
 
@@ -306,7 +306,6 @@ void FileHandler::load_actions(Payload *payload) {
         fileIn.getline(single_line, 32);
         line_str = string(single_line);
         stats->physical =  "Physical" == line_str.substr(0, line_str.length()-1);
-
 
 
         if(stats->type != "Defensive"){
@@ -342,8 +341,8 @@ void FileHandler::load_actions(Payload *payload) {
             payload->DHDefensives->get_data()->push_back(new Defensive(stats, defense_modifier, recovery, duration));
         }
         fileIn.getline(single_line, 32); // To skip empty lines
-        delete stats;
     }
+    delete stats;
     delete damage;
     delete hit_modifier;
     cout << "Done!" << endl;

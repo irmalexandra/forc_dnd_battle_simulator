@@ -4,8 +4,7 @@
 Offensive::Offensive(baseActionTemplateStats* stats, int* hit_modifier, int* damage): ActionBaseTemplate(stats) {
     this->damage = *damage;
     this->hit_modifier = *hit_modifier;
-    this->type = "Offensive";
-    this->physical = stats->physical;
+
 
 }
 

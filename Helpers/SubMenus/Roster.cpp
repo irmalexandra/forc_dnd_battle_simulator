@@ -22,16 +22,19 @@ void individual_menu(FileHandler* file_handler, Payload* payload, IndividualCrea
                 select_template_for_individual(file_handler, payload, individual_creator);
                 break;
             case(3):
+                delete_individual(file_handler, payload);
+                break;
+            case(4):
                 cout << "Enter the filename of the new roster: Save/";
                 cin >> filename;
                 file_handler->save_roster(payload, new string(folder + filename));
                 break;
-            case(4):
+            case(5):
                 cout << "Enter the filename of the roster you want to load: ";
                 cin >> filename;
                 file_handler->load_roster(payload, new string(folder + filename));
                 break;
-            case(5):
+            case(0):
                 return;
             default:
                 cout << choice << " is not an option" << endl;
@@ -46,15 +49,15 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
     string name;
     cout << "Enter the name of the template you want to view." << endl;
     cin >> name;
-    auto species_index = get_index_species(name, payload);
-    auto role_index = get_index_roles(name, payload);
+    auto species_index = get_index(payload->DHSpecies->get_data(), name);
+    auto role_index = get_index(payload->DHRoles->get_data(), name);
     while(role_index == -1 && species_index == -1) {
         cout << name << " does not exist!" << endl;
         view_shortened_templates(payload);
         cout << "Enter the name of the template you want to view." << endl;
         cin >> name;
-        species_index = get_index_species(name, payload);
-        role_index = get_index_roles(name, payload);
+        species_index = get_index(payload->DHSpecies->get_data(), name);
+        role_index = get_index(payload->DHRoles->get_data(), name);
     }
     view_single_template(species_index, role_index, payload);
 
@@ -200,106 +203,39 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
     }
 }
 
-void view_individuals_by_category(Payload* payload) {
+void delete_individual(FileHandler* file_handler, Payload* payload){
+    string name;
+    view_shortened_individuals(payload);
+    cout << "Enter the name of the individual you want deleted." << endl;
+    cin >> name;
 
-    int choice;
+    auto creature_index = get_index(payload->DHCreatures->get_data(), name);
+    auto eldritch_horror_index = get_index(payload->DHEldritchHorrors->get_data(), name);
+    auto person_index = get_index(payload->DHPersons->get_data(), name);
+    auto investigator_index = get_index(payload->DHInvestigators->get_data(), name);
 
-    while(true){
-        cout << "Select a character type" << std::endl;
-        cout << "1. Investigator" << endl;
-        cout << "2. Person (NPC)" << endl;
-        cout << "3. Creature" << endl;
-        cout << "4. Eldritch Horror" << endl;
-        cout << "5. Back" << std::endl;
-        cin >> choice;
-        if(cin.fail()){
-            cout << "Invalid input" << endl;
-            cin.clear();
-            cin.ignore(std::numeric_limits<int>::max(),'\n');
-            continue;
+    if(creature_index + eldritch_horror_index + person_index + investigator_index == -4){ // indexes are all -1 if an individual was not found
+        cout << name << " does not exist!" << endl;
+    }
+    else{
+        if(creature_index != -1){
+            payload->DHCreatures->get_data()->erase(payload->DHCreatures->get_data()->begin() + creature_index);
+            file_handler->save_templates(payload);
         }
-        switch(choice){
-            case 1:
-                cout << payload->DHInvestigators << endl;
-                break;
-            case 2:
-                cout << payload->DHPersons << endl;
-                break;
-            case 3:
-                cout << payload->DHCreatures << endl;
-                break;
-            case 4:
-                cout << payload->DHEldritchHorrors << endl;
-                break;
-            case 5:
-                return;
-            default:
-                cout<<"Error"<<endl;
-                break;
 
+        if(eldritch_horror_index != -1){
+            payload->DHEldritchHorrors->get_data()->erase(payload->DHEldritchHorrors->get_data()->begin() + eldritch_horror_index);
+            file_handler->save_templates(payload);
         }
-    }
-}
-
-
-
-void view_shortened_individuals(Payload* payload){
-    cout << "Individuals:" << endl << endl << "Persons(NPCs)" << endl;
-
-    for(const auto individual: *payload->DHPersons->get_data()){
-        cout << '\t' << individual->get_name() << endl;
-    }
-    cout << "Investigators:" << endl;
-    for(const auto individual: *payload->DHInvestigators->get_data()){
-        cout << '\t' << individual->get_name() << endl;
-    }
-    cout << "Creatures " << endl;
-    for(const auto individual: *payload->DHCreatures->get_data()){
-        cout << '\t' << individual->get_name() << endl;
-    }
-    cout << "Eldritch Horrors" << endl;
-    for(const auto individual: *payload->DHEldritchHorrors->get_data()){
-        cout << '\t' << individual->get_name() << endl;
-    }
-}
-
-void view_all_individuals(Payload* payload) {
-    cout << "Created individuals\n" << endl;
-    cout << "Investigators:" << endl;
-    cout << payload->DHInvestigators << endl;
-    cout << "\nNPCs:" << endl;
-    cout << payload->DHPersons << endl;
-    cout << "\nCreatures:" << endl;
-    cout << payload->DHCreatures << endl;
-    cout << "\nEldritch Horrors" << endl;
-    cout << payload->DHEldritchHorrors << endl;
-}
-
-void view_individuals(Payload* payload) {
-    int choice;
-    while(true){
-        cout << "1. View all individuals\n2. View by category\n3. Back" << endl;
-        cin >> choice;
-        if(cin.fail()){
-            cout << "Invalid input" << endl;
-            cin.clear();
-            cin.ignore(std::numeric_limits<int>::max(),'\n');
-            continue;
+        if(person_index != -1){
+            payload->DHPersons->get_data()->erase(payload->DHPersons->get_data()->begin() + person_index);
+            file_handler->save_templates(payload);
         }
-        switch (choice) {
-            case(1):
-                view_all_individuals(payload);
-                break;
-            case(2):
-                view_individuals_by_category(payload);
-                break;
-            case(3):
-                return;
-            default:
-                cout << choice << " is not an option" << endl;
-                break;
-
+        if(investigator_index != -1){
+            payload->DHInvestigators->get_data()->erase(payload->DHInvestigators->get_data()->begin() + investigator_index);
+            file_handler->save_templates(payload);
         }
+        cout << name << " was successfully deleted!" << endl;
     }
 }
 

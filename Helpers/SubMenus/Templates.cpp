@@ -4,7 +4,7 @@
 void template_menu(FileHandler* file_handler, TemplateCreator* template_creator, Payload* payload) {
     int choice;
     while(true){
-        cout << "1. View templates\n2. Create template\n3. Delete template\n4. Back" << endl;
+        cout << "1. View templates\n2. Create template\n3. Delete template\n0. Back" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -22,7 +22,7 @@ void template_menu(FileHandler* file_handler, TemplateCreator* template_creator,
             case 3:
                 delete_template(file_handler, payload);
                 break;
-            case 4:
+            case 0:
                 return;
             default:
                 cout << choice << " is not an option" << endl;
@@ -52,11 +52,14 @@ void create_template(FileHandler* file_handler, TemplateCreator* template_creato
         switch (choice) {
             case 1:
                 species = template_creator->create_species();
+                cout << "Choose offensive action" << endl;
+                add_actions(species, payload);
                 payload->DHSpecies->get_data()->push_back(species);
                 file_handler->save_templates(payload);
                 break;
             case 2:
                 role = template_creator->create_role();
+                add_actions(role, payload);
                 payload->DHRoles->get_data()->push_back(role);
                 file_handler->save_templates(payload);
                 break;
@@ -126,52 +129,6 @@ void delete_template(FileHandler* file_handler, Payload* payload){
     }
 }
 
-void edit_templates(FileHandler* file_handler, TemplateCreator* template_creator, Payload* payload) {
-    int choice;
-    while(true){
-        cout << "1. Create templates\n2. Delete template\n3. Back" << endl;
-        cin >> choice;
-        if(cin.fail()){
-            cout << "Invalid input" << endl;
-            cin.clear();
-            cin.ignore(std::numeric_limits<int>::max(),'\n');
-            continue;
-        }
-        switch (choice) {
-            case(1):
-                create_template(file_handler, template_creator, payload);
-                break;
-            case(2):
-                delete_template(file_handler, payload);
-                break;
-            case(3):
-                return;
-            default:
-                cout << choice << " is not an option" << endl;
-                break;
 
-        }
-    }
-}
 
-int get_index_roles(const string& name, Payload* payload) {
-    int index = -1;
-    for (int i = 0; i < payload->DHRoles->get_data()->size(); i++){
-        if(payload->DHRoles->get_data()->at(i)->get_name() == name){
-            index = i;
-            return index;
-        }
-    }
-    return index;
-}
 
-int get_index_species(const string& name, Payload* payload) {
-    int index = -1;
-    for (int i = 0; i < payload->DHSpecies->get_data()->size(); i++){
-        if(payload->DHSpecies->get_data()->at(i)->get_name() == name){
-            index = i;
-            return index;
-        }
-    }
-    return index;
-}

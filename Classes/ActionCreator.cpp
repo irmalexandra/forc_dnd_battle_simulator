@@ -1,7 +1,3 @@
-//
-// Created by emmik on 23/03/2021.
-//
-
 #include "ActionCreator.h"
 
 
@@ -27,7 +23,7 @@ Offensive* ActionCreator::create_offensive() {
     int* hit_modifier = new int();
     cout << "Enter a value for how much damage this action will cause" << endl;
     *damage = get_int_within_range(1, 10, "Damage: ");
-    cout << "Enter a value for the hit modifier (higher chance means more likely to hit)";
+    cout << "Enter a value for the hit modifier (higher chance means more likely to hit)" << endl;
     *hit_modifier = get_int_within_range(0, 10, "Hit Modifier: ");
     return new Offensive(stats, hit_modifier, damage);
 }

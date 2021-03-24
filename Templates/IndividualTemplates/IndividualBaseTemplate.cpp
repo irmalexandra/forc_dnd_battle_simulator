@@ -13,6 +13,8 @@ IndividualBaseTemplate::IndividualBaseTemplate(baseIndividualTemplateStats* base
     this->intelligence_max = base_stats->int_max;
     this->strength_min = base_stats->str_min;
     this->strength_max = base_stats->str_max;
+    this->offensive_actions = new vector<Offensive*>;
+    this->defensive_actions = new vector<Defensive*>;
 }
 
 std::string IndividualBaseTemplate::get_name() {
@@ -50,17 +52,6 @@ void IndividualBaseTemplate::set_name(std::string* name) {
     this->name = *name;
 }
 
-
-
-std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplate) {
-    out << "Name: " << BaseTemplate->get_name() << std::endl;
-    out << BaseTemplate->get_type() << std::endl;
-    out << "Life: " << BaseTemplate->get_life_range() << std::endl;
-    out << "Strength: " << BaseTemplate->get_strength_range() << std::endl;
-    out << "Intelligence: " << BaseTemplate->get_intelligence_range() << std::endl;
-    return out;
-}
-
 void IndividualBaseTemplate::set_type(std::string* type) {
     this->type = *type;
 }
@@ -68,5 +59,41 @@ void IndividualBaseTemplate::set_type(std::string* type) {
 std::string IndividualBaseTemplate::get_type() {
     return this->type;
 }
+
+void IndividualBaseTemplate::add_offensive_action(Offensive* action){
+    this->offensive_actions->push_back(action);
+}
+
+void IndividualBaseTemplate::add_defensive_action(Defensive* action){
+    this->defensive_actions->push_back(action);
+}
+
+vector<Offensive*>* IndividualBaseTemplate::get_offensive_actions(){
+    return this->offensive_actions;
+}
+
+vector<Defensive*>* IndividualBaseTemplate::get_defensive_actions(){
+    return this->defensive_actions;
+}
+
+std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplate) {
+    out << "Name: " << BaseTemplate->get_name() << std::endl;
+    out << BaseTemplate->get_type() << std::endl;
+    out << "Life: " << BaseTemplate->get_life_range() << std::endl;
+    out << "Strength: " << BaseTemplate->get_strength_range() << std::endl;
+    out << "Intelligence: " << BaseTemplate->get_intelligence_range() << std::endl;
+    out << "Offensive actions: ";
+    for (int i = 0; i < BaseTemplate->offensive_actions->size()-1; i++){
+        out << BaseTemplate->offensive_actions->at(i)->get_name() << ",";
+    }
+    out << BaseTemplate->offensive_actions->back()->get_name() << endl;
+    out << "Defensive actions: ";
+    for (int i = 0; i < BaseTemplate->defensive_actions->size()-1; i++){
+        out << BaseTemplate->defensive_actions->at(i)->get_name() << ",";
+    }
+    out << BaseTemplate->defensive_actions->back()->get_name() << endl;
+    return out;
+}
+
 
 

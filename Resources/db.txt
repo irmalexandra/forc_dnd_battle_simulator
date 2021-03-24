@@ -143,4 +143,3 @@ Intelligence: 2
 Unnatural
 Disquiet: 10
 Traumatism: 1
-

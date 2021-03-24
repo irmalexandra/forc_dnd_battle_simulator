@@ -18,21 +18,14 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Models/EldritchHorror.h
         Classes/IndividualCreator.cpp
         Classes/IndividualCreator.h
-        Helpers/InputHandler.cpp
-        Helpers/InputHandler.h
-        Helpers/FileHandler.cpp
-        Helpers/FileHandler.h
-        Helpers/DataHandler.h
-        Helpers/HelperFunctions.h
-        Helpers/HelperFunctions.cpp
         Classes/TemplateCreator.cpp
         Classes/TemplateCreator.h
+        Classes/ActionCreator.cpp
+        Classes/ActionCreator.h
         Templates/IndividualTemplates/IndividualBaseTemplate.cpp
         Templates/IndividualTemplates/IndividualBaseTemplate.h
         Templates/ActionTemplates/ActionBaseTemplate.h
         Templates/ActionTemplates/ActionBaseTemplate.cpp
-        Classes/ActionCreator.cpp
-        Classes/ActionCreator.h
         Templates/ActionTemplates/Offensive.cpp
         Templates/ActionTemplates/Offensive.h
         Templates/IndividualTemplates/Species.cpp
@@ -50,4 +43,14 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Helpers/Structs/Payload.h
         Helpers/Structs/Stats.h
         Helpers/Structs/Payload.cpp
-        Helpers/Structs/Stats.cpp)
+        Helpers/Structs/Stats.cpp
+        Helpers/DisplayHelper.cpp
+        Helpers/DisplayHelper.h
+        Helpers/IndexFinder.h
+        Helpers/InputHandler.cpp
+        Helpers/InputHandler.h
+        Helpers/FileHandler.cpp
+        Helpers/FileHandler.h
+        Helpers/DataHandler.h
+        Helpers/HelperFunctions.h
+        Helpers/HelperFunctions.cpp)

@@ -64,4 +64,3 @@ Person
 Life: 1-2
 Strength: 1-2
 Intelligence: 1-2
-
