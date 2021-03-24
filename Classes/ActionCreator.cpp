@@ -38,6 +38,7 @@ baseActionTemplateStats *ActionCreator::get_base_stats() {
     cin >> name;
     auto stats = new baseActionTemplateStats();
     stats->name = name;
+    stats->cooldown = get_int_within_range(1, 5, "How long is the cool down for this action?");
     cout << "Is this a physical action (No would imply that it is a mental action)?\n1. Yes\n2. No" << endl;
     cin >> is_physical;
     if(is_physical == "1"){
