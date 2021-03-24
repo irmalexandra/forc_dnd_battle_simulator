@@ -35,7 +35,7 @@ public:
     void set_unnatural(bool* unnatural);
     void set_disquiet_range(int* disquiet_min, int* disquiet_max);
     void set_traumatism_range(int* traumatism_min, int* traumatism_max);
-
+    string get_raw_info();
     friend std::ostream& operator<< (std::ostream& out, Species* creature);
 
 private:

@@ -18,7 +18,7 @@ public:
 
     Range get_fear_range();
     Range get_terror_range();
-
+    string get_raw_info();
     friend std::ostream& operator<< (std::ostream& out, Role* person);
 
 private:
