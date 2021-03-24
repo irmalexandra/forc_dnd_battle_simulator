@@ -126,9 +126,14 @@ void FileHandler::load_templates(Payload* payload){
             }
         }
         if (type == "Person"){
-            payload->DHRoles->get_data()->push_back(new Role(stats, offensives, defensives));
+            if (!offensives->empty() && !defensives->empty()){
+                payload->DHRoles->get_data()->push_back(new Role(stats, offensives, defensives));
+            }
+
         } else if (type == "Eldritch Horror" || type == "Creature") {
-            payload->DHSpecies->get_data()->push_back(new Species(stats, offensives, defensives));
+            if (!offensives->empty() && !defensives->empty()) {
+                payload->DHSpecies->get_data()->push_back(new Species(stats, offensives, defensives));
+            }
         }
         fileIn.getline(single_line, 32);// To skip empty lines
         delete stats;
