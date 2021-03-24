@@ -354,6 +354,11 @@ void FileHandler::load_actions(Payload *payload) {
 
         fileIn.getline(single_line, 32);
         line_str = string(single_line);
+        *temp_string_array = split_string(line_str,":" );
+        stats->cooldown = stoi(temp_string_array->at(1));
+
+        fileIn.getline(single_line, 32);
+        line_str = string(single_line);
         "Physical" == line_str.substr(0, line_str.length()-1) ? stats->physical =  true : stats->physical = false;
 
 

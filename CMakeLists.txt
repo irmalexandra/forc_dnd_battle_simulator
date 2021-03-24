@@ -24,14 +24,14 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Classes/ActionCreator.h
         Templates/IndividualTemplates/IndividualBaseTemplate.cpp
         Templates/IndividualTemplates/IndividualBaseTemplate.h
-        Templates/ActionTemplates/ActionBaseTemplate.h
-        Templates/ActionTemplates/ActionBaseTemplate.cpp
-        Templates/ActionTemplates/Offensive.cpp
-        Templates/ActionTemplates/Offensive.h
         Templates/IndividualTemplates/Species.cpp
         Templates/IndividualTemplates/Species.h
         Templates/IndividualTemplates/Role.cpp
         Templates/IndividualTemplates/Role.h
+        Templates/ActionTemplates/ActionBaseTemplate.h
+        Templates/ActionTemplates/ActionBaseTemplate.cpp
+        Templates/ActionTemplates/Offensive.cpp
+        Templates/ActionTemplates/Offensive.h
         Templates/ActionTemplates/Defensive.cpp
         Templates/ActionTemplates/Defensive.h
         Helpers/SubMenus/Actions.cpp

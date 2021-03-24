@@ -15,8 +15,6 @@ struct baseIndividualTemplateStats {
     int int_max = 0;
 };
 
-
-
 struct baseIndividualStats{
     std::string name = "";
     std::string type = "unchanged from base_Stats";
@@ -34,6 +32,7 @@ struct baseActionTemplateStats{
     std::string name = "";
     std::string type = "";
     bool physical = true;
+    int cooldown;
 };
 
 struct Range {

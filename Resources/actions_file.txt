@@ -1,18 +1,21 @@
 5
 Name: Bite
 Type: Offensive
+Cooldown: 1
 Physical
 Hit Modifier: 5
 Damage: 2
 
 Name: Handgun
 Type: Offensive
+Cooldown: 2
 Physical
 Hit Modifier: 5
 Damage: 3
 
 Name: Mend
 Type: Defensive
+Cooldown: 2
 Physical
 Defense Modifier: 0
 Health Recovery: 2
@@ -20,6 +23,7 @@ Duration: 1
 
 Name: Bolster
 Type: Defensive
+Cooldown: 5
 Mental
 Defense Modifier: 0
 Health Recovery: 3
@@ -27,8 +31,10 @@ Duration: 2
 
 Name: Evade
 Type: Defensive
+Cooldown: 2
 Physical
 Defense Modifier: 3
 Health Recovery: 0
 Duration: 1
+
 
