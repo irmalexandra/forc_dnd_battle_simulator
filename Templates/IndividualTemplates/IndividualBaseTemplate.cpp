@@ -17,6 +17,19 @@ IndividualBaseTemplate::IndividualBaseTemplate(baseIndividualTemplateStats* base
     this->defensive_actions = defensive_actions;
 }
 
+IndividualBaseTemplate::IndividualBaseTemplate(baseIndividualTemplateStats* base_stats){
+    this->name = base_stats->name;
+    this->type = base_stats->type;
+    this->life_min = base_stats->life_min;
+    this->life_max = base_stats->life_max;
+    this->intelligence_min = base_stats->int_min;
+    this->intelligence_max = base_stats->int_max;
+    this->strength_min = base_stats->str_min;
+    this->strength_max = base_stats->str_max;
+    this->offensive_actions = new vector<Offensive*>;
+    this->defensive_actions = new vector<Defensive*>;
+}
+
 std::string IndividualBaseTemplate::get_name() {
     return this->name;
 }

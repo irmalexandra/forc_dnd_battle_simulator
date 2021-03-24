@@ -2,6 +2,7 @@
 #define FORC_PA_5_STATS_H
 
 #include <iostream>
+#include "vector"
 
 struct baseIndividualTemplateStats {
     std::string name = "";

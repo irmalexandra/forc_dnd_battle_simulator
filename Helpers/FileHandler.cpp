@@ -7,7 +7,8 @@ void FileHandler::load_templates(Payload* payload){
     string filename = "Resources/template_file.txt";
     cout << "Loading templates from " << filename << "..." << endl;
     speciesStats* stats;
-
+    vector<Offensive*>* offensives;
+    vector<Defensive*>* defensives;
     string name;
     string type;
 
@@ -31,6 +32,8 @@ void FileHandler::load_templates(Payload* payload){
     for(int i = 0; i < amount; i++){
 
         stats = new speciesStats();
+        offensives = new vector<Offensive*>;
+        defensives = new vector<Defensive*>;
 
         fileIn.getline(single_line, 32);
         line_str = string(single_line);
@@ -71,7 +74,7 @@ void FileHandler::load_templates(Payload* payload){
             auto index_of_name = get_index(payload->DHOffensives->get_data(),
                                            action_name);
             if(index_of_name != -1){
-                offensives.push_back(payload->DHOffensives->get_data()->at(index_of_name));
+                offensives->push_back(payload->DHOffensives->get_data()->at(index_of_name));
             }
             else{
                 cout << "Action: " << action_name << " not found." << endl;
@@ -89,7 +92,7 @@ void FileHandler::load_templates(Payload* payload){
             auto index_of_name = get_index(payload->DHDefensives->get_data(),
                                            action_name);
             if(index_of_name != -1){
-                defensives.push_back(payload->DHDefensives->get_data()->at(index_of_name));
+                defensives->push_back(payload->DHDefensives->get_data()->at(index_of_name));
             }
             else{
                 cout << "Action: " << action_name << " not found." << endl;
@@ -123,11 +126,11 @@ void FileHandler::load_templates(Payload* payload){
             }
         }
         if (type == "Person"){
-            payload->DHRoles->get_data()->push_back(new Role(stats));
+            payload->DHRoles->get_data()->push_back(new Role(stats, offensives, defensives));
         } else if (type == "Eldritch Horror" || type == "Creature") {
-            payload->DHSpecies->get_data()->push_back(new Species(stats));
+            payload->DHSpecies->get_data()->push_back(new Species(stats, offensives, defensives));
         }
-        fileIn.getline(single_line, 32); // To skip empty lines
+        fileIn.getline(single_line, 32);// To skip empty lines
         delete stats;
     }
 
