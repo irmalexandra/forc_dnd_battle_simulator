@@ -132,7 +132,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
 
             } else if (role_index >= 0) {
                 auto role = payload->DHRoles->get_data()->at(role_index);
-                cout << "1. Investigator (playable character)\n2. Person (NPC)\n3. Return" << endl;
+                cout << "1. Investigator (playable character)\n2. Person (NPC)\n0. Return" << endl;
                 bool runner = true;
                 cin >> choice;
                 while(cin.fail()){

@@ -1,4 +1,4 @@
-1
+2
 Name: Wolf
 Creature
 Life: 2-4
@@ -8,5 +8,15 @@ Offensive actions count: 1
 Bite
 Defensive actions count: 1
 Evade
-Natural
+Unnatural
 Disquiet: 1-0
+
+Name: Detective
+Person
+Life: 2-5
+Strength: 2-6
+Intelligence: 5-9
+Offensive actions count: 1
+Handgun
+Defensive actions count: 1
+Evade

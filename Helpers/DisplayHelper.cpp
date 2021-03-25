@@ -38,7 +38,7 @@ void view_all_individuals(Payload* payload) {
 void view_individuals(Payload* payload) {
     int choice;
     while(true){
-        cout << "1. View all individuals\n2. View by category\n3. Back" << endl;
+        cout << "1. View all individuals\n2. View by category\n0. Back" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -53,7 +53,7 @@ void view_individuals(Payload* payload) {
             case(2):
                 view_individuals_by_category(payload);
                 break;
-            case(3):
+            case(0):
                 return;
             default:
                 cout << choice << " is not an option" << endl;
@@ -73,7 +73,7 @@ void view_individuals_by_category(Payload* payload) {
         cout << "2. Person (NPC)" << endl;
         cout << "3. Creature" << endl;
         cout << "4. Eldritch Horror" << endl;
-        cout << "5. Back" << std::endl;
+        cout << "0. Back" << std::endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -94,7 +94,7 @@ void view_individuals_by_category(Payload* payload) {
             case 4:
                 cout << payload->DHEldritchHorrors << endl;
                 break;
-            case 5:
+            case 0:
                 return;
             default:
                 cout<<"Error"<<endl;

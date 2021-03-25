@@ -13,8 +13,6 @@ void FileHandler::load_templates(Payload* payload){
     string type;
 
 
-
-
     auto temp_string_array = new std::vector<std::string>;
     int amount;
     int temp_amount;

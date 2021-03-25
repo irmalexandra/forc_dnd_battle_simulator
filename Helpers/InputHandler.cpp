@@ -78,7 +78,7 @@ void InputHandler::main_menu() {
     string filename;
     string folder = "Saves/";
     while(true){
-        cout << "1. Templates\n2. Individuals\n3. Actions\n0. Quit" << endl;
+        cout << "1. Templates\n2. Individuals\n3. Actions\n4. Battle Simulator\n0. Quit" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -97,7 +97,6 @@ void InputHandler::main_menu() {
             case 3:
                 action_menu(this->file_handler, this->action_creator, this->payload);
                 break;
-
             case 4:
                 battle_menu(this->payload, this->file_handler);
                 break;
