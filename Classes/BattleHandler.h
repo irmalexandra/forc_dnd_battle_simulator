@@ -20,8 +20,6 @@ public:
     void set_turn_order();
     void execute_ai_turn();
     void execute_player_turn();
-    void execute_offensive_action(Offensive* action);
-    void execute_defensive_action(Defensive* action);
     template <typename T> T* select_target();
     int dice_roll(int* max_value);
     void start();

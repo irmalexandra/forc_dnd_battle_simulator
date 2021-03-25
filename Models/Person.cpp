@@ -13,7 +13,6 @@ Person::Person(std::string* name, std::string* gender, Role* role_template): Bei
     this->fear = get_random_integer(role_template->get_fear_range());
     this->current_fear = 0;
     this->role_template = role_template;
-
     delete name;
     name = nullptr;
 
@@ -29,6 +28,14 @@ Person::Person(baseIndividualStats *stats, Role* base_template): Being(stats, (I
     this->fear = stats->fear;
     this->current_fear = 0;
     this->role_template = base_template;
+    this->set_battle_stats(stats);
+}
+
+void Person::set_battle_stats(baseIndividualStats* stats){
+    this->battle_stats->life = stats->life;
+    this->battle_stats->strength = stats->strength;
+    this->battle_stats->intelligence = stats->intelligence;
+    this->battle_stats->fear = stats->fear;
 }
 
 std::string Person::get_role() {

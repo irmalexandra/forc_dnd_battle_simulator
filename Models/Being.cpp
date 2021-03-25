@@ -41,6 +41,10 @@ Being::Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template) 
     this->status = new Status();
 }
 
+battleStats* Being::get_battle_stats(){
+    return this->battle_stats;
+}
+
 void Being::set_name(std::string* name){
     this->name = *name;
 
@@ -144,6 +148,7 @@ void Being::increase_life(int amount) {
     if (this->current_life > this->get_battle_stats()->life){
         this->current_life = this->get_battle_stats()->life;
     }
+    this->status->dead = false;
 }
 
 void Being::take_offensive(Offensive* offensive) {

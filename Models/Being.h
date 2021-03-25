@@ -19,7 +19,6 @@ public:
     Being(IndividualBaseTemplate* base_template);
     Being(baseIndividualStats* stats);
     Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template);
-
 //    ~Being();
 
     void edit();
@@ -31,6 +30,7 @@ public:
     int get_initiative();
     std::string get_name();
     bool get_is_investigator();
+    battleStats* get_battle_stats();
 
 
     void set_name(std::string* name);
@@ -54,14 +54,13 @@ public:
 
 protected:
     string name;
+    battleStats* battle_stats = new battleStats();
 
 private:
     Status* status;
     int life;
-    int current_life;
     int strength;
     int intelligence;
-    bool is_investigator;
     int initiative;
     int current_life;
     bool is_investigator;

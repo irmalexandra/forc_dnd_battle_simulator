@@ -26,6 +26,7 @@ public:
 
     void set_unnatural(bool* unnatural);
     void set_disquiet(int* disquiet);
+    void set_battle_stats(baseIndividualStats* stats);
 
     Species* get_template();
 

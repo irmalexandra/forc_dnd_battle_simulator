@@ -7,7 +7,6 @@ Creature::Creature(std::string* name, Species* species): Being(species){
     this->disquiet = get_random_integer(species->get_disquiet_range());
 
     this->species = species;
-
     delete name;
     name = nullptr;
 }
@@ -20,7 +19,16 @@ Creature::Creature(baseIndividualStats* stats, Species* species): Being(stats, (
     this->disquiet = stats->disquiet;
 
     this->species = species;
+    this->set_battle_stats(stats);
 };
+
+void Creature::set_battle_stats(baseIndividualStats* stats){
+    this->battle_stats->life = stats->life;
+    this->battle_stats->strength = stats->strength;
+    this->battle_stats->intelligence = stats->intelligence;
+    this->battle_stats->disquiet = stats->disquiet;
+}
+
 
 Species* Creature::get_template(){
     return this->species;

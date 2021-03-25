@@ -17,13 +17,14 @@ class Person: public Being {
 public:
     Person(std::string* name, std::string* gender, Role* base_template);
     Person(baseIndividualStats* stats, Role* base_template);
+    void set_battle_stats(baseIndividualStats* stats);
+
     std::string get_gender();
     std::string get_role();
 
     Role* get_role_template();
     int get_fear();
     int get_current_fear();
-
     void edit(vector<Person*>* existing_persons);
 
     void set_gender(std::string* gender);

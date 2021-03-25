@@ -2,14 +2,14 @@
 Name: Holmes
 Investigator
 Detective
-Life: 2
+Life: 6
 Strength: 3
 Intelligence: 7
 Gender: Male
 Fear: 6
 Terror: 2
 
-Name: Wolf1
+Name: Wolfie
 Creature
 Wolf
 Life: 3
@@ -17,4 +17,3 @@ Strength: 1
 Intelligence: 0
 Unnatural
 Disquiet: 1
-

@@ -48,7 +48,7 @@ void BattleHandler::increment_turn() {
 }
 
 void BattleHandler::start() {
-    while (this->round_tracker < 3/*monster_team_count > 0 && investigator_team_count > 0*/){
+    while (monster_team_count > 0 && investigator_team_count > 0){
         while (this->turn_tracker < this->turn_size){
             set_status();
             if(this->participant_list->at(this->turn_tracker)->get_is_investigator()){
@@ -267,7 +267,6 @@ void BattleHandler::execute_ai_turn() {
     }
     if (use_defensive){
         cout << action << " used on " << participant->get_name() << "!" << endl;
-        // TODO DO DEFENSIVE ACTION!!!
     }
 
 }
@@ -381,11 +380,4 @@ void BattleHandler::decrement_cooldowns() {
     }
 }
 
-void BattleHandler::execute_offensive_action(Offensive* action) {
-
-}
-
-void BattleHandler::execute_defensive_action(Defensive* action) {
-
-}
 

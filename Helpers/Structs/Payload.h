@@ -20,7 +20,7 @@ struct Payload {
             DataHandler<Creature>* dh_creatures,
             DataHandler<EldritchHorror>* dh_eldritch_horrors,
             DataHandler<Species>* dh_species,
-            DataHandler<Role>* dh_roles, /*DataHandler<Action>* dh_actions,*/
+            DataHandler<Role>* dh_roles,
             DataHandler<Offensive>* dh_offensive,
             DataHandler<Defensive>* dh_defensive,
             map<string, int>* species_map);

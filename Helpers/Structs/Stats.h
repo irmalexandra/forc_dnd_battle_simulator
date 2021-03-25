@@ -29,6 +29,29 @@ struct baseIndividualStats{
     int traumatism = 0;
     int terror = 0;
 };
+
+struct battleStats {
+    void set_base_stats(int life, int strength, int intelligence){
+        this->life = life;
+        this->strength = strength;
+        this->intelligence = intelligence;
+    };
+    void set_as_person(int life, int strength, int intelligence, int fear){
+        set_base_stats(life, strength, intelligence);
+        this->fear = fear;
+    };
+    void set_as_creature(int life, int strength, int intelligence, int disquiet){
+        set_base_stats(life, strength, intelligence);
+        this->disquiet = disquiet;
+    };
+public:
+    int life = 0;
+    int strength = 0;
+    int intelligence = 0;
+    int disquiet = 0;
+    int fear = 0;
+};
+
 struct baseActionTemplateStats{
     std::string name = "";
     std::string type = "";
