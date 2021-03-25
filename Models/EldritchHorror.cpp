@@ -29,7 +29,7 @@ std::ostream& operator<< (std::ostream& out, EldritchHorror* eldritchHorror){
     return out;
 }
 
-void EldritchHorror::edit() {
+void EldritchHorror::edit(vector<EldritchHorror*>* existing_horrors) {
     enum Stats { Name = 1, Life = 2, Strength = 3, Intelligence = 4, Unnatural = 5, Disquiet = 6, Traumatism = 7, Back = 8};
     int choice = 0;
     auto new_int_value = new int(0);
@@ -51,6 +51,10 @@ void EldritchHorror::edit() {
                 new_name = new std::string("");
                 std::cout << "Enter new name: ";
                 std::cin >> *new_name;
+                while(get_index(existing_horrors, *new_name) != -1){
+                    cout << "Name already taken, choose a different name." << endl;
+                    cin >> *new_name;
+                }
                 this->set_name(new_name);
                 break;
             case Life:

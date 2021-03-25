@@ -2,14 +2,33 @@
 
 
 BattleHandler::BattleHandler(Payload* payload) {
-    auto investigators = payload->DHInvestigators->get_data();
-    auto investigator = investigators->at(0);
-
-    auto investaBeing = (Being*)investigator;
-
-    auto beingToInvestigator = (Investigator*) investaBeing;
-
-    cout << "stuff";
+    this->payload = payload;
+    cout << "Launching battle simulator." << endl;
+    cout << "Rolling initiative." << endl;
+    this->participant_list = new vector<Being*>;
+    for (auto & creature : *payload->DHCreatures->get_data()){
+        creature->roll_initiative();
+        this->participant_list->push_back((Being*)creature);
+        this->monster_team_count++;
+    }
+    for (auto & investigator : *payload->DHInvestigators->get_data()){
+        investigator->roll_initiative();
+        this->participant_list->push_back((Being*)investigator);
+        this->investigator_team_count++;
+    }
+    for (auto & person : *payload->DHPersons->get_data()){
+        person->roll_initiative();
+        this->participant_list->push_back((Being*)person);
+        this->investigator_team_count++;
+    }
+    for (auto & horror : *payload->DHEldritchHorrors->get_data()){
+        horror->roll_initiative();
+        this->participant_list->push_back((Being*)horror);
+        this->monster_team_count++;
+    }
+    set_turn_order();
+    cout << "Turn order established." << endl;
+    this->turn_size = this->participant_list->size();
 }
 
 bool compare (Being* lb, Being* rb){

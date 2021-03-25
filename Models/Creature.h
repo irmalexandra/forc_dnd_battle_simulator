@@ -10,6 +10,7 @@
 #include "iostream"
 #include "../Templates/IndividualTemplates/Species.h"
 #include "../Helpers/HelperFunctions.h"
+#include "../Helpers/IndexFinder.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ public:
     Creature(std::string* name, Species* species);
     Creature(baseIndividualStats* stats, Species* species);
 
-    void edit();
+    void edit(vector<Creature*>* existing_creatures);
 
     bool get_unnatural();
     int get_disquiet();

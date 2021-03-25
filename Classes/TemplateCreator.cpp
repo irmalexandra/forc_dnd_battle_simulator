@@ -4,9 +4,9 @@
 
 #include "TemplateCreator.h"
 
-speciesStats* TemplateCreator::get_species_stats(){
+speciesStats* TemplateCreator::get_species_stats(Payload* payload){
     auto species_stats = new speciesStats();
-    get_base_stats(species_stats);
+    get_base_stats(species_stats, payload);
     int choice = -1;
 
 
@@ -52,27 +52,32 @@ speciesStats* TemplateCreator::get_species_stats(){
 
 }
 
-Species *TemplateCreator::create_species() {
-    speciesStats* stats = this->get_species_stats();
+Species *TemplateCreator::create_species(Payload* payload) {
+    speciesStats* stats = this->get_species_stats(payload);
     return new Species(stats);
 }
 
-Role *TemplateCreator::create_role() {
+Role *TemplateCreator::create_role(Payload* payload) {
     auto role_stats = new baseIndividualTemplateStats();
     role_stats->type = "Person";
-    get_base_stats(role_stats);
+    get_base_stats(role_stats, payload);
 
     return new Role(role_stats);
 }
 
 
-void TemplateCreator::get_base_stats(baseIndividualTemplateStats* base_stats) {
+void TemplateCreator::get_base_stats(baseIndividualTemplateStats* base_stats, Payload* payload) {
     if (base_stats == nullptr){
         auto base_stats = new baseIndividualTemplateStats();
     }
-
+    string name;
     cout << "Enter name (no spaces): ";
-    cin >> base_stats->name;
+    cin >> name;
+    while(get_index(payload->DHRoles->get_data(), name) != -1 || get_index(payload->DHSpecies->get_data(), name) != -1){
+        cout << "Name already taken, choose a different name." << endl;
+        cin >> name;
+    }
+    base_stats->name = name;
 
 
     base_stats->life_min = get_int_within_range(0, 10, "Enter lower range for life: ");

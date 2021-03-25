@@ -32,7 +32,7 @@ std::ostream& operator<< (std::ostream& out, Investigator* investigator) {
     return out;
 }
 
-void Investigator::edit() {
+void Investigator::edit(vector<Investigator*>* existing_investigators) {
     enum Stats { Name = 1, Life = 2, Strength = 3, Intelligence = 4, Role = 5, Gender = 6, Fear = 7, Terror = 8, Back = 9};
     int choice = 0;
     auto new_int_value = new int(0);
@@ -56,6 +56,10 @@ void Investigator::edit() {
                 new_name = new std::string("");
                 std::cout << "Enter new name: ";
                 std::cin >> *new_name;
+                while(get_index(existing_investigators, *new_name) != -1){
+                    cout << "Name already taken, choose a different name." << endl;
+                    cin >> *new_name;
+                }
                 this->set_name(new_name);
                 break;
             case Life:

@@ -5,8 +5,9 @@ ActionBaseTemplate::ActionBaseTemplate(baseActionTemplateStats *stats) {
     this->physical = stats->physical;
     this->type = stats->type;
     this->cooldown = stats->cooldown;
-    delete stats;
-    stats = nullptr;
+    this->cooldown_remaining = 0;
+    // delete stats;
+    // stats = nullptr;
 }
 
 void ActionBaseTemplate::use_action() {

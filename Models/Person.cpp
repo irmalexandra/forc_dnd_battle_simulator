@@ -72,7 +72,7 @@ std::ostream& operator<< (std::ostream& out, Person* person) {
     return out;
 }
 
-void Person::edit() {
+void Person::edit(vector<Person*>* existing_persons) {
     enum Stats { Name = 1, Life = 2, Strength = 3, Intelligence = 4, Role = 5, Gender = 6, Fear = 7, Back = 8};
     int choice = 0;
     auto new_int_value = new int(0);
@@ -95,6 +95,10 @@ void Person::edit() {
                 new_name = new std::string("");
                 std::cout << "Enter new name: ";
                 std::cin >> *new_name;
+                while(get_index(existing_persons, *new_name) != -1){
+                    cout << "Name already taken, choose a different name." << endl;
+                    cin >> *new_name;
+                }
                 this->set_name(new_name);
                 break;
             case Life:

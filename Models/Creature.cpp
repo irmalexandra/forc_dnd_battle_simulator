@@ -26,7 +26,7 @@ Species* Creature::get_template(){
     return this->species;
 }
 
-void Creature::edit() {
+void Creature::edit(vector<Creature*>* existing_creatures) {
     enum Stats { Name = 1, Life = 2, Strength = 3, Intelligence = 4, Unnatural = 5, Disquiet = 6, Back = 7};
     int choice = 0;
     int* new_int_value;
@@ -47,6 +47,10 @@ void Creature::edit() {
                 new_name = new std::string("");
                 std::cout << "Enter new name: ";
                 std::cin >> *new_name;
+                while(get_index(existing_creatures, *new_name) != -1){
+                    cout << "Name already taken, choose a different name." << endl;
+                    cin >> *new_name;
+                }
                 this->set_name(new_name);
                 break;
             case Life:

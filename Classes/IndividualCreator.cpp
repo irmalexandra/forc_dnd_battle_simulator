@@ -13,37 +13,40 @@ IndividualCreator::~IndividualCreator() {
     this->base_stats = nullptr;
 }
 
-Person *IndividualCreator::createPerson(Role* selected_role) {
+Person *IndividualCreator::createPerson(Role* selected_role, Payload* payload) {
     return new Person(
-            this->get_individual_name(selected_role->get_type(), selected_role->get_name())
-            , gender_picker()
-            , selected_role);
+            this->get_individual_name(selected_role->get_type(), selected_role->get_name(), payload)
+            , gender_picker() , selected_role);
 }
 
-Investigator *IndividualCreator::createInvestigator(Role* selected_role) {
+Investigator *IndividualCreator::createInvestigator(Role* selected_role, Payload* payload) {
     return new Investigator(
-            this->get_individual_name(selected_role->get_type(), selected_role->get_name())
-            , gender_picker()
-            , selected_role);
+            this->get_individual_name(selected_role->get_type(), selected_role->get_name(), payload)
+            , gender_picker(), selected_role);
 }
 
-Creature *IndividualCreator::createCreature(Species* selected_species) {
+Creature *IndividualCreator::createCreature(Species* selected_species, Payload* payload) {
     return new Creature(
-            this->get_individual_name(selected_species->get_type(), selected_species->get_name()),
+            this->get_individual_name(selected_species->get_type(), selected_species->get_name(), payload),
             selected_species);
 }
 
-EldritchHorror *IndividualCreator::createEldritchHorror(Species* selected_species) {
+EldritchHorror *IndividualCreator::createEldritchHorror(Species* selected_species, Payload* payload) {
     return new EldritchHorror(
-            this->get_individual_name(selected_species->get_type(), selected_species->get_name()),
+            this->get_individual_name(selected_species->get_type(), selected_species->get_name(), payload),
             selected_species);
 }
 
-string* IndividualCreator::get_individual_name(string template_type, string template_name){
+string* IndividualCreator::get_individual_name(string template_type, string template_name, Payload* payload){
     auto new_name = new string(template_name);
     if (template_type == "Person" || template_type == "Investigator"){
         cout << "Enter the name of the character you are creating." << endl;
         cin >> *new_name;
+        while(get_index(payload->DHPersons->get_data(), *new_name) != -1 || get_index(payload->DHInvestigators->get_data(), *new_name) != -1 ||
+                get_index(payload->DHSpecies->get_data(), *new_name) != -1 || get_index(payload->DHEldritchHorrors->get_data(), *new_name) != -1){
+            cout << "Name already taken, choose a different name." << endl;
+            cin >> *new_name;
+        }
     }
     else{
         *new_name = template_name;

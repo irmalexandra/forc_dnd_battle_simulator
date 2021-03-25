@@ -4,6 +4,8 @@
 #include "../Templates/ActionTemplates/Offensive.h"
 #include "../Templates/ActionTemplates/ActionBaseTemplate.h"
 #include "../Helpers/HelperFunctions.h"
+#include "../Helpers/IndexFinder.h"
+#include "../Helpers/Structs/Payload.h"
 
 using namespace std;
 
@@ -13,11 +15,11 @@ public:
     ~ActionCreator() = default;
 
 
-    Defensive* create_defensive();
-    Offensive* create_offensive();
+    Defensive* create_defensive(Payload* payload);
+    Offensive* create_offensive(Payload* payload);
 
 private:
-    baseActionTemplateStats* get_base_stats();
+    baseActionTemplateStats* get_base_stats(Payload* payload);
 
 };
 

@@ -27,6 +27,7 @@ public:
     void set_type(std::string* type);
     void add_offensive_action(Offensive* action);
     void add_defensive_action(Defensive* action);
+    Offensive* do_offensive_action();
     vector<Offensive*>* get_offensive_actions();
     vector<Defensive*>* get_defensive_actions();
 

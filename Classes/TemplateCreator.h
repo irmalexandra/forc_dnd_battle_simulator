@@ -9,6 +9,8 @@
 #include "../Templates/IndividualTemplates/Species.h"
 #include "../Templates/IndividualTemplates/IndividualBaseTemplate.h"
 #include "../Helpers/HelperFunctions.h"
+#include "../Helpers/Structs/Payload.h"
+#include "../Helpers/IndexFinder.h"
 
 
 using namespace std;
@@ -18,12 +20,12 @@ public:
     TemplateCreator() = default;
     ~TemplateCreator() = default;
 
-    Role* create_role();
-    Species* create_species();
+    Role* create_role(Payload* payload);
+    Species* create_species(Payload* payload);
 
 private:
-    void get_base_stats(baseIndividualTemplateStats* base_stats = nullptr);
-    speciesStats* get_species_stats();
+    void get_base_stats(baseIndividualTemplateStats* base_stats = nullptr, Payload* payload = nullptr);
+    speciesStats* get_species_stats(Payload* payload);
 };
 
 

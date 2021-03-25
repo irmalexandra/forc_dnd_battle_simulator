@@ -52,14 +52,14 @@ void create_template(FileHandler* file_handler, TemplateCreator* template_creato
         }
         switch (choice) {
             case 1:
-                species = template_creator->create_species();
+                species = template_creator->create_species(payload);
                 cout << "Choose offensive action" << endl;
                 add_actions(species, payload);
                 payload->DHSpecies->get_data()->push_back(species);
                 file_handler->save_templates(payload);
                 break;
             case 2:
-                role = template_creator->create_role();
+                role = template_creator->create_role(payload);
                 add_actions(role, payload);
                 payload->DHRoles->get_data()->push_back(role);
                 file_handler->save_templates(payload);
@@ -100,8 +100,4 @@ void delete_template(FileHandler* file_handler, Payload* payload){
         cout << name << " was successfully deleted!" << endl;
     }
 }
-
-
-
-
 

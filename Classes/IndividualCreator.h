@@ -16,6 +16,8 @@
 #include "../Helpers/HelperFunctions.h"
 #include "../Templates/IndividualTemplates/Species.h"
 #include "../Templates/IndividualTemplates/Role.h"
+#include "../Helpers/Structs/Payload.h"
+#include "../Helpers/IndexFinder.h"
 
 using namespace std;
 
@@ -25,11 +27,11 @@ public:
     IndividualCreator();
     ~IndividualCreator();
 
-    Person* createPerson(Role* selected_role);
-    Investigator* createInvestigator(Role* selected_role);
-    Creature* createCreature(Species* selected_species);
-    EldritchHorror* createEldritchHorror(Species* selected_species);
-    string* get_individual_name(string template_type, string template_name);
+    Person* createPerson(Role* selected_role, Payload* payload);
+    Investigator* createInvestigator(Role* selected_role, Payload* payload);
+    Creature* createCreature(Species* selected_species, Payload* payload);
+    EldritchHorror* createEldritchHorror(Species* selected_species, Payload* payload);
+    string* get_individual_name(string template_type, string template_name, Payload* payload);
 
 private:
     const int base_stat_count = 3;

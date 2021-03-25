@@ -5,6 +5,8 @@
 #include "iostream"
 #include "../Templates/IndividualTemplates/Role.h"
 #include "../Helpers/HelperFunctions.h"
+#include "../Helpers/IndexFinder.h"
+
 
 class Investigator: public Person {
 public:

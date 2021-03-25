@@ -1,6 +1,6 @@
 #include "DisplayHelper.h"
 
-
+/* ----Individuals / Roster ---- */
 
 void view_shortened_individuals(Payload* payload){
     cout << "Individuals:" << endl << endl << "Persons(NPCs)" << endl;
@@ -33,7 +33,6 @@ void view_all_individuals(Payload* payload) {
     cout << "\nEldritch Horrors" << endl;
     cout << payload->DHEldritchHorrors << endl;
 }
-
 
 void view_individuals(Payload* payload) {
     int choice;
@@ -104,19 +103,38 @@ void view_individuals_by_category(Payload* payload) {
     }
 }
 
+ /* ----Actions ----*/
+
 void view_shortened_offensives(Payload* payload){
     cout << "Offensive actions" << endl << endl;
     for(auto action: *payload->DHOffensives->get_data()){
         cout << action->get_name() << endl;
     }
 
-};
+}
+
 void view_shortened_defensives(Payload* payload){
     cout << "Defensive actions" << endl << endl;
     for(auto action: *payload->DHDefensives->get_data()){
         cout << action->get_name() << endl;
     }
-};
+}
+
+void view_offensives_from_list(vector<Offensive*>* offensives){
+    cout << "Offensives" << endl;
+    for(auto action: *offensives){
+        cout << action << endl;
+    }
+}
+
+void view_defensives_from_list(vector<Defensive*>* defensives){
+    cout << "Defensives" << endl;
+    for(auto action: *defensives){
+        cout << action << endl;
+    }
+}
+
+ /*---- Templates ----*/
 
 void view_templates(Payload* payload) {
 
@@ -127,4 +145,25 @@ void view_templates(Payload* payload) {
     cout << (*payload).DHSpecies << endl;
 }
 
+void view_single_template(int species_index, int role_index, Payload* payload){
 
+    if(species_index != -1){
+        cout << payload->DHSpecies->get_data()->at(species_index) << endl;
+    }
+
+    else if(role_index != -1){
+        cout << payload->DHRoles->get_data()->at(role_index) << endl;
+    }
+}
+
+void view_shortened_templates(Payload* payload){
+    cout << "Available Roles:" << endl;
+    for(const auto role: *payload->DHRoles->get_data()){
+        cout << '\t' << role->get_name() << endl;
+    }
+
+    cout << "\nAvailable Species:" << endl;
+    for(const auto species: *payload->DHSpecies->get_data()){
+        cout << '\t' << species->get_name() << endl;
+    }
+}

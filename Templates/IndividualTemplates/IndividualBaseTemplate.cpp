@@ -89,6 +89,10 @@ vector<Defensive*>* IndividualBaseTemplate::get_defensive_actions(){
     return this->defensive_actions;
 }
 
+Offensive* do_offensive_action(){
+    return nullptr;
+};
+
 std::ostream& operator<< (std::ostream& out, IndividualBaseTemplate* BaseTemplate) {
     out << "Name: " << BaseTemplate->get_name() << std::endl;
     out << BaseTemplate->get_type() << std::endl;

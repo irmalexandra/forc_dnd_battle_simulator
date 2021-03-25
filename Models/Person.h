@@ -11,6 +11,7 @@
 #include "iostream"
 #include "../Helpers/HelperFunctions.h"
 #include "../Templates/IndividualTemplates/Role.h"
+#include "../Helpers/IndexFinder.h"
 
 class Person: public Being {
 public:
@@ -23,7 +24,7 @@ public:
     int get_fear();
     int get_current_fear();
 
-    void edit();
+    void edit(vector<Person*>* existing_persons);
 
     void set_gender(std::string* gender);
     void set_role(std::string* role);

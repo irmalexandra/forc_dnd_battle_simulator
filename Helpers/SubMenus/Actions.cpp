@@ -60,12 +60,12 @@ void create_action(FileHandler* file_handler, ActionCreator* action_creator, Pay
         }
         switch (choice) {
             case 1:
-                offensive = action_creator->create_offensive();
+                offensive = action_creator->create_offensive(payload);
                 payload->DHOffensives->get_data()->push_back(offensive);
                 file_handler->save_actions(payload);
                 break;
             case 2:
-                defensive = action_creator->create_defensive();
+                defensive = action_creator->create_defensive(payload);
                 payload->DHDefensives->get_data()->push_back(defensive);
                 file_handler->save_actions(payload);
                 break;

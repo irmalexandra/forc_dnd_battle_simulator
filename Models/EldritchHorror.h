@@ -9,6 +9,7 @@
 #include "Creature.h"
 #include "iostream"
 #include "../Templates/IndividualTemplates/Species.h"
+#include "../Helpers/IndexFinder.h"
 
 class EldritchHorror: public Creature{
 
@@ -17,7 +18,7 @@ public:
     EldritchHorror(baseIndividualStats* stats, Species* species);
 
     int get_traumatism();
-    void edit();
+    void edit(vector<EldritchHorror*>* existing_horrors);
     void set_traumatism(int* traumatism);
 
     friend std::ostream& operator<< (std::ostream& out, EldritchHorror* eldritchHorror);

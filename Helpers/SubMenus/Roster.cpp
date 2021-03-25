@@ -75,7 +75,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
             if (species_index >= 0) {
                 auto species = payload->DHSpecies->get_data()->at(species_index);
                 if (species->get_is_eldritch()){
-                    auto new_eldritch_horror = individual_creator->createEldritchHorror(species);
+                    auto new_eldritch_horror = individual_creator->createEldritchHorror(species, payload);
                     if(payload->species_map->find(new_eldritch_horror->get_template()->get_name()) == payload->species_map->end()){
                         payload->species_map->insert(std::pair<string, int>(new_eldritch_horror->get_template()->get_name(), 0));
                     }
@@ -95,7 +95,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
                         cin >> choice;
                     }
                     if(choice == 1){
-                        new_eldritch_horror->edit();
+                        new_eldritch_horror->edit(payload->DHEldritchHorrors->get_data());
                         if(original_name != new_eldritch_horror->get_name()){
                             payload->species_map->find(new_eldritch_horror->get_template()->get_name())->second--;
                         }
@@ -103,7 +103,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
                     auto_save(file_handler, payload);
                 }
                 else {
-                    auto new_creature = individual_creator->createCreature(species);
+                    auto new_creature = individual_creator->createCreature(species, payload);
                     new_creature->set_is_investigator(new bool(false));
                     if(payload->species_map->find(new_creature->get_template()->get_name()) == payload->species_map->end()){
                         payload->species_map->insert(std::pair<string, int>(new_creature->get_template()->get_name(), 0));
@@ -122,7 +122,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
                         cin >> choice;
                     }
                     if(choice == 1){
-                        new_creature->edit();
+                        new_creature->edit(payload->DHCreatures->get_data());
                         if(original_name != new_creature->get_name()){
                             payload->species_map->find(new_creature->get_template()->get_name())->second--;
                         }
@@ -144,7 +144,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
                 }
                 while(runner){
                     if (choice == 1){
-                        auto new_investigator = individual_creator->createInvestigator(role);
+                        auto new_investigator = individual_creator->createInvestigator(role, payload);
                         new_investigator->set_is_investigator(new bool(true));
                         payload->DHInvestigators->get_data()->push_back(new_investigator);
                         cout << new_investigator << endl << "Do you wish to edit this individual?\n1. yes\n2. no" << endl;
@@ -157,14 +157,14 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
                             cin >> choice;
                         }
                         if(choice == 1){
-                            new_investigator->edit();
+                            new_investigator->edit(payload->DHInvestigators->get_data());
                         }
                         runner = false;
                         auto_save(file_handler, payload);
 
                     }
                     else if (choice == 2){
-                        auto new_person = individual_creator->createPerson(role);
+                        auto new_person = individual_creator->createPerson(role, payload);
                         new_person->set_is_investigator(new bool(false));
                         payload->DHPersons->get_data()->push_back(new_person);
                         cout << new_person << endl << "Do you wish to edit this individual?\n1. yes\n2. no" << endl;
@@ -177,7 +177,7 @@ void select_template_for_individual(FileHandler* file_handler, Payload* payload,
                             cin >> choice;
                         }
                         if(choice == 1){
-                            new_person->edit();
+                            new_person->edit(payload->DHPersons->get_data());
                         }
 
                         runner = false;
