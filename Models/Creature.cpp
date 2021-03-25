@@ -126,4 +126,5 @@ std::ostream& operator<< (std::ostream& out, Creature* creature){
     }
     out << "Disquiet: " << creature->get_disquiet() << std::endl;
     return out;
-};
+}
+

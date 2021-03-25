@@ -35,6 +35,8 @@ private:
     int monster_team_count = 0;
     int investigator_team_count = 0;
     vector<Being*>* participant_list;
+    Payload* payload;
+
 };
 
 #endif //FORC_PA_5_BATTLEHANDLER_H

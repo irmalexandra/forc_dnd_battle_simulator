@@ -29,6 +29,9 @@ public:
     void set_gender(std::string* gender);
     void set_role(std::string* role);
     void set_fear(int* fear);
+    void decrease_fear(int amount);
+    void increase_fear(int amount);
+    string get_state();
 
     friend std::ostream& operator<< (std::ostream& out, Person* person);
 

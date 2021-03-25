@@ -13,6 +13,8 @@ Being::Being(IndividualBaseTemplate* base_template){
     this->intelligence = get_random_integer(base_template->get_intelligence_range());
 
     this->base_template = base_template;
+
+    this->status = new Status();
 }
 
 Being::Being(baseIndividualStats *stats) {
@@ -21,6 +23,7 @@ Being::Being(baseIndividualStats *stats) {
     this->intelligence = stats->intelligence;
     this->is_investigator = false;
 
+    this->status = new Status();
 }
 
 Being::Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template) {
@@ -30,6 +33,8 @@ Being::Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template) 
     this->is_investigator = false;
 
     this->base_template = base_template;
+
+    this->status = new Status();
 }
 
 void Being::set_name(std::string* name){
@@ -105,4 +110,36 @@ std::ostream& operator<< (std::ostream& out, Being* being) {
 
     return out;
 }
+
+void Being::roll_initiative() {
+    this->initiative = get_random_integer(Range(1, 20));
+    cout << this->get_name() << " rolled an initiative value of: " << this->get_initiative() << endl;
+}
+
+int Being::get_initiative() {
+    return this->initiative;
+}
+
+Status* Being::get_status() {
+    return this->status;
+}
+
+int Being::get_current_life() {
+    return this->current_life;
+}
+
+void Being::decrease_life(int amount) {
+    this->current_life -= amount;
+    if (this->current_life < 0){
+        this->current_life = 0;
+    }
+}
+
+void Being::increase_life(int amount) {
+    this->current_life += amount;
+    if (this->current_life > this->life){
+        this->current_life = this->life;
+    }
+}
+
 

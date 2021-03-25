@@ -37,6 +37,10 @@ public:
     void set_strength(int* strength);
     void set_intelligence(int* intelligence);
     void set_is_investigator(bool* is_investigator);
+    void roll_initiative();
+    void decrease_life(int amount);
+    void increase_life(int amount);
+    Status* get_status();
 
 
     IndividualBaseTemplate* get_template();
@@ -44,14 +48,16 @@ public:
     friend std::ostream& operator<< (std::ostream& out, Being* being);
 
 protected:
-    std::string name;
+    string name;
 
 private:
+    Status* status;
     int life;
     int current_life;
     int strength;
     int intelligence;
     bool is_investigator;
+    int initiative;
 
     IndividualBaseTemplate* base_template;
 };

@@ -15,7 +15,9 @@ public:
     int get_terror();
     void set_terror(int* terror);
 
-    void edit();
+    void edit(vector<Investigator*>* existing_investigators);
+
+    string get_state();
 
     friend std::ostream& operator<< (std::ostream& out, Investigator* investigator);
 

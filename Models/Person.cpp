@@ -150,4 +150,28 @@ void Person::edit(vector<Person*>* existing_persons) {
     }
 }
 
+string Person::get_state() {
+    if(this->get_life() > this->get_role_template()->get_life_range().max/2){
+        return "Injured";
+    }
+    return "Default";
+}
+
+int Person::get_current_fear() {
+    return this->get_current_fear();
+}
+
+void Person::decrease_fear(int amount) {
+    this->current_fear -= amount;
+    if (this->current_fear < 0){
+        this->current_fear = 0;
+    }
+}
+
+void Person::increase_fear(int amount) {
+    this->current_fear += amount;
+    if (this->current_fear > this->fear){
+        this->current_fear = this->fear;
+    }
+}
 

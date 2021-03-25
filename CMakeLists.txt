@@ -57,4 +57,5 @@ add_executable(FORC_PA_5 ../FORC-PA-5/main.cpp
         Helpers/SubMenus/Battle.h
         Helpers/SubMenus/Battle.cpp
         Classes/BattleHandler.cpp
-        Classes/BattleHandler.h)
+        Classes/BattleHandler.h
+        Helpers/Structs/Status.h)
