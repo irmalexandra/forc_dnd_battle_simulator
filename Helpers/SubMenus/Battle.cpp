@@ -4,6 +4,11 @@ void battle_menu(Payload* payload, FileHandler* file_handler){
     int choice;
     string filename;
     string folder = "Saves/";
+
+    // TODO REMOVE THIS AFTER TESTING
+    filename = "DvsW";
+    file_handler->load_roster(payload, &filename);
+    // TODO THIS ENDS HERE!!!
     while(true){
         cout << "1. Start Battle\n2. Load different roster and start battle\n0. Back" << endl;
         cin >> choice;
@@ -20,7 +25,7 @@ void battle_menu(Payload* payload, FileHandler* file_handler){
             case 2:
                 cout << "Enter the filename of the roster you want to load: ";
                 cin >> filename;
-                file_handler->load_roster(payload, &filename);
+
                 start_battle(payload);
                 break;
             case 0:

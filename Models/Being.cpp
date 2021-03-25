@@ -9,6 +9,7 @@
 
 Being::Being(IndividualBaseTemplate* base_template){
     this->life = get_random_integer(base_template->get_life_range());
+    this->current_life = this->life;
     this->strength = get_random_integer(base_template->get_strength_range());
     this->intelligence = get_random_integer(base_template->get_intelligence_range());
 
@@ -19,6 +20,7 @@ Being::Being(IndividualBaseTemplate* base_template){
 
 Being::Being(baseIndividualStats *stats) {
     this->life = stats->life;
+    this->current_life = this->life;
     this->strength = stats->strength;
     this->intelligence = stats->intelligence;
     this->is_investigator = false;
@@ -28,6 +30,7 @@ Being::Being(baseIndividualStats *stats) {
 
 Being::Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template) {
     this->life = stats->life;
+    this->current_life = this->life;
     this->strength = stats->strength;
     this->intelligence = stats->intelligence;
     this->is_investigator = false;

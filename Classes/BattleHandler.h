@@ -27,6 +27,7 @@ public:
     void start();
     void set_status();
     string find_target();
+    string find_action();
 
 private:
     int turn_tracker = 0;
