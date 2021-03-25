@@ -178,11 +178,16 @@ void BattleHandler::execute_ai_turn() {
         cout << participant->get_name() << " is dead! Dead you hear me! DEAD!!" << endl;
         return;
     }
+    if(participant->get_status()->fleeing) {
+        cout << participant->get_name() << " has fled the battle! and will not participate in this round!" << endl;
+        return;
+    }
 
     auto action = find_action();
 
     if (action == "Flee"){
         cout << participant->get_name() << " is overcome by fear and flees the battle!" << endl;
+        participant->get_status()->set_fleeing(true);
         // TODO set dead to true? or something clever?
         return;
     }
@@ -283,6 +288,7 @@ void BattleHandler::set_status() {
         // Checking if participant is dead, if true, ignores rest of status checks
         if(participant->get_current_life() <= 0){
             participant->get_status()->set_dead(true);
+            cout << participant->get_name() << " is dead!" << endl;
             continue;
         }
 
@@ -291,6 +297,7 @@ void BattleHandler::set_status() {
 
         if(participant->get_current_life() <= participant->get_life()/2){
             participant->get_status()->set_injured(true);
+            cout << participant->get_name() << " has been injured!" << endl;
         }else{
             participant->get_status()->set_injured(false);
         }
@@ -299,6 +306,7 @@ void BattleHandler::set_status() {
         if(type == "Person" || type == "Investigator"){
             if(float((((float)this->monster_team_count / (float)this->investigator_team_count) - 1)) > 0.3){
                 participant->get_status()->set_outnumbered(true);
+                cout << participant->get_name() << " is outnumbered!" << endl;
             }
             else{
                 participant->get_status()->set_outnumbered(false);
@@ -307,6 +315,7 @@ void BattleHandler::set_status() {
         else{
             if(float((((float)this->investigator_team_count / (float)this->monster_team_count) - 1)) > 0.3){
                 participant->get_status()->set_outnumbered(true);
+                cout << participant->get_name() << " is outnumbered!" << endl;
             }
             else{
                 participant->get_status()->set_outnumbered(false);
@@ -320,11 +329,13 @@ void BattleHandler::set_status() {
                 auto person = (Person*) participant;
                 if(person->get_current_fear() >= person->get_fear()/2){
                     person->get_status()->set_frightened(true);
+                    cout << participant->get_name() << " is frightened!" << endl;
                 }else{
                     person->get_status()->set_frightened(false);
                 }
                 if(person->get_current_fear() >= person->get_fear()){
                     person->get_status()->set_insane(true);
+                    cout << participant->get_name() << " has been driven insane!" << endl;
                 }
                 else{
                     person->get_status()->set_insane(false);
@@ -335,6 +346,7 @@ void BattleHandler::set_status() {
                     if(!creature->get_unnatural()){
                         if (participant->get_status()->injured && participant->get_status()->outnumbered){
                             participant->get_status()->set_frightened(true);
+                            cout << participant->get_name() << " is frightened!" << endl;
                         }else{
                             participant->get_status()->set_frightened(false);
                         }

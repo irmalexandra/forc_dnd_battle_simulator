@@ -13,6 +13,7 @@ struct Status {
         this->frightened = false;
         this->outnumbered = false;
         this->enraged = false;
+        this->fleeing = false;
         this->dead = false;
     };
 
@@ -40,11 +41,16 @@ struct Status {
         this->dead = maybe;
     }
 
+    void set_fleeing(bool maybe){
+        this->fleeing = maybe;
+    }
+
     bool injured;
     bool insane;
     bool frightened;
     bool outnumbered;
     bool enraged;
+    bool fleeing;
     bool dead;
 };
 
