@@ -34,4 +34,5 @@ void battle_menu(Payload* payload, FileHandler* file_handler){
 
 void start_battle(Payload* payload){
     auto battle_handler = new BattleHandler(payload);
+    battle_handler->start();
 }

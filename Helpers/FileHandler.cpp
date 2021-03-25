@@ -162,13 +162,15 @@ void FileHandler::save_templates(Payload* payload) {
 }
 
 void FileHandler::save_roster(Payload* payload, string* roster_name){
-    cout << "Saving roster to " << *roster_name << "..." << endl;
+    string folder = "Saves/";
+    string extension = ".txt";
+    cout << "Saving roster to " << folder << *roster_name << extension << "..." << endl;
     int amount = 0;
     amount += payload->DHInvestigators->get_data()->size();
     amount += payload->DHPersons->get_data()->size();
     amount += payload->DHCreatures->get_data()->size();
     amount += payload->DHEldritchHorrors->get_data()->size();
-    ofstream fileout(*roster_name, ios::trunc);
+    ofstream fileout(folder + *roster_name + extension, ios::trunc);
     fileout << amount << endl;
     fileout << payload->DHInvestigators;
     fileout << payload->DHPersons;
@@ -179,10 +181,12 @@ void FileHandler::save_roster(Payload* payload, string* roster_name){
 }
 
 void FileHandler::load_roster(Payload *payload, string *roster_name) {
-    cout << "Loading roster from " << *roster_name << "..." << endl;
+    string folder = "Saves/";
+    string extension = ".txt";
+    cout << "Loading roster from " << folder << *roster_name << extension << "..." << endl;
     char single_line[32] = {};
     payload->species_map->clear();
-    ifstream fileIn (*roster_name, ios::binary);
+    ifstream fileIn (folder + *roster_name + extension, ios::binary);
     if(fileIn.fail()){
         cout << "File not found" << endl;
         return;
@@ -313,15 +317,17 @@ void FileHandler::load_actions(Payload *payload) {
     char single_line[32] = {};
     string filename = "Resources/actions_file.txt";
     cout << "Loading actions from " << filename << "..." << endl;
-    baseActionTemplateStats* stats;
 
+    baseActionTemplateStats* stats;
     string name;
     string type;
-    int* damage = new int();
-    int* hit_modifier = new int();
-    int* defense_modifier = new int();
-    int* recovery = new int();
-    int* duration = new int();
+
+    int* damage;
+    int* hit_modifier;
+    int* defense_modifier;
+    int* recovery;
+    int* duration;
+
 
     auto temp_string_array = new std::vector<std::string>;
     int amount;
@@ -337,7 +343,11 @@ void FileHandler::load_actions(Payload *payload) {
     }
     amount = stoi(line_str);
     for(int i = 0; i < amount; i++){
-
+        damage = new int();
+        hit_modifier = new int();
+        defense_modifier = new int();
+        recovery = new int();
+        duration = new int();
         stats = new baseActionTemplateStats();
 
         while(line_str == ""){
@@ -398,10 +408,14 @@ void FileHandler::load_actions(Payload *payload) {
             payload->DHDefensives->get_data()->push_back(new Defensive(stats, defense_modifier, recovery, duration));
         }
         fileIn.getline(single_line, 32); // To skip empty lines
+        delete stats;
+        delete damage;
+        delete hit_modifier;
+        delete defense_modifier;
+        delete recovery;
+        delete duration;
     }
-    delete stats;
-    delete damage;
-    delete hit_modifier;
+
     cout << "Done!" << endl;
 }
 

@@ -8,6 +8,9 @@
 
 #include "iostream"
 #include "../Templates/IndividualTemplates/IndividualBaseTemplate.h"
+#include "../Helpers/Structs/Status.h"
+
+using namespace std;
 
 class Being {
 public:
@@ -21,10 +24,13 @@ public:
     void edit();
 
     int get_life();
+    int get_current_life();
     int get_strength();
     int get_intelligence();
+    int get_initiative();
     std::string get_name();
     bool get_is_investigator();
+
 
     void set_name(std::string* name);
     void set_life(int* life);
@@ -35,7 +41,6 @@ public:
 
     IndividualBaseTemplate* get_template();
 
-
     friend std::ostream& operator<< (std::ostream& out, Being* being);
 
 protected:
@@ -43,6 +48,7 @@ protected:
 
 private:
     int life;
+    int current_life;
     int strength;
     int intelligence;
     bool is_investigator;

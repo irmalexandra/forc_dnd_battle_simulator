@@ -1,7 +1,3 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #include "Investigator.h"
 using namespace std;
 

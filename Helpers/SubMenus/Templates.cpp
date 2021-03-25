@@ -76,31 +76,6 @@ void create_template(FileHandler* file_handler, TemplateCreator* template_creato
     }
 }
 
-
-
-void view_single_template(int species_index, int role_index, Payload* payload){
-
-    if(species_index != -1){
-        cout << payload->DHSpecies->get_data()->at(species_index) << endl;
-    }
-
-    else if(role_index != -1){
-        cout << payload->DHRoles->get_data()->at(role_index) << endl;
-    }
-}
-
-void view_shortened_templates(Payload* payload){
-    cout << "Available Roles:" << endl;
-    for(const auto role: *payload->DHRoles->get_data()){
-        cout << '\t' << role->get_name() << endl;
-    }
-
-    cout << "\nAvailable Species:" << endl;
-    for(const auto species: *payload->DHSpecies->get_data()){
-        cout << '\t' << species->get_name() << endl;
-    }
-}
-
 void delete_template(FileHandler* file_handler, Payload* payload){
     string name;
     view_shortened_templates(payload);

@@ -4,7 +4,7 @@
 void individual_menu(FileHandler* file_handler, Payload* payload, IndividualCreator* individual_creator) {
     int choice;
     string filename;
-    string folder = "Saves/";
+
     while(true){
         cout << "1. View individuals\n2. Create individual\n3. Delete individual\n4. Save current roster\n5. Load roster\n0. Back" << endl;
         cin >> choice;
@@ -27,12 +27,12 @@ void individual_menu(FileHandler* file_handler, Payload* payload, IndividualCrea
             case(4):
                 cout << "Enter the filename of the new roster: Save/";
                 cin >> filename;
-                file_handler->save_roster(payload, new string(folder + filename));
+                file_handler->save_roster(payload, new string(filename));
                 break;
             case(5):
                 cout << "Enter the filename of the roster you want to load: ";
                 cin >> filename;
-                file_handler->load_roster(payload, new string(folder + filename));
+                file_handler->load_roster(payload, new string(filename));
                 break;
             case(0):
                 return;

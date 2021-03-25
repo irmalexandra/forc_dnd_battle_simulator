@@ -21,6 +21,7 @@ public:
 
     Role* get_role_template();
     int get_fear();
+    int get_current_fear();
 
     void edit();
 
@@ -34,6 +35,7 @@ private:
     std::string role;
     std::string gender;
     int fear;
+    int current_fear = 0;
     Role* role_template;
 
 };

@@ -1,14 +1,9 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #ifndef FORC_PA_5_ROLE_H
 #define FORC_PA_5_ROLE_H
 
 #include "string"
 #include "iostream"
 #include "IndividualBaseTemplate.h"
-
 
 
 class Role: public IndividualBaseTemplate {

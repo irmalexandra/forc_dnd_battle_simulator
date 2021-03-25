@@ -1,13 +1,8 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #ifndef FORC_PA_5_SPECIES_H
 #define FORC_PA_5_SPECIES_H
 
 #include "IndividualBaseTemplate.h"
 #include "iostream"
-
 
 struct speciesStats : public baseIndividualTemplateStats {
     bool is_eldritch = false;
