@@ -16,6 +16,7 @@ Being::Being(IndividualBaseTemplate* base_template){
     this->base_template = base_template;
 
     this->status = new Status();
+    this->buff_list = new vector<Buff*>;
 }
 
 Being::Being(baseIndividualStats *stats) {
@@ -140,9 +141,23 @@ void Being::decrease_life(int amount) {
 
 void Being::increase_life(int amount) {
     this->current_life += amount;
-    if (this->current_life > this->life){
-        this->current_life = this->life;
+    if (this->current_life > this->get_battle_stats()->life){
+        this->current_life = this->get_battle_stats()->life;
     }
+}
+
+void Being::take_offensive(Offensive* offensive) {
+    this->current_life -= offensive->get_damage();
+    if (this->current_life <= 0){
+        this->current_life = 0;
+        this->status->dead = true;
+    }
+
+}
+
+void Being::apply_buff(Defensive* defensive) {
+    this->buff_list->push_back(new Buff(defensive));
+
 }
 
 

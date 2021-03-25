@@ -24,6 +24,9 @@ public:
     std::string get_name();
     std::string get_type();
 
+    bool is_physical();
+
+
 
 
 protected:

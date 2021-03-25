@@ -9,6 +9,7 @@
 #include "iostream"
 #include "../Templates/IndividualTemplates/IndividualBaseTemplate.h"
 #include "../Helpers/Structs/Status.h"
+#include "../Helpers/Structs/Buffs.h"
 
 using namespace std;
 
@@ -40,6 +41,10 @@ public:
     void roll_initiative();
     void decrease_life(int amount);
     void increase_life(int amount);
+
+    void take_offensive(Offensive* offensive);
+    void apply_buff(Defensive* defensive);
+
     Status* get_status();
 
 
@@ -58,7 +63,11 @@ private:
     int intelligence;
     bool is_investigator;
     int initiative;
+    int current_life;
+    bool is_investigator;
 
+
+    vector<Buff*>* buff_list;
     IndividualBaseTemplate* base_template;
 };
 

@@ -23,6 +23,7 @@ int get_random_integer(const Range& range) {
     return int(rand() % (range.max - range.min) + range.min);
 }
 
+
 int get_int_within_range(int lower, int upper, const std::string& display_string){
     int input = -1;
     while(input <= lower || input > upper){

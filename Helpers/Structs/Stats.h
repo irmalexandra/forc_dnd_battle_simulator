@@ -16,6 +16,7 @@ struct baseIndividualTemplateStats {
 };
 
 struct baseIndividualStats{
+
     std::string name = "";
     std::string type = "unchanged from base_Stats";
     std::string gender = "";

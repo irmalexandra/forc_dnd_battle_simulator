@@ -45,4 +45,8 @@ std::ostream& operator<< (std::ostream& out, ActionBaseTemplate* actionBaseTempl
     return out;
 }
 
+bool ActionBaseTemplate::is_physical() {
+    return this->physical;
+}
+
 

@@ -38,6 +38,7 @@ private:
     vector<Being*>* participant_list;
     Payload* payload;
 
+
 };
 
 #endif //FORC_PA_5_BATTLEHANDLER_H

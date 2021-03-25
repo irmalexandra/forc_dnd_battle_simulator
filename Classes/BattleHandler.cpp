@@ -152,6 +152,7 @@ string BattleHandler::find_action() {
                 for (int i = 0; i < person->get_current_fear(); i++){
                     actions->push_back("Flee");
                 }
+
             }
             else{
                 for (int i = 0; i < (this->investigator_team_count-this->monster_team_count); i++){
@@ -172,12 +173,14 @@ void BattleHandler::execute_ai_turn() {
     bool use_defensive = false;
 
     auto participant = this->participant_list->at(this->turn_tracker);
+
     if(participant->get_status()->dead) {
         cout << participant->get_name() << " is dead! Dead you hear me! DEAD!!" << endl;
         return;
     }
 
     auto action = find_action();
+
     if (action == "Flee"){
         cout << participant->get_name() << " is overcome by fear and flees the battle!" << endl;
         // TODO set dead to true? or something clever?
@@ -203,9 +206,64 @@ void BattleHandler::execute_ai_turn() {
     }
 
     if (use_offensive){
-        auto target = find_target();
-        cout << action << " used on " << target << "!" << endl;
-        // TODO DO OFFENSIVE ACTION!!!
+        auto target_name = find_target();
+        Being* target;
+        for(auto being : *this->participant_list){
+            if(being->get_name() == target_name){
+                target = being;
+                break;
+            }
+        }
+
+        int participant_result = get_random_integer(Range(1, 20));
+        int target_result = get_random_integer(Range(1, 20));
+
+        vector<Offensive*>* participant_offensives = participant->get_template()->get_offensive_actions();
+        cout << participant->get_name() << " attempts to use " << action << " on " << target_name << "!" << endl;
+        if(participant_offensives->at(get_index(participant_offensives, action))->is_physical()){
+            cout << participant->get_name() << " rolls " << participant_result;
+            participant_result += participant->get_battle_stats()->strength;
+            cout << " plus " << participant->get_name() << "'s strength: " << to_string(participant->get_battle_stats()->strength)
+                << " which results in " << participant_result << endl;
+
+            cout << target_name << " rolls " << target_result;
+            target_result += target->get_battle_stats()->strength;
+            cout << " plus " << target_name << "'s strength: " << to_string(target->get_battle_stats()->strength)
+                << " which results in " << target_result << endl;
+        }
+        else{
+            cout << participant->get_name() << " rolls " << participant_result;
+            participant_result += participant->get_battle_stats()->intelligence;
+            cout << " plus " << participant->get_name() << " intelligence: " << to_string(participant->get_battle_stats()->intelligence)
+                 << " which results in " << participant_result << endl;
+            cout << target_name << " rolls " << target_result << endl;
+
+            target_result += target->get_battle_stats()->intelligence;
+            cout << " plus " << target_name << " intelligence: " << to_string(target->get_battle_stats()->intelligence)
+                 << " which results in " << target_result << endl;
+        }
+
+
+        if(participant_result > target_result){
+            Offensive* offensive_action = participant->get_template()->get_offensive_actions()->at(get_index(participant->get_template()->get_offensive_actions(), action));
+            target->take_offensive(offensive_action);
+
+            cout << target_name << " takes " << offensive_action->get_damage() << " damage and is left with " << target->get_current_life() << " life." << endl;
+            if (target->get_status()->dead){
+                if (target->get_template()->get_type() == "Person"){
+                    this->investigator_team_count--;
+                } else {
+                    this->monster_team_count--;
+                }
+                cout << target_name << " is now dead." << endl;
+            }
+            cout << participant->get_name() << "'s attack was a success! " << endl;
+        }
+        else{
+            cout << participant->get_name() << " missed!" << endl;
+        }
+
+
     }
     if (use_defensive){
         cout << action << " used on " << participant->get_name() << "!" << endl;
