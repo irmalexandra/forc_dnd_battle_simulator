@@ -42,6 +42,8 @@ public:
     void increase_life(int amount);
     void decrease_fear(int amount);
     void increase_fear(int amount);
+    void increase_disquiet(int amount);
+    void decrease_disquiet(int amount);
 
     void take_offensive(Offensive* offensive);
     void apply_buff(Defensive* defensive);

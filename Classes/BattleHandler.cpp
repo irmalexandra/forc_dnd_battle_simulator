@@ -49,8 +49,14 @@ void BattleHandler::increment_turn() {
 
 void BattleHandler::start() {
     while (monster_team_count > 0 && investigator_team_count > 0){
+        cout << "========================= Starting round: " << this->round_tracker+1 << " =========================\n" << endl;
         while (this->turn_tracker < this->turn_size){
-            if(this->participant_list->at(this->turn_tracker)->get_status()->dead || this->participant_list->at(this->turn_tracker)->get_status()->fleeing) {
+            if (monster_team_count == 0 || investigator_team_count == 0){
+                this->turn_tracker++;
+                continue;
+            }
+            if(this->participant_list->at(this->turn_tracker)->get_status()->dead || this->participant_list->at(this->turn_tracker)->get_status()->fleeing ||
+                                                                                     this->participant_list->at(this->turn_tracker)->get_status()->overcame) {
                 this->turn_tracker++;
                 continue;
             }
@@ -72,9 +78,8 @@ void BattleHandler::start() {
         this->decrement_cooldowns();
         this->turn_tracker = 0;
         this->round_tracker++;
-        cout << "========================= Ending round: " << this->round_tracker << " =========================\n" << endl;
-
     }
+    cout << "============================ Battle over ============================" << endl;
     if (monster_team_count < investigator_team_count){
         cout << "Humans persevere!\n" << endl;
     } else {
@@ -139,6 +144,8 @@ string BattleHandler::find_action() {
 
         if (!current_participant->get_status()->outnumbered){
             actions->push_back(o_action->get_name());
+        } else{
+
         }
 
         if (type == "Eldritch Horror"){
@@ -168,7 +175,6 @@ string BattleHandler::find_action() {
                 for (int i = 0; i < person->get_battle_stats()->current_fear; i++){
                     actions->push_back("Flee");
                 }
-
             }
             else{
                 for (int i = 0; i < (this->investigator_team_count-this->monster_team_count); i++){
@@ -318,6 +324,11 @@ void BattleHandler::set_status() {
             participant->get_status()->set_dead(true);
             continue;
         }
+        if(participant->get_status()->fleeing){
+            continue;
+        }
+
+
 
         //  Checking if participant is injured
         auto type = participant->get_template()->get_type();

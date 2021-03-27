@@ -1,19 +1,11 @@
-//
-// Created by emmik on 22/03/2021.
-//
 #include <chrono>
 
 #include "Models/Investigator.h"
 #include "Models/EldritchHorror.h"
-#include "Models/Creature.h"
-#include "Models/Person.h"
+
 #include "Classes/IndividualCreator.h"
 #include "string"
 #include "Helpers/InputHandler.h"
-#include "Helpers/FileHandler.h"
-
-
-//#include "Helpers/HelperFunctions.h"
 
 void stuff(InputHandler* thing){
     thing->DHRoles->get_data();
@@ -25,7 +17,8 @@ using namespace std;
 int main() {
     cout << "Starting... " << endl;
     cout << "Setting random seed" << endl;
-    auto randomSeed = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+//    auto randomSeed = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    auto randomSeed = 1616788278;
     cout << "This is the random seed: " << randomSeed << endl;
     srand(randomSeed);
     auto input_handler = new InputHandler();

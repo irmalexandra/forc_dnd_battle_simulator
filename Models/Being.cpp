@@ -161,6 +161,19 @@ void Being::increase_fear(int amount) {
     }
 
 }
+void Being::increase_disquiet(int amount) {
+    this->get_battle_stats()->current_disquiet += amount;
+    if (this->get_battle_stats()->current_disquiet > this->get_battle_stats()->disquiet){
+        this->get_battle_stats()->current_disquiet = this->get_battle_stats()->disquiet;
+    }
+}
+
+void Being::decrease_disquiet(int amount) {
+    this->get_battle_stats()->current_disquiet -= amount;
+    if (this->get_battle_stats()->current_disquiet <= 0){
+        this->get_battle_stats()->current_disquiet = 0;
+    }
+}
 
 void Being::take_offensive(Offensive* offensive) {
     if (!offensive->is_physical() && this->get_template()->get_type() == "Person"){
@@ -224,6 +237,23 @@ void Being::update_buffs() {
     Buff* buff;
     for(int i = 0; i < this->buff_list->size(); i++){
         buff = this->buff_list->at(i);
+        buff->duration_remaining -= 1;
+        if(this->buff_list->at(i)->duration_remaining <= 0){
+            this->buff_list->erase(this->buff_list->begin() + i);
+            if (buff->action->is_physical()){
+                this->get_battle_stats()->physical_defense_modifier -= buff->action->get_def_modifier();
+                this->get_battle_stats()->physical_attack_modifier -= buff->action->get_atk_modifier();
+            } else {
+                this->get_battle_stats()->mental_defense_modifier -= buff->action->get_def_modifier();
+                this->get_battle_stats()->mental_attack_modifier -= buff->action->get_atk_modifier();
+            }
+            cout << buff->action->get_name() << " has run out on " << this->get_name() << endl;
+            continue;
+        }
+        else{
+            cout << buff->action->get_name() << " is still in effect on " << this->get_name() << " with " << buff->duration_remaining << " rounds remaining." << endl;
+        }
+
         if (buff->action->get_recovery() != 0){
             if (!buff->action->is_physical() && this->get_template()->get_type() == "Role"){
                 this->get_battle_stats()->current_fear -= buff->action->get_recovery();
@@ -238,24 +268,10 @@ void Being::update_buffs() {
                 cout << this->get_name() << " now has " << this->get_battle_stats()->current_life << " life." << endl;
             }
         }
-        buff->duration_remaining -= 1;
 
-        if(this->buff_list->at(i)->duration_remaining <= 0){
-            this->buff_list->erase(this->buff_list->begin() + i);
-            if (buff->action->is_physical()){
-                this->get_battle_stats()->physical_defense_modifier -= buff->action->get_def_modifier();
-                this->get_battle_stats()->physical_attack_modifier -= buff->action->get_atk_modifier();
-            } else {
-                this->get_battle_stats()->mental_defense_modifier -= buff->action->get_def_modifier();
-                this->get_battle_stats()->mental_attack_modifier -= buff->action->get_atk_modifier();
-            }
-            cout << buff->action->get_name() << " has run out on " << this->get_name() << endl;
-        }
-        else{
-            cout << buff->action->get_name() << " is still in effect on " << this->get_name() << " with " << buff->duration_remaining << " rounds remaining." << endl;
-        }
     }
 }
+
 
 
 
