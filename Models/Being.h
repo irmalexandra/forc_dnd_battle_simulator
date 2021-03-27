@@ -44,6 +44,8 @@ public:
 
     void take_offensive(Offensive* offensive);
     void apply_buff(Defensive* defensive);
+    void update_buffs();
+
 
     Status* get_status();
 

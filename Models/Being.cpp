@@ -25,6 +25,7 @@ Being::Being(baseIndividualStats *stats) {
     this->strength = stats->strength;
     this->intelligence = stats->intelligence;
     this->is_investigator = false;
+    this->buff_list = new vector<Buff*>;
 
     this->status = new Status();
 }
@@ -35,6 +36,7 @@ Being::Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template) 
     this->strength = stats->strength;
     this->intelligence = stats->intelligence;
     this->is_investigator = false;
+    this->buff_list = new vector<Buff*>;
 
     this->base_template = base_template;
 
@@ -152,17 +154,99 @@ void Being::increase_life(int amount) {
 }
 
 void Being::take_offensive(Offensive* offensive) {
-    this->current_life -= offensive->get_damage();
-    if (this->current_life <= 0){
-        this->current_life = 0;
-        this->status->dead = true;
-    }
+    if (!offensive->is_physical() && this->get_template()->get_type() == "Person"){
+        this->increase_fear(offensive->get_damage());
+        cout << offensive->get_name() << " increases " << this->get_name() << "'s fear by " << offensive->get_damage() << "." << endl;
+        cout << this->get_name() << "'s fear is now " << this->get_battle_stats()->current_fear << " out of " << this->get_battle_stats()->fear << endl;
 
+    } else{
+        decrease_life(offensive->get_damage());
+        cout << offensive->get_name() << " damages " << this->get_name() << " for " << offensive->get_damage() << " life." << endl;
+        cout << this->get_name() << "'s life is now " << this->get_battle_stats()->current_life << endl;
+    }
 }
 
 void Being::apply_buff(Defensive* defensive) {
     this->buff_list->push_back(new Buff(defensive));
+    if (defensive->get_def_modifier() > 0){
+        if (defensive->is_physical()){
+            this->get_battle_stats()->physical_defense_modifier += defensive->get_def_modifier();
+            cout << this->get_name() << "'s defensive strength has increased by " << defensive->get_def_modifier()
+                 << " and is now " << this->get_battle_stats()->get_strength_defense() << "." << endl;
+        } else {
+            this->get_battle_stats()->mental_defense_modifier += defensive->get_def_modifier();
+            cout << this->get_name() << "'s defensive intelligence has increased by " << defensive->get_def_modifier()
+                 << " and is now " << this->get_battle_stats()->get_intelligence_defense() << "." << endl;
+        }
+    }
 
+    if (defensive->get_atk_modifier() > 0){
+        if (defensive->is_physical()){
+            this->get_battle_stats()->physical_attack_modifier += defensive->get_atk_modifier();
+            cout << this->get_name() << "'s offensive strength has increased by " << defensive->get_atk_modifier()
+                 << " and is now " << this->get_battle_stats()->get_intelligence_defense() << "." << endl;
+        } else {
+            this->get_battle_stats()->mental_attack_modifier += defensive->get_atk_modifier();
+            cout << this->get_name() << "'s offensive intelligence has increased by " << defensive->get_atk_modifier()
+                 << " and is now " << this->get_battle_stats()->get_intelligence_defense() << "." << endl;
+        }
+    }
+
+    if (defensive->get_recovery() > 0){
+        if (!defensive->is_physical() && this->get_template()->get_type() == "Role"){
+            this->get_battle_stats()->current_fear -= defensive->get_recovery();
+            if (this->get_battle_stats()->current_fear < 0){
+                this->get_battle_stats()->current_fear = 0;
+            }
+            cout << defensive->get_name() << " has recovered "<< this->get_name() << "'s fear by " << defensive->get_recovery() << "." << endl;
+
+        } else {
+            this->increase_life(defensive->get_recovery());
+            if (defensive->get_recovery() > 0){
+                cout << defensive->get_name() << " has healed "<< this->get_name() << " for " << defensive->get_recovery() << " life." << endl;
+                cout << this->get_name() << " now has " << this->get_battle_stats()->current_life << " life." << endl;
+            }
+        }
+    }
+    cout << defensive->get_name() << " has been applied and will last for " << defensive->get_duration() << " rounds." << endl;
 }
+
+void Being::update_buffs() {
+    Buff* buff;
+    for(int i = 0; i < this->buff_list->size(); i++){
+        buff = this->buff_list->at(i);
+        if (buff->action->get_recovery() != 0){
+            if (!buff->action->is_physical() && this->get_template()->get_type() == "Role"){
+                this->get_battle_stats()->current_fear -= buff->action->get_recovery();
+                if (this->get_battle_stats()->current_fear < 0){
+                    this->get_battle_stats()->current_fear = 0;
+                }
+                cout << buff->action->get_name() << " has recovered "<< this->get_name() << "'s fear by " << buff->action->get_recovery() << "." << endl;
+                cout << this->get_name() << " now has " << this->get_battle_stats()->current_fear << " out of " << this->get_battle_stats()->fear << " fear." << endl;
+            } else {
+                this->increase_life(buff->action->get_recovery());
+                cout << buff->action->get_name() << " has healed "<< this->get_name() << " for " << buff->action->get_recovery() << " life." << endl;
+                cout << this->get_name() << " now has " << this->get_battle_stats()->current_life << " life." << endl;
+            }
+        }
+        buff->duration_remaining -= 1;
+
+        if(this->buff_list->at(i)->duration_remaining <= 0){
+            this->buff_list->erase(this->buff_list->begin() + i);
+            if (buff->action->is_physical()){
+                this->get_battle_stats()->physical_defense_modifier -= buff->action->get_def_modifier();
+                this->get_battle_stats()->physical_attack_modifier -= buff->action->get_atk_modifier();
+            } else {
+                this->get_battle_stats()->mental_defense_modifier -= buff->action->get_def_modifier();
+                this->get_battle_stats()->mental_attack_modifier -= buff->action->get_atk_modifier();
+            }
+            cout << buff->action->get_name() << " has run out on " << this->get_name() << endl;
+        }
+        else{
+            cout << buff->action->get_name() << " is still in effect on " << this->get_name() << " with " << buff->duration_remaining << " rounds remaining." << endl;
+        }
+    }
+}
+
 
 

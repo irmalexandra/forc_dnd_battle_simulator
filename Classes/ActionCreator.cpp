@@ -12,9 +12,8 @@ Defensive* ActionCreator::create_defensive(Payload* payload) {
     *defense_modifier = get_int_within_range(0, 10, "Def modifier: ");
     cout << "Enter a value for the health recovery (enter 0 if this is not a recovery action)";
     *health_recovery = get_int_within_range(0, 10, "Recovery: ");
-    cout << "Enter a value for how many turns this action applies (default value is 1)";
-    *duration = get_int_within_range(0, 5, "Duration: ");
-    return new Defensive(stats, defense_modifier, health_recovery, duration);
+
+    return new Defensive(stats, defense_modifier, attack_modifier, health_recovery, duration);
 }
 
 Offensive* ActionCreator::create_offensive(Payload* payload) {

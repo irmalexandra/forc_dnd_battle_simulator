@@ -80,7 +80,7 @@ void TemplateCreator::get_base_stats(baseIndividualTemplateStats* base_stats, Pa
     base_stats->name = name;
 
 
-    base_stats->life_min = get_int_within_range(0, 10, "Enter lower range for life: ");
+    base_stats->life_min = get_int_within_range(1, 10, "Enter lower range for life: ");
     base_stats->life_max = get_int_within_range(base_stats->life_min, 10, "Enter upper range for life: ");
 
     base_stats->int_min = get_int_within_range(0, 10, "Enter lower range for intelligence: ");

@@ -1,37 +1,48 @@
-4
-Name: 2
+5
+Name: CarlTheInvestigator
+Investigator
+Inspector
+Life: 5
+Strength: 5
+Intelligence: 6
+Gender: Male
+Fear: 7
+Terror: 1
+
+Name: JohnThePerson
 Person
 Nurse
 Life: 5
 Strength: 4
-Intelligence: 7
-Gender: Female
-Fear: 6
-
-Name: yesman
-Person
-Reporter
-Life: 5
-Strength: 2
-Intelligence: 7
-Gender: Female
-Fear: 9
+Intelligence: 5
+Gender: Male
+Fear: 3
 
 Name: Wolf1
 Creature
 Wolf
-Life: 4
+Life: 5
 Strength: 6
+Intelligence: 3
+Natural
+Disquiet: 3
+
+Name: CasperTheGhost
+Creature
+Ghost
+Life: 5
+Strength: 4
+Intelligence: 7
+Unnatural
+Disquiet: 7
+
+Name: CthulhuTheBest
+Eldritch Horror
+Cthulhu
+Life: 8
+Strength: 9
 Intelligence: 5
 Unnatural
-Disquiet: 2
-
-Name: Ghoul1
-Creature
-Ghoul
-Life: 4
-Strength: 4
-Intelligence: 2
-Unnatural
-Disquiet: 6
+Disquiet: 10
+Traumatism: 1
 

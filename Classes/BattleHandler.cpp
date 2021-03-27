@@ -50,7 +50,16 @@ void BattleHandler::increment_turn() {
 void BattleHandler::start() {
     while (monster_team_count > 0 && investigator_team_count > 0){
         while (this->turn_tracker < this->turn_size){
+            if(this->participant_list->at(this->turn_tracker)->get_status()->dead || this->participant_list->at(this->turn_tracker)->get_status()->fleeing) {
+                this->turn_tracker++;
+                continue;
+            }
+            cout << "----------------------- STATUS UPDATE ---------------------" << endl;
             set_status();
+            cout << "-----------------------------------------------------------\n" << endl;
+            cout << this->participant_list->at(this->turn_tracker)->get_name() << "'s turn begins." << endl;
+
+            this->participant_list->at(this->turn_tracker)->update_buffs();
             if(this->participant_list->at(this->turn_tracker)->get_is_investigator()){
                 execute_ai_turn();
             } else {
@@ -140,7 +149,7 @@ string BattleHandler::find_action() {
         if (current_participant->get_status()->insane){
             actions->push_back(d_action->get_name());
             auto person = (Person*)current_participant;
-            for (int i = 0; i < person->get_current_fear(); i++){
+            for (int i = 0; i < person->get_battle_stats()->current_fear; i++){
                 actions->push_back("Meltdown");
             }
         }
@@ -149,7 +158,7 @@ string BattleHandler::find_action() {
             actions->push_back(d_action->get_name());
             if (type == "Person" || type == "Investigator"){
                 auto person = (Person*)current_participant;
-                for (int i = 0; i < person->get_current_fear(); i++){
+                for (int i = 0; i < person->get_battle_stats()->current_fear; i++){
                     actions->push_back("Flee");
                 }
 
@@ -212,48 +221,48 @@ void BattleHandler::execute_ai_turn() {
 
     if (use_offensive){
         auto target_name = find_target();
-        Being* target;
-        for(auto being : *this->participant_list){
-            if(being->get_name() == target_name){
-                target = being;
-                break;
-            }
+        this->execute_offensive_action(participant, target_name, action);
+
+    }
+    if (use_defensive){
+        this->execute_defensive_action(participant, action);
+    }
+}
+
+void BattleHandler::execute_player_turn() {
+
+    auto participant = this->participant_list->at(this->turn_tracker);
+    cout << participant->get_name() << " is up!" << endl;
+}
+
+void BattleHandler::execute_offensive_action(Being* participant, string target_name, string action_name) {
+    Being* target;
+    for(auto being : *this->participant_list){
+        if(being->get_name() == target_name){
+            target = being;
+            break;
         }
+    }
+    Offensive* offensive_action = participant->get_template()->get_offensive_actions()->at(get_index(participant->get_template()->get_offensive_actions(), action_name));
 
-        int participant_result = get_random_integer(Range(1, 20));
-        int target_result = get_random_integer(Range(1, 20));
+    int participant_result = get_random_integer(Range(1, 20));
+    int target_result = get_random_integer(Range(1, 20));
 
-        vector<Offensive*>* participant_offensives = participant->get_template()->get_offensive_actions();
-        cout << participant->get_name() << " attempts to use " << action << " on " << target_name << "!" << endl;
-        if(participant_offensives->at(get_index(participant_offensives, action))->is_physical()){
-            cout << participant->get_name() << " rolls " << participant_result;
-            participant_result += participant->get_battle_stats()->strength;
-            cout << " plus " << participant->get_name() << "'s strength: " << to_string(participant->get_battle_stats()->strength)
-                << " which results in " << participant_result << endl;
+    cout << participant->get_name() << " attempts to use " << action_name << " on " << target_name << "!" << endl;
+    if(offensive_action->is_physical()){
+        cout << participant->get_name() << " rolls " << participant_result;
+        participant_result += participant->get_battle_stats()->get_strength_attack();
+        cout << " plus " << participant->get_name() << "'s strength: " << to_string(participant->get_battle_stats()->get_strength_attack())
+             << " which results in " << participant_result << endl;
 
-            cout << target_name << " rolls " << target_result;
-            target_result += target->get_battle_stats()->strength;
-            cout << " plus " << target_name << "'s strength: " << to_string(target->get_battle_stats()->strength)
-                << " which results in " << target_result << endl;
-        }
-        else{
-            cout << participant->get_name() << " rolls " << participant_result;
-            participant_result += participant->get_battle_stats()->intelligence;
-            cout << " plus " << participant->get_name() << " intelligence: " << to_string(participant->get_battle_stats()->intelligence)
-                 << " which results in " << participant_result << endl;
-            cout << target_name << " rolls " << target_result << endl;
-
-            target_result += target->get_battle_stats()->intelligence;
-            cout << " plus " << target_name << " intelligence: " << to_string(target->get_battle_stats()->intelligence)
-                 << " which results in " << target_result << endl;
-        }
-
+        cout << target_name << " rolls " << target_result;
+        target_result += target->get_battle_stats()->get_strength_defense();
+        cout << " plus " << target_name << "'s strength: " << to_string(target->get_battle_stats()->get_strength_defense())
+             << " which results in " << target_result << endl;
 
         if(participant_result > target_result){
-            Offensive* offensive_action = participant->get_template()->get_offensive_actions()->at(get_index(participant->get_template()->get_offensive_actions(), action));
+            cout << participant->get_name() << "'s attack was a success!" << endl;
             target->take_offensive(offensive_action);
-
-            cout << target_name << " takes " << offensive_action->get_damage() << " damage and is left with " << target->get_current_life() << " life." << endl;
             if (target->get_status()->dead){
                 if (target->get_template()->get_type() == "Person"){
                     this->investigator_team_count--;
@@ -262,24 +271,41 @@ void BattleHandler::execute_ai_turn() {
                 }
                 cout << target_name << " is now dead." << endl;
             }
-            cout << participant->get_name() << "'s attack was a success! " << endl;
+
         }
         else{
             cout << participant->get_name() << " missed!" << endl;
         }
+    }
+    else{
+        cout << participant->get_name() << " rolls " << participant_result;
+        participant_result += participant->get_battle_stats()->get_intelligence_attack();
+        cout << " plus " << participant->get_name() << "'s intelligence: " << to_string(participant->get_battle_stats()->get_intelligence_attack())
+             << " which results in " << participant_result << endl;
+
+        cout << target_name << " rolls " << target_result;
+        target_result += target->get_battle_stats()->get_intelligence_defense();
+        cout << " plus " << target_name << "'s intelligence: " << to_string(target->get_battle_stats()->get_intelligence_defense())
+             << " which results in " << target_result << endl;
+
+        if(participant_result > target_result){
+            cout << participant->get_name() << "'s " << action_name << " was a success!" << endl;
+            target->take_offensive(offensive_action);
+
+        }
+        else{
+            cout << participant->get_name() << "'s attack failed!" << endl;
+        }
+    }
 
 
-    }
-    if (use_defensive){
-        cout << action << " used on " << participant->get_name() << "!" << endl;
-    }
 
 }
 
-void BattleHandler::execute_player_turn() {
-
-    auto participant = this->participant_list->at(this->turn_tracker);
-    cout << participant->get_name() << " is up!" << endl;
+void BattleHandler::execute_defensive_action(Being* participant, string action_name) {
+    Defensive* defensive_action = participant->get_template()->get_defensive_actions()->at(get_index(participant->get_template()->get_defensive_actions(), action_name));
+    cout << participant->get_name() << " casts " << action_name << " on self." << endl;
+    participant->apply_buff(defensive_action);
 }
 
 void BattleHandler::set_status() {
@@ -327,13 +353,13 @@ void BattleHandler::set_status() {
         if (type != "Eldritch Horror"){
             if(type == "Person" || type == "Investigator"){
                 auto person = (Person*) participant;
-                if(person->get_current_fear() >= person->get_fear()/2){
+                if(person->get_battle_stats()->current_fear >= person->get_fear()/2){
                     person->get_status()->set_frightened(true);
                     cout << participant->get_name() << " is frightened!" << endl;
                 }else{
                     person->get_status()->set_frightened(false);
                 }
-                if(person->get_current_fear() >= person->get_fear()){
+                if(person->get_battle_stats()->current_fear >= person->get_fear()){
                     person->get_status()->set_insane(true);
                     cout << participant->get_name() << " has been driven insane!" << endl;
                 }
@@ -366,19 +392,19 @@ void BattleHandler::set_status() {
     }
 }
 
-template <typename T> T* BattleHandler::select_target() {
+string BattleHandler::select_target() {
     string name;
     int index;
     cout << "Enter the name of your target: ";
     cin >> name;
     index = get_index(this->participant_list, name);
 
-    while (index != -1){
+    while (index == -1){
         cout << "\nTarget not found" << endl << "Enter the name of your target: ";
         cin >> name;
         index = get_index(this->participant_list, name);
     }
-    return this->participant_list->at(index);
+    return name;
 }
 
 void BattleHandler::decrement_cooldowns() {

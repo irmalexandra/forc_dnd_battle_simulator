@@ -136,3 +136,9 @@ std::ostream& operator<< (std::ostream& out, Creature* creature){
     return out;
 }
 
+void Creature::reset() {
+    delete this->battle_stats;
+    this->battle_stats = new battleStats();
+    this->battle_stats->set_as_creature(this->get_life(), this->get_strength(), this->get_intelligence(), this->get_disquiet());
+}
+

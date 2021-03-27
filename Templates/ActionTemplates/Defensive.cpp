@@ -1,9 +1,11 @@
 #include "Defensive.h"
 
-Defensive::Defensive(baseActionTemplateStats* stats, int* modifier, int* recovery, int* duration): ActionBaseTemplate(stats){
-    this->defense_modifier = *modifier;
-    this->health_recovery = *recovery;
+Defensive::Defensive(baseActionTemplateStats* stats, int* def_modifier, int* atk_modifier, int* hp_recovery, int* duration): ActionBaseTemplate(stats){
+    this->defense_modifier = *def_modifier;
+    this->attack_modifier = *atk_modifier;
+    this->health_recovery = *hp_recovery;
     this->duration = *duration;
+
 }
 
 int Defensive::get_def_modifier(){
@@ -15,6 +17,10 @@ int Defensive::get_recovery(){
 int Defensive::get_duration(){
     return this->duration;
 }
+int Defensive::get_atk_modifier() {
+    return this->attack_modifier;
+}
+
 
 std::ostream& operator<< (std::ostream& out, Defensive* defensive) {
     out << (ActionBaseTemplate*)(defensive);
@@ -30,3 +36,4 @@ std::ostream& operator<< (std::ostream& out, Defensive* defensive) {
 
     return out;
 }
+
