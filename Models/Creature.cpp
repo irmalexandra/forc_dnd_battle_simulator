@@ -19,15 +19,8 @@ Creature::Creature(baseIndividualStats* stats, Species* species): Being(stats, (
     this->disquiet = stats->disquiet;
 
     this->species = species;
-    this->set_battle_stats(stats);
+    this->battle_stats->set_as_creature(stats->life, stats->strength, stats->intelligence, stats->disquiet);
 };
-
-void Creature::set_battle_stats(baseIndividualStats* stats){
-    this->battle_stats->life = stats->life;
-    this->battle_stats->strength = stats->strength;
-    this->battle_stats->intelligence = stats->intelligence;
-    this->battle_stats->disquiet = stats->disquiet;
-}
 
 
 Species* Creature::get_template(){

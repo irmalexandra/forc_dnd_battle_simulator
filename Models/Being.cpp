@@ -9,7 +9,6 @@
 
 Being::Being(IndividualBaseTemplate* base_template){
     this->life = get_random_integer(base_template->get_life_range());
-    this->current_life = this->life;
     this->strength = get_random_integer(base_template->get_strength_range());
     this->intelligence = get_random_integer(base_template->get_intelligence_range());
 
@@ -21,7 +20,6 @@ Being::Being(IndividualBaseTemplate* base_template){
 
 Being::Being(baseIndividualStats *stats) {
     this->life = stats->life;
-    this->current_life = this->life;
     this->strength = stats->strength;
     this->intelligence = stats->intelligence;
     this->is_investigator = false;
@@ -32,7 +30,6 @@ Being::Being(baseIndividualStats *stats) {
 
 Being::Being(baseIndividualStats *stats, IndividualBaseTemplate* base_template) {
     this->life = stats->life;
-    this->current_life = this->life;
     this->strength = stats->strength;
     this->intelligence = stats->intelligence;
     this->is_investigator = false;
@@ -134,23 +131,35 @@ Status* Being::get_status() {
     return this->status;
 }
 
-int Being::get_current_life() {
-    return this->current_life;
-}
-
 void Being::decrease_life(int amount) {
-    this->current_life -= amount;
-    if (this->current_life < 0){
-        this->current_life = 0;
+    this->get_battle_stats()->current_life -= amount;
+    if (this->get_battle_stats()->current_life <= 0){
+        this->get_battle_stats()->current_life = 0;
+        this->status->dead = true;
     }
 }
 
 void Being::increase_life(int amount) {
-    this->current_life += amount;
-    if (this->current_life > this->get_battle_stats()->life){
-        this->current_life = this->get_battle_stats()->life;
+    this->get_battle_stats()->current_life += amount;
+    if (this->get_battle_stats()->current_life > this->get_battle_stats()->life){
+        this->get_battle_stats()->current_life = this->get_battle_stats()->life;
     }
     this->status->dead = false;
+}
+
+void Being::decrease_fear(int amount) {
+    this->get_battle_stats()->current_fear -= amount;
+    if (this->get_battle_stats()->current_fear <= 0){
+        this->get_battle_stats()->current_fear = 0;
+    }
+}
+
+void Being::increase_fear(int amount) {
+    this->get_battle_stats()->current_fear += amount;
+    if (this->get_battle_stats()->current_fear > this->get_battle_stats()->fear){
+        this->get_battle_stats()->current_fear = this->get_battle_stats()->fear;
+    }
+
 }
 
 void Being::take_offensive(Offensive* offensive) {

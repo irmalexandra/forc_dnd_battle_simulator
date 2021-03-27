@@ -99,7 +99,7 @@ string Species::get_raw_info() {
     }
     if (this->is_eldritch_horror){
         return_string += "Disquiet: 10-10\n";
-        return_string += "Traumatism: " + to_string(this->get_traumatism_range().min) + "-" + to_string(this->get_traumatism_range().max) + "\n";
+        return_string += "Traumatism: " + to_string(this->get_traumatism_range().min) + "-" + to_string(this->get_traumatism_range().max) + "\n\n";
     }
     else {
         return_string += "Disquiet: " + to_string(this->get_disquiet_range().min) + "-" + to_string(this->get_traumatism_range().max) + "\n";

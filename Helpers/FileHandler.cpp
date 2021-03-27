@@ -101,7 +101,7 @@ void FileHandler::load_templates(Payload* payload){
         if(type != "Person"){
             fileIn.getline(single_line, 32);
             line_str = string(single_line);
-            if(type.substr(0, type.length()-1) == "Natural"){
+            if(line_str.substr(0, line_str.length()-1) == "Natural"){
                 stats->unnatural = false;
             }
             else{
@@ -152,11 +152,9 @@ void FileHandler::save_templates(Payload* payload) {
     for(auto species: *payload->DHSpecies->get_data()){
         fileout << species->get_raw_info();
     }
-//    fileout << payload->DHSpecies;
     for(auto role: *payload->DHRoles->get_data()){
         fileout << role->get_raw_info();
     }
-//    fileout << payload->DHRoles;
     fileout.close();
     cout << "Done!" << endl;
 }
@@ -258,7 +256,7 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
                 }
             }
 
-            stats->unnatural = (type != "Natural");
+            stats->unnatural = (line_string.substr(0, line_string.length()-1) != "Natural");
             fileIn.getline(single_line, 32);
             line_string = string(single_line);
             stats->disquiet = stoi(split_string(line_string).at(1));
@@ -325,6 +323,7 @@ void FileHandler::load_actions(Payload *payload) {
     int* damage;
     int* hit_modifier;
     int* defense_modifier;
+    int* attack_modifier;
     int* recovery;
     int* duration;
 
@@ -346,6 +345,7 @@ void FileHandler::load_actions(Payload *payload) {
         damage = new int();
         hit_modifier = new int();
         defense_modifier = new int();
+        attack_modifier = new int();
         recovery = new int();
         duration = new int();
         stats = new baseActionTemplateStats();
@@ -395,6 +395,11 @@ void FileHandler::load_actions(Payload *payload) {
             fileIn.getline(single_line, 32);
             line_str = string(single_line);
             *temp_string_array = split_string(line_str,":" );
+            *attack_modifier = stoi(temp_string_array->at(1));
+
+            fileIn.getline(single_line, 32);
+            line_str = string(single_line);
+            *temp_string_array = split_string(line_str,":" );
             *recovery = stoi(temp_string_array->at(1));
 
             fileIn.getline(single_line, 32);
@@ -405,13 +410,14 @@ void FileHandler::load_actions(Payload *payload) {
         if (stats->type == "Offensive"){
             payload->DHOffensives->get_data()->push_back(new Offensive(stats, hit_modifier, damage));
         } else {
-            payload->DHDefensives->get_data()->push_back(new Defensive(stats, defense_modifier, recovery, duration));
+            payload->DHDefensives->get_data()->push_back(new Defensive(stats, defense_modifier, attack_modifier, recovery, duration));
         }
         fileIn.getline(single_line, 32); // To skip empty lines
         delete stats;
         delete damage;
         delete hit_modifier;
         delete defense_modifier;
+        delete attack_modifier;
         delete recovery;
         delete duration;
     }

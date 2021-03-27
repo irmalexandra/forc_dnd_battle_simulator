@@ -241,5 +241,5 @@ void delete_individual(FileHandler* file_handler, Payload* payload){
 
 void auto_save(FileHandler* file_handler, Payload* payload){
     cout << "Auto Saving..." << endl;
-    file_handler->save_roster(payload, new string("Saves/backups/roster_backup.txt"));
+    file_handler->save_roster(payload, new string("backups/roster_backup"));
 }

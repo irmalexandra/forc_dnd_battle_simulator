@@ -24,7 +24,7 @@ Wolf
 Life: 3
 Strength: 1
 Intelligence: 0
-Unnatural
+Natural
 Disquiet: 1
 
 Name: Wolf2

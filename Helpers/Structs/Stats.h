@@ -35,21 +35,46 @@ struct battleStats {
         this->life = life;
         this->strength = strength;
         this->intelligence = intelligence;
+        this->current_life = life;
     };
+
     void set_as_person(int life, int strength, int intelligence, int fear){
         set_base_stats(life, strength, intelligence);
         this->fear = fear;
     };
+
     void set_as_creature(int life, int strength, int intelligence, int disquiet){
         set_base_stats(life, strength, intelligence);
         this->disquiet = disquiet;
     };
+
+    int get_strength_defense(){
+        return this->strength + this->physical_defense_modifier;
+    };
+    int get_intelligence_defense(){
+        return this->intelligence + this->mental_defense_modifier;
+    };
+    int get_strength_attack(){
+        return this->strength + this->physical_attack_modifier;
+    };
+    int get_intelligence_attack(){
+        return this->intelligence + this->mental_attack_modifier;
+    };
+
+
 public:
     int life = 0;
     int strength = 0;
     int intelligence = 0;
     int disquiet = 0;
     int fear = 0;
+    int current_fear = 0;
+    int current_life = 0;
+
+    int mental_defense_modifier = 0;
+    int mental_attack_modifier = 0;
+    int physical_defense_modifier = 0;
+    int physical_attack_modifier = 0;
 };
 
 struct baseActionTemplateStats{

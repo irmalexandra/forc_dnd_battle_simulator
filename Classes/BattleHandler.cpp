@@ -65,13 +65,20 @@ void BattleHandler::start() {
             } else {
                 execute_ai_turn();
             }
-            cout << "Ending turn "  << this->turn_tracker << endl;
+            cout << this->participant_list->at(this->turn_tracker)->get_name() << "'s turn ends." << endl;
             this->turn_tracker++;
+            cout << endl;
         }
         this->decrement_cooldowns();
         this->turn_tracker = 0;
-        cout << "Ending round "  << this->round_tracker << endl;
         this->round_tracker++;
+        cout << "========================= Ending round: " << this->round_tracker << " =========================\n" << endl;
+
+    }
+    if (monster_team_count < investigator_team_count){
+        cout << "Humans persevere!\n" << endl;
+    } else {
+        cout << "All is lost!\n" << endl;
     }
 }
 
@@ -183,21 +190,17 @@ void BattleHandler::execute_ai_turn() {
 
     auto participant = this->participant_list->at(this->turn_tracker);
 
-    if(participant->get_status()->dead) {
-        cout << participant->get_name() << " is dead! Dead you hear me! DEAD!!" << endl;
-        return;
-    }
-    if(participant->get_status()->fleeing) {
-        cout << participant->get_name() << " has fled the battle! and will not participate in this round!" << endl;
-        return;
-    }
-
     auto action = find_action();
 
     if (action == "Flee"){
         cout << participant->get_name() << " is overcome by fear and flees the battle!" << endl;
+        if (participant->get_template()->get_type() == "Person"){
+            this->investigator_team_count--;
+        } else {
+            this->monster_team_count--;
+        }
         participant->get_status()->set_fleeing(true);
-        // TODO set dead to true? or something clever?
+
         return;
     }
     if (action == "Meltdown"){
@@ -312,18 +315,22 @@ void BattleHandler::set_status() {
     for (auto participant : *this->participant_list){
 
         // Checking if participant is dead, if true, ignores rest of status checks
-        if(participant->get_current_life() <= 0){
+        if(participant->get_battle_stats()->current_life <= 0){
             participant->get_status()->set_dead(true);
-            cout << participant->get_name() << " is dead!" << endl;
             continue;
         }
 
         //  Checking if participant is injured
         auto type = participant->get_template()->get_type();
 
-        if(participant->get_current_life() <= participant->get_life()/2){
-            participant->get_status()->set_injured(true);
-            cout << participant->get_name() << " has been injured!" << endl;
+        if(participant->get_battle_stats()->current_life <= participant->get_life()/2){
+            if (!participant->get_status()->injured){
+                participant->get_status()->set_injured(true);
+                cout << participant->get_name() << " has been injured!" << endl;
+            } else {
+                cout << participant->get_name() << " is still injured!" << endl;
+            }
+
         }else{
             participant->get_status()->set_injured(false);
         }

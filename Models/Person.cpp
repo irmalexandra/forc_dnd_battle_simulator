@@ -11,7 +11,7 @@ Person::Person(std::string* name, std::string* gender, Role* role_template): Bei
     this->gender = *gender;
     this->role = role_template->get_name();
     this->fear = get_random_integer(role_template->get_fear_range());
-    this->current_fear = 0;
+
     this->role_template = role_template;
     delete name;
     name = nullptr;
@@ -26,17 +26,12 @@ Person::Person(baseIndividualStats *stats, Role* base_template): Being(stats, (I
     this->gender = stats->gender;
     this->role = base_template->get_name();
     this->fear = stats->fear;
-    this->current_fear = 0;
     this->role_template = base_template;
-    this->set_battle_stats(stats);
+    this->battle_stats->set_as_person(stats->life, stats->strength, stats->intelligence, stats->fear);
+
 }
 
-void Person::set_battle_stats(baseIndividualStats* stats){
-    this->battle_stats->life = stats->life;
-    this->battle_stats->strength = stats->strength;
-    this->battle_stats->intelligence = stats->intelligence;
-    this->battle_stats->fear = stats->fear;
-}
+
 
 std::string Person::get_role() {
     return this->role;
@@ -166,21 +161,8 @@ string Person::get_state() {
     return "Default";
 }
 
-int Person::get_current_fear() {
-    return this->current_fear;
+void Person::reset() {
+    delete this->battle_stats;
+    this->battle_stats = new battleStats();
+    battle_stats->set_as_person(this->get_life(), this->get_strength(), this->get_intelligence(), this->get_fear());
 }
-
-void Person::decrease_fear(int amount) {
-    this->current_fear -= amount;
-    if (this->current_fear < 0){
-        this->current_fear = 0;
-    }
-}
-
-void Person::increase_fear(int amount) {
-    this->current_fear += amount;
-    if (this->current_fear > this->fear){
-        this->current_fear = this->fear;
-    }
-}
-

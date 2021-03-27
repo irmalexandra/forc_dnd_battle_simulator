@@ -18,7 +18,7 @@ Intelligence: 5
 Gender: Male
 Fear: 3
 
-Name: Wolf1
+Name: Wolf
 Creature
 Wolf
 Life: 5

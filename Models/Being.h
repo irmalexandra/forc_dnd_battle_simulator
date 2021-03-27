@@ -24,7 +24,6 @@ public:
     void edit();
 
     int get_life();
-    int get_current_life();
     int get_strength();
     int get_intelligence();
     int get_initiative();
@@ -41,6 +40,8 @@ public:
     void roll_initiative();
     void decrease_life(int amount);
     void increase_life(int amount);
+    void decrease_fear(int amount);
+    void increase_fear(int amount);
 
     void take_offensive(Offensive* offensive);
     void apply_buff(Defensive* defensive);
@@ -64,7 +65,6 @@ private:
     int strength;
     int intelligence;
     int initiative;
-    int current_life;
     bool is_investigator;
 
 

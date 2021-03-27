@@ -41,8 +41,6 @@ void EldritchHorror::edit(vector<EldritchHorror*>* existing_horrors) {
         std::cout << "2. Life" << std:: endl;
         std::cout << "3. Strength" << std:: endl;
         std::cout << "4. Intelligence" << std:: endl;
-//        std::cout << "5. Unnatural" << std:: endl;
-//        std::cout << "6. Disquiet" << std:: endl;
         std::cout << "7. Traumatism" << std:: endl;
         std::cout << "8. Back" << std:: endl;
         std::cin >> choice;
@@ -84,21 +82,6 @@ void EldritchHorror::edit(vector<EldritchHorror*>* existing_horrors) {
                 new_int_value = &temp_val;
                 this->set_intelligence(new_int_value);
                 break;
-
-//            case Unnatural:
-//                cout << "Is the creature unnatural?:\n1. yes\n2. no ";
-//                cin >> temp_val;
-//                this->set_unnatural(new bool((temp_val == 1)));
-//                break;
-//            case Disquiet:
-//                temp_val = get_int_within_range(
-//                        this->get_template()->get_disquiet_range().min
-//                        , this->get_template()->get_disquiet_range().max
-//                        ,"Enter a new value for Disquiet"
-//                );
-//                new_int_value = &temp_val;
-//                this->set_disquiet(new_int_value);
-//                break;
 
             case Traumatism:
                 cout << "Enter a new value for Traumatism (0-3): ";

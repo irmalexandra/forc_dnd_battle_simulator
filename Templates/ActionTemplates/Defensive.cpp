@@ -31,6 +31,7 @@ std::ostream& operator<< (std::ostream& out, Defensive* defensive) {
         out << "Mental" << endl;
     }
     out << "Defense Modifier: " << defensive->get_def_modifier() << endl;
+    out << "Attack Modifier: " << defensive->get_atk_modifier() << endl;
     out << "Health Recovery: " << defensive->get_recovery() << endl;
     out << "Duration: " << defensive->get_duration() << endl;
 

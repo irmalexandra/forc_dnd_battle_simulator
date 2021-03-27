@@ -17,7 +17,6 @@ class Person: public Being {
 public:
     Person(std::string* name, std::string* gender, Role* base_template);
     Person(baseIndividualStats* stats, Role* base_template);
-    void set_battle_stats(baseIndividualStats* stats);
 
     std::string get_gender();
     std::string get_role();
@@ -30,8 +29,7 @@ public:
     void set_gender(std::string* gender);
     void set_role(std::string* role);
     void set_fear(int* fear);
-    void decrease_fear(int amount);
-    void increase_fear(int amount);
+
     string get_state();
 
     friend std::ostream& operator<< (std::ostream& out, Person* person);
@@ -40,7 +38,6 @@ private:
     std::string role;
     std::string gender;
     int fear;
-    int current_fear = 0;
     Role* role_template;
 
 };
