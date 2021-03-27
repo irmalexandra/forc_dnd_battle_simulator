@@ -318,6 +318,14 @@ void BattleHandler::execute_defensive_action(Being* participant, string action_n
 
 void BattleHandler::set_status() {
     for (auto participant : *this->participant_list){
+        auto type = participant->get_template()->get_type();
+
+        if (type == "Creature" || type == "Eldritch Horror"){
+            if (participant->get_battle_stats()->disquiet <= 0){
+                participant->get_status()->set_overcame(true);
+                continue;
+            }
+        }
 
         // Checking if participant is dead, if true, ignores rest of status checks
         if(participant->get_battle_stats()->current_life <= 0){

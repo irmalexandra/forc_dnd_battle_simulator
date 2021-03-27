@@ -45,6 +45,10 @@ struct Status {
         this->fleeing = maybe;
     }
 
+    void set_overcame(bool maybe){
+        this->overcame = maybe;
+    }
+
     bool injured;
     bool insane;
     bool frightened;
@@ -52,6 +56,7 @@ struct Status {
     bool enraged;
     bool fleeing;
     bool dead;
+    bool overcame; // idno spelling is hard...
 };
 
 
