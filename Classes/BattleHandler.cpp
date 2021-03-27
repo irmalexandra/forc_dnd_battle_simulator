@@ -284,6 +284,10 @@ void BattleHandler::execute_offensive_action(Being* participant, string target_n
                 }
                 cout << target_name << " is now dead." << endl;
             }
+            if (target->get_status()->overcame){
+                this->monster_team_count--;
+                cout << "The human opposition have overcome " << target_name << endl;
+            }
 
         }
         else{
