@@ -1,11 +1,11 @@
-5
+7
 Name: CarlTheInvestigator
 Investigator
 Inspector
 Life: 5
 Strength: 5
 Intelligence: 6
-Gender: Male
+Gender:  Male
 Fear: 7
 Terror: 1
 
@@ -15,8 +15,26 @@ Nurse
 Life: 5
 Strength: 4
 Intelligence: 5
-Gender: Male
+Gender:  Male
 Fear: 3
+
+Name: John
+Person
+Priest
+Life: 6
+Strength: 2
+Intelligence: 7
+Gender: Female
+Fear: 8
+
+Name: John_the_second
+Person
+Priest
+Life: 6
+Strength: 1
+Intelligence: 7
+Gender: Male
+Fear: 9
 
 Name: Wolf
 Creature

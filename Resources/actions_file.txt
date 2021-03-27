@@ -1,4 +1,4 @@
-14
+16
 Name: Bite
 Type: Offensive
 Cooldown: 2
@@ -61,6 +61,20 @@ Cooldown: 1
 Mental
 Hit Modifier: 8
 Damage: 1
+
+Name: Preach
+Type: Offensive
+Cooldown: 1
+Mental
+Hit Modifier: 6
+Damage: 2
+
+Name: Preach_harder
+Type: Offensive
+Cooldown: 1
+Mental
+Hit Modifier: 7
+Damage: 4
 
 Name: Mend
 Type: Defensive
