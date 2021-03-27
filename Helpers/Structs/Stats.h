@@ -46,6 +46,7 @@ struct battleStats {
     void set_as_creature(int life, int strength, int intelligence, int disquiet){
         set_base_stats(life, strength, intelligence);
         this->disquiet = disquiet;
+        this->current_disquiet = disquiet;
     };
 
     int get_strength_defense(){
@@ -67,7 +68,7 @@ public:
     int strength = 0;
     int intelligence = 0;
     int disquiet = 0;
-    int current_disquiet;
+    int current_disquiet = 0;
     int fear = 0;
     int current_fear = 0;
     int current_life = 0;

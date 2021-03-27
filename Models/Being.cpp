@@ -176,21 +176,27 @@ void Being::decrease_disquiet(int amount) {
 }
 
 void Being::take_offensive(Offensive* offensive) {
-    if (!offensive->is_physical() ){
-        if (this->get_template()->get_type() == "Person" || this->get_template()->get_type() == "Investigator"){
+    if (!offensive->is_physical()) {
+        if (this->get_template()->get_type() == "Person" || this->get_template()->get_type() == "Investigator") {
             this->increase_fear(offensive->get_damage());
-            cout << offensive->get_name() << " increases " << this->get_name() << "'s fear by " << offensive->get_damage() << "." << endl;
-            cout << this->get_name() << "'s fear is now " << this->get_battle_stats()->current_fear << " out of " << this->get_battle_stats()->fear << endl;
-        }
-        else{
+            cout << offensive->get_name() << " increases " << this->get_name() << "'s fear by "
+                 << offensive->get_damage() << "." << endl;
+            cout << this->get_name() << "'s fear is now " << this->get_battle_stats()->current_fear << " out of "
+                 << this->get_battle_stats()->fear << endl;
+        } else {
             this->decrease_disquiet(offensive->get_damage());
-            cout << offensive->get_name() << " decreases " << this->get_name() << "'s disquiet by " << offensive->get_damage() << "." << endl;
-            cout << this->get_name() << "'s disquiet is now " << this->get_battle_stats()->current_disquiet << " out of " << this->get_battle_stats()->disquiet << endl;
+            cout << offensive->get_name() << " decreases " << this->get_name() << "'s disquiet by "
+                 << offensive->get_damage() << "." << endl;
+            cout << this->get_name() << "'s disquiet is now " << this->get_battle_stats()->current_disquiet
+                 << " out of " << this->get_battle_stats()->disquiet << endl;
         }
 
-    } else{
+    } else {
         decrease_life(offensive->get_damage());
-        cout << offensive->get_name() << " damages " << this->get_-
+        cout << offensive->get_name() << " damages " << this->get_name() << " for " << offensive->get_damage() << " life." << endl;
+        cout << this->get_name() << "'s life is now " << this->get_battle_stats()->current_life << endl;
+    }
+}
 
 void Being::apply_buff(Defensive* defensive) {
     this->buff_list->push_back(new Buff(defensive));

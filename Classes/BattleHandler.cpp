@@ -100,7 +100,7 @@ string BattleHandler::find_target() {
         if (current_participant->get_name() == target->get_name()){continue;}
         if (type == "Person" || type == "Investigator"){
             if (target->get_template()->get_type() == "Person" || target->get_template()->get_type() == "Investigator"){continue;}
-            if(!target->get_status()->dead){
+            if(!target->get_status()->dead && !target->get_status()->fleeing && !target->get_status()->overcame){
                 targets->push_back(target->get_name());
                 if(target->get_status()->injured){
                     targets->push_back(target->get_name());
@@ -111,7 +111,7 @@ string BattleHandler::find_target() {
             }
         }else{
             if (target->get_template()->get_type() == "Creature" || target->get_template()->get_type() == "Eldritch Horror"){continue;}
-            if(!target->get_status()->dead){
+            if(!target->get_status()->dead && !target->get_status()->fleeing && !target->get_status()->overcame){
                 targets->push_back(target->get_name());
                 if(target->get_status()->injured){
                     targets->push_back(target->get_name());
@@ -284,10 +284,7 @@ void BattleHandler::execute_offensive_action(Being* participant, string target_n
                 }
                 cout << target_name << " is now dead." << endl;
             }
-            if (target->get_status()->overcame){
-                this->monster_team_count--;
-                cout << "The human opposition have overcome " << target_name << endl;
-            }
+
 
         }
         else{
@@ -308,6 +305,11 @@ void BattleHandler::execute_offensive_action(Being* participant, string target_n
         if(participant_result > target_result){
             cout << participant->get_name() << "'s " << action_name << " was a success!" << endl;
             target->take_offensive(offensive_action);
+
+            if (target->get_status()->overcame){
+                this->monster_team_count--;
+                cout << "The human opposition have overcome " << target_name << endl;
+            }
 
         }
         else{
@@ -330,7 +332,7 @@ void BattleHandler::set_status() {
         auto type = participant->get_template()->get_type();
 
         if (type == "Creature" || type == "Eldritch Horror"){
-            if (participant->get_battle_stats()->disquiet <= 0){
+            if (participant->get_battle_stats()->current_disquiet <= 0){
                 participant->get_status()->set_overcame(true);
                 continue;
             }

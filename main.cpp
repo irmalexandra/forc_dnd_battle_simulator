@@ -17,8 +17,8 @@ using namespace std;
 int main() {
     cout << "Starting... " << endl;
     cout << "Setting random seed" << endl;
-//    auto randomSeed = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    auto randomSeed = 1616788278;
+    auto randomSeed = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+//    auto randomSeed = 1616788278;
     cout << "This is the random seed: " << randomSeed << endl;
     srand(randomSeed);
     auto input_handler = new InputHandler();

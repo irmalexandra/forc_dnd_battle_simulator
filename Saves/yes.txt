@@ -43,7 +43,7 @@ Life: 5
 Strength: 6
 Intelligence: 3
 Natural
-Disquiet: 3
+Disquiet: 6
 
 Name: CasperTheGhost
 Creature
@@ -52,7 +52,7 @@ Life: 5
 Strength: 4
 Intelligence: 7
 Unnatural
-Disquiet: 7
+Disquiet: 8
 
 Name: CthulhuTheBest
 Eldritch Horror
