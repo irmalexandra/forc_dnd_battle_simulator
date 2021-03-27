@@ -43,24 +43,24 @@ Damage: 1
 
 Name: Spook
 Type: Offensive
-Cooldown: 4
+Cooldown: 1
 Mental
 Hit Modifier: 5
-Damage: 5
+Damage: 1
 
 Name: Haunt
 Type: Offensive
-Cooldown: 2
+Cooldown: 5
 Mental
 Hit Modifier: 5
-Damage: 3
+Damage: 4
 
-Name: Boo!
+Name: Bless
 Type: Offensive
-Cooldown: 1
+Cooldown: 3
 Mental
-Hit Modifier: 8
-Damage: 1
+Hit Modifier: 6
+Damage: 4
 
 Name: Preach
 Type: Offensive
@@ -69,12 +69,14 @@ Mental
 Hit Modifier: 6
 Damage: 2
 
-Name: Preach_harder
-Type: Offensive
-Cooldown: 1
-Mental
-Hit Modifier: 7
-Damage: 4
+Name: Pray
+Type: Defensive
+Cooldown: 2
+Physical
+Defense Modifier: 3
+Attack Modifier: 0
+Health Recovery: 0
+Duration: 1
 
 Name: Mend
 Type: Defensive
