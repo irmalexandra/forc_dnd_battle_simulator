@@ -49,7 +49,7 @@ string Role::get_raw_info() {
     for (int i = 0; i < defensive_actions->size()-1; i++){
         return_string +=  defensive_actions->at(i)->get_name() +  '\n';
     }
-    return_string +=  defensive_actions->back()->get_name() +  '\n';
+    return_string +=  defensive_actions->back()->get_name() +  "\n\n";
 
     return return_string;
 }

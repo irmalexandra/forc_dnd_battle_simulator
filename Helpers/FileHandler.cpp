@@ -192,6 +192,7 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
 
     string line_string;
     string type;
+    string gender;
     string template_name;
 
     fileIn.getline(single_line, 32);
@@ -275,7 +276,9 @@ void FileHandler::load_roster(Payload *payload, string *roster_name) {
 
         }
         else{
-            stats->gender = split_string(line_string).at(1);
+            gender = split_string(line_string, ":").at(1);
+            stats->gender = gender.substr(0, gender.length()-1);
+
             fileIn.getline(single_line, 32);
             line_string = string(single_line);
             stats->fear = stoi(split_string(line_string).at(1));

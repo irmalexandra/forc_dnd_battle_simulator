@@ -32,6 +32,8 @@ public:
 
     string get_state();
 
+    void reset();
+
     friend std::ostream& operator<< (std::ostream& out, Person* person);
 
 private:

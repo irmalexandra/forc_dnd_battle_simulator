@@ -6,7 +6,7 @@ void battle_menu(Payload* payload, FileHandler* file_handler){
     string folder = "Saves/";
 
     // TODO REMOVE THIS AFTER TESTING
-    filename = "DvsW";
+    filename = "yes";
     file_handler->load_roster(payload, &filename);
     // TODO THIS ENDS HERE!!!
     while(true){

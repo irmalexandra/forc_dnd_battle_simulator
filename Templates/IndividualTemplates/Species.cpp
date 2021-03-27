@@ -102,7 +102,7 @@ string Species::get_raw_info() {
         return_string += "Traumatism: " + to_string(this->get_traumatism_range().min) + "-" + to_string(this->get_traumatism_range().max) + "\n\n";
     }
     else {
-        return_string += "Disquiet: " + to_string(this->get_disquiet_range().min) + "-" + to_string(this->get_traumatism_range().max) + "\n";
+        return_string += "Disquiet: " + to_string(this->get_disquiet_range().min) + "-" + to_string(this->get_disquiet_range().max) + "\n\n";
     }
     return return_string;
 }

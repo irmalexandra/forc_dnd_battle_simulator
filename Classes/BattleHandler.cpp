@@ -207,7 +207,6 @@ void BattleHandler::execute_ai_turn() {
         cout << participant->get_name() << " has been driven insane and was unable to overcome his status for this round!" << endl;
         return;
     }
-    cout << participant->get_name() << " is up!" << endl;
 
     for (auto o_action : *participant->get_template()->get_offensive_actions()){
         if (o_action->get_name() == action){
