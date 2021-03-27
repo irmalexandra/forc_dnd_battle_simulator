@@ -22,6 +22,7 @@ public:
     void set_traumatism(int* traumatism);
 
     friend std::ostream& operator<< (std::ostream& out, EldritchHorror* eldritchHorror);
+    void reset();
 
 private:
     int traumatism;

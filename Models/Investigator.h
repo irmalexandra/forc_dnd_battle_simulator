@@ -18,7 +18,7 @@ public:
     void edit(vector<Investigator*>* existing_investigators);
 
     string get_state();
-
+    void reset();
     friend std::ostream& operator<< (std::ostream& out, Investigator* investigator);
 
 private:

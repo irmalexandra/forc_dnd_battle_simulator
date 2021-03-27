@@ -5,24 +5,29 @@ BattleHandler::BattleHandler(Payload* payload) {
     this->payload = payload;
     cout << "Launching battle simulator." << endl;
     cout << "Rolling initiative." << endl;
+
     this->participant_list = new vector<Being*>;
     for (auto & creature : *payload->DHCreatures->get_data()){
         creature->roll_initiative();
+        creature->reset();
         this->participant_list->push_back((Being*)creature);
         this->monster_team_count++;
     }
     for (auto & investigator : *payload->DHInvestigators->get_data()){
         investigator->roll_initiative();
+        investigator->reset();
         this->participant_list->push_back((Being*)investigator);
         this->investigator_team_count++;
     }
     for (auto & person : *payload->DHPersons->get_data()){
         person->roll_initiative();
+        person->reset();
         this->participant_list->push_back((Being*)person);
         this->investigator_team_count++;
     }
     for (auto & horror : *payload->DHEldritchHorrors->get_data()){
         horror->roll_initiative();
+        horror->reset();
         this->participant_list->push_back((Being*)horror);
         this->monster_team_count++;
     }
@@ -339,7 +344,6 @@ void BattleHandler::set_status() {
 
 
         //  Checking if participant is injured
-        auto type = participant->get_template()->get_type();
 
         if(participant->get_battle_stats()->current_life <= participant->get_life()/2){
             if (!participant->get_status()->injured){

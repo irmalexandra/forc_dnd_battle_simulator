@@ -60,6 +60,7 @@ public:
 protected:
     string name;
     battleStats* battle_stats = new battleStats();
+    void reset_status();
 
 private:
     Status* status;

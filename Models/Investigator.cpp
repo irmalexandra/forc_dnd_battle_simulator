@@ -119,3 +119,7 @@ void Investigator::edit(vector<Investigator*>* existing_investigators) {
         }
     }
 }
+
+void Investigator::reset() {
+    Person::reset();
+}

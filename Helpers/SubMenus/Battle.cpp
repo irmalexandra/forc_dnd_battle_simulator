@@ -20,6 +20,11 @@ void battle_menu(Payload* payload, FileHandler* file_handler){
         }
         switch (choice) {
             case 1:
+                if(payload->DHPersons->get_data()->empty() && payload->DHInvestigators->get_data()->empty()
+                || payload->DHSpecies->get_data()->empty() && payload->DHEldritchHorrors->get_data()->empty() ){
+                    cout << "Invalid roster." << endl;
+                    break;
+                }
                 start_battle(payload);
                 break;
             case 2:

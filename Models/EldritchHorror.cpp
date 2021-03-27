@@ -99,4 +99,8 @@ void EldritchHorror::edit(vector<EldritchHorror*>* existing_horrors) {
     }
 }
 
+void EldritchHorror::reset() {
+    Creature::reset();
+}
+
 

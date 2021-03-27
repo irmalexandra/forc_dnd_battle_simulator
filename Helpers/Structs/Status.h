@@ -15,6 +15,7 @@ struct Status {
         this->enraged = false;
         this->fleeing = false;
         this->dead = false;
+        this->overcame = false;
     };
 
     void set_injured(bool maybe){

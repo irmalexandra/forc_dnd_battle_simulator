@@ -164,5 +164,6 @@ string Person::get_state() {
 void Person::reset() {
     delete this->battle_stats;
     this->battle_stats = new battleStats();
+    this->reset_status();
     battle_stats->set_as_person(this->get_life(), this->get_strength(), this->get_intelligence(), this->get_fear());
 }

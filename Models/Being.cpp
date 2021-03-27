@@ -13,7 +13,6 @@ Being::Being(IndividualBaseTemplate* base_template){
     this->intelligence = get_random_integer(base_template->get_intelligence_range());
 
     this->base_template = base_template;
-
     this->status = new Status();
     this->buff_list = new vector<Buff*>;
 }
@@ -172,6 +171,7 @@ void Being::decrease_disquiet(int amount) {
     this->get_battle_stats()->current_disquiet -= amount;
     if (this->get_battle_stats()->current_disquiet <= 0){
         this->get_battle_stats()->current_disquiet = 0;
+        this->status->overcame = true;
     }
 }
 
@@ -270,6 +270,10 @@ void Being::update_buffs() {
         }
 
     }
+}
+
+void Being::reset_status() {
+    this->status = new Status();
 }
 
 
