@@ -26,7 +26,7 @@ void battle_menu(Payload* payload, FileHandler* file_handler){
             case 2:
                 cout << "Enter the filename of the roster you want to load: ";
                 cin >> filename;
-
+                file_handler->load_roster(payload, &filename);
                 start_battle(payload);
                 break;
             case 0:
