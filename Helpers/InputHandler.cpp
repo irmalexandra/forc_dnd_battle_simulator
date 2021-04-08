@@ -1,12 +1,5 @@
 #include "InputHandler.h"
 
-//bool create_another_character(){
-//    cout << "Create another?\n1. Yes\n2. No" << endl;
-//    int choice = 2;
-//    cin >> choice;
-//    return choice == 1;
-//}
-
 InputHandler::InputHandler() {
     this->individual_creator = new IndividualCreator();
     this->template_creator = new TemplateCreator();

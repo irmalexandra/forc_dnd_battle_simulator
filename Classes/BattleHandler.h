@@ -15,15 +15,10 @@ class BattleHandler {
 public:
     explicit BattleHandler(Payload* payload);
     void decrement_cooldowns();
-    void increment_round();
-    void increment_turn();
     void set_turn_order();
     void execute_ai_turn();
-    void execute_player_turn();
     void execute_offensive_action(Being* participant, string target_name, string action_name);
     void execute_defensive_action(Being* participant, string action_name);
-    string select_target();
-    int dice_roll(int* max_value);
     void start();
     void set_status();
     string find_target();
@@ -37,8 +32,6 @@ private:
     int investigator_team_count = 0;
     vector<Being*>* participant_list;
     Payload* payload;
-
-
 };
 
 #endif //FORC_PA_5_BATTLEHANDLER_H

@@ -7,8 +7,6 @@
 #include "Structs/Stats.h"
 using namespace std;
 
-
-
 int get_random_integer(const Range& range);
 int get_int_within_range(int lower, int upper, const std::string& display_string);
 std::string* gender_picker();

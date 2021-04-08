@@ -44,14 +44,6 @@ void BattleHandler::set_turn_order() {
     sort(this->participant_list->begin(), this->participant_list->end(), compare);
 }
 
-void BattleHandler::increment_round() {
-    this->round_tracker += 1;
-}
-
-void BattleHandler::increment_turn() {
-    this->turn_tracker += 1;
-}
-
 void BattleHandler::start() {
     while (monster_team_count > 0 && investigator_team_count > 0){
         cout << "========================= Starting round: " << this->round_tracker+1 << " =========================\n" << endl;
@@ -242,12 +234,6 @@ void BattleHandler::execute_ai_turn() {
     }
 }
 
-void BattleHandler::execute_player_turn() {
-
-    auto participant = this->participant_list->at(this->turn_tracker);
-    cout << participant->get_name() << " is up!" << endl;
-}
-
 void BattleHandler::execute_offensive_action(Being* participant, string target_name, string action_name) {
     Being* target;
     for(auto being : *this->participant_list){
@@ -284,8 +270,6 @@ void BattleHandler::execute_offensive_action(Being* participant, string target_n
                 }
                 cout << target_name << " is now dead." << endl;
             }
-
-
         }
         else{
             cout << participant->get_name() << " missed!" << endl;
@@ -308,17 +292,14 @@ void BattleHandler::execute_offensive_action(Being* participant, string target_n
 
             if (target->get_status()->overcame){
                 this->monster_team_count--;
-                cout << "The human opposition have overcome " << target_name << endl;
+                cout << "The human's have overcome " << target_name << endl;
+                cout << target_name << " is no longer a threat" << endl;
             }
-
         }
         else{
             cout << participant->get_name() << "'s attack failed!" << endl;
         }
     }
-
-
-
 }
 
 void BattleHandler::execute_defensive_action(Being* participant, string action_name) {
@@ -347,10 +328,7 @@ void BattleHandler::set_status() {
             continue;
         }
 
-
-
         //  Checking if participant is injured
-
         if(participant->get_battle_stats()->current_life <= participant->get_life()/2){
             if (!participant->get_status()->injured){
                 participant->get_status()->set_injured(true);
@@ -358,7 +336,6 @@ void BattleHandler::set_status() {
             } else {
                 cout << participant->get_name() << " is still injured!" << endl;
             }
-
         }else{
             participant->get_status()->set_injured(false);
         }
@@ -382,7 +359,6 @@ void BattleHandler::set_status() {
                 participant->get_status()->set_outnumbered(false);
             }
         }
-
 
         // Checking if participant is frightened
         if (type != "Eldritch Horror"){
@@ -416,30 +392,7 @@ void BattleHandler::set_status() {
                 }
             }
         }
-
-        if(participant->get_is_investigator()){
-            // TODO something clever for investigators only?
-        }else{
-            // TODO something else clever for investigators only?
-        }
-
-
     }
-}
-
-string BattleHandler::select_target() {
-    string name;
-    int index;
-    cout << "Enter the name of your target: ";
-    cin >> name;
-    index = get_index(this->participant_list, name);
-
-    while (index == -1){
-        cout << "\nTarget not found" << endl << "Enter the name of your target: ";
-        cin >> name;
-        index = get_index(this->participant_list, name);
-    }
-    return name;
 }
 
 void BattleHandler::decrement_cooldowns() {

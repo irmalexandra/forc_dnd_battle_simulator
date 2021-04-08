@@ -77,7 +77,6 @@ std::ostream& operator<< (std::ostream& out, Species* Species){
 
 
 string Species::get_raw_info() {
-//    std::stringstream string_stream;
     string return_string;
     return_string += "Name: " + get_name() +  '\n';
     return_string += get_type() +  '\n';

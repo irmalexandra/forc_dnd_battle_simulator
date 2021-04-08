@@ -1,7 +1,3 @@
-//
-// Created by emmik on 22/03/2021.
-//
-
 #include "TemplateCreator.h"
 
 speciesStats* TemplateCreator::get_species_stats(Payload* payload){
@@ -61,10 +57,8 @@ Role *TemplateCreator::create_role(Payload* payload) {
     auto role_stats = new baseIndividualTemplateStats();
     role_stats->type = "Person";
     get_base_stats(role_stats, payload);
-
     return new Role(role_stats);
 }
-
 
 void TemplateCreator::get_base_stats(baseIndividualTemplateStats* base_stats, Payload* payload) {
     if (base_stats == nullptr){

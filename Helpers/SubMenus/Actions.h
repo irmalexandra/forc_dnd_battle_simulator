@@ -5,7 +5,6 @@
 #ifndef FORC_PA_5_ACTIONS_H
 #define FORC_PA_5_ACTIONS_H
 
-
 #include "../../Classes/ActionCreator.h"
 #include "iostream"
 #include "../Structs/Payload.h"

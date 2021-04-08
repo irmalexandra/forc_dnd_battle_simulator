@@ -38,6 +38,4 @@ private:
     int disquiet;
 };
 
-
-
 #endif //FORC_PA_5_CREATURE_H
