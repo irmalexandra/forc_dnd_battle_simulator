@@ -1,4 +1,5 @@
 scp *.cpp lokih@skel.ru.is:~/cpp/PA5/
+scp Makefile lokih@skel.ru.is:~/cpp/PA5/
 scp Classes/*.cpp lokih@skel.ru.is:~/cpp/PA5/Classes
 scp Classes/*.h lokih@skel.ru.is:~/cpp/PA5/Classes
 scp Helpers/*.cpp lokih@skel.ru.is:~/cpp/PA5/Helpers
@@ -9,8 +10,8 @@ scp Helpers/SubMenus/*.cpp lokih@skel.ru.is:~/cpp/PA5/Helpers/SubMenus
 scp Helpers/SubMenus/*.h lokih@skel.ru.is:~/cpp/PA5/Helpers/SubMenus
 scp Models/*.cpp lokih@skel.ru.is:~/cpp/PA5/Models
 scp Models/*.h lokih@skel.ru.is:~/cpp/PA5/Models
-scp Templates/ActioneTemplates/*.cpp lokih@skel.ru.is:~/cpp/PA5/Templates/ActioneTemplates
-scp Templates/ActioneTemplates/*.h lokih@skel.ru.is:~/cpp/PA5/Templates/ActioneTemplates
+scp Templates/ActionTemplates/*.cpp lokih@skel.ru.is:~/cpp/PA5/Templates/ActionTemplates
+scp Templates/ActionTemplates/*.h lokih@skel.ru.is:~/cpp/PA5/Templates/ActionTemplates
 scp Templates/IndividualTemplates/*.cpp lokih@skel.ru.is:~/cpp/PA5/Templates/IndividualTemplates/
 scp Templates/IndividualTemplates/*.h lokih@skel.ru.is:~/cpp/PA5/Templates/IndividualTemplates/
 scp Resources/*.txt lokih@skel.ru.is:~/cpp/PA5/Resources
