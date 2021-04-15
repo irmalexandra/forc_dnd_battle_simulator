@@ -1,5 +1,5 @@
 7
-Name: CarlTheInvestigator
+Name: Carl
 Investigator
 Inspector
 Life: 5
@@ -9,7 +9,7 @@ Gender:  Male
 Fear: 7
 Terror: 1
 
-Name: JohnThePerson
+Name: John
 Person
 Nurse
 Life: 5
@@ -18,7 +18,7 @@ Intelligence: 5
 Gender:  Male
 Fear: 3
 
-Name: John
+Name: Michael
 Person
 Priest
 Life: 6
@@ -27,7 +27,7 @@ Intelligence: 7
 Gender: Female
 Fear: 8
 
-Name: John_the_second
+Name: Kenny
 Person
 Priest
 Life: 6
@@ -45,7 +45,7 @@ Intelligence: 3
 Natural
 Disquiet: 6
 
-Name: CasperTheGhost
+Name: Ghost
 Creature
 Ghost
 Life: 5
@@ -54,7 +54,7 @@ Intelligence: 7
 Unnatural
 Disquiet: 8
 
-Name: CthulhuTheBest
+Name: Cthulhu
 Eldritch Horror
 Cthulhu
 Life: 8
