@@ -27,6 +27,11 @@ void battle_menu(Payload* payload, FileHandler* file_handler){
                 cout << "Enter the filename of the roster you want to load: ";
                 cin >> filename;
                 file_handler->load_roster(payload, &filename);
+                if(payload->DHPersons->get_data()->empty() && payload->DHInvestigators->get_data()->empty()
+                   || payload->DHSpecies->get_data()->empty() && payload->DHEldritchHorrors->get_data()->empty() ){
+                    cout << "Invalid roster." << endl;
+                    break;
+                }
                 start_battle(payload);
                 break;
             case 0:

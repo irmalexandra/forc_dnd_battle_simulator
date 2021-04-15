@@ -57,7 +57,7 @@ struct Status {
     bool enraged;
     bool fleeing;
     bool dead;
-    bool overcame; // idno spelling is hard...
+    bool overcame;
 };
 
 
