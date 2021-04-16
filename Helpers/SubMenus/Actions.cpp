@@ -4,7 +4,7 @@
 void action_menu(FileHandler* file_handler, ActionCreator* action_creator, Payload* payload){
     int choice;
     while(true){
-        cout << "1. View actions\n2. Create actions\n3. Delete actions\n0. Back" << endl;
+        cout << "1. View actions\n2. Create actions\n0. Back" << endl;
         cin >> choice;
         if(cin.fail()){
             cout << "Invalid input" << endl;
@@ -18,9 +18,6 @@ void action_menu(FileHandler* file_handler, ActionCreator* action_creator, Paylo
                 break;
             case 2:
                 create_action(file_handler, action_creator, payload);
-                break;
-            case 3:
-                delete_action(file_handler, payload);
                 break;
             case 0:
                 return;
@@ -81,28 +78,5 @@ void create_action(FileHandler* file_handler, ActionCreator* action_creator, Pay
     }
 };
 
-void delete_action(FileHandler* file_handler, Payload* payload){
-    string name;
-    view_actions(payload);
-    cout << "Enter the name of the action you want deleted." << endl;
-    cin >> name;
 
-    auto offensive_index = get_index(payload->DHOffensives->get_data(), name);
-    auto defensive_index = get_index(payload->DHDefensives->get_data(), name);
-    if(offensive_index == -1 && defensive_index == -1){
-        cout << name << " does not exist!" << endl;
-    }
-    else{
-        if(offensive_index != -1){
-            payload->DHOffensives->get_data()->erase(payload->DHOffensives->get_data()->begin() + offensive_index);
-            file_handler->save_templates(payload);
-        }
-
-        if(defensive_index != -1){
-            payload->DHDefensives->get_data()->erase(payload->DHDefensives->get_data()->begin() + defensive_index);
-            file_handler->save_templates(payload);
-        }
-        cout << name << " was successfully deleted!" << endl;
-    }
-};
 

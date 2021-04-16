@@ -97,6 +97,7 @@ void delete_template(FileHandler* file_handler, Payload* payload){
             payload->DHRoles->get_data()->erase(payload->DHRoles->get_data()->begin() + role_index);
             file_handler->save_templates(payload);
         }
+        file_handler->save_templates(payload);
         cout << name << " was successfully deleted!" << endl;
     }
 }

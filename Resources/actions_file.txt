@@ -1,4 +1,4 @@
-16
+18
 Name: Bite
 Type: Offensive
 Cooldown: 2
@@ -69,6 +69,13 @@ Mental
 Hit Modifier: 6
 Damage: 2
 
+Name: Slap
+Type: Offensive
+Cooldown: 1
+Physical
+Hit Modifier: 3
+Damage: 2
+
 Name: Pray
 Type: Defensive
 Cooldown: 2
@@ -122,4 +129,13 @@ Defense Modifier: 2
 Attack Modifier: 1
 Health Recovery: 0
 Duration: 2
+
+Name: Hide
+Type: Defensive
+Cooldown: 1
+Physical
+Defense Modifier: 2
+Attack Modifier: 2
+Health Recovery: 0
+Duration: 1
 
